@@ -1,0 +1,17 @@
+﻿<Application x:Class="TaskGrab.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TaskGrab"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <FontFamily x:Key="FontAwesome">/TaskGrab;component/Fonts/fontawesome-webfont.ttf#FontAwesome</FontFamily>
+                </ResourceDictionary>
+                <ResourceDictionary 
+                    Source="Styles/Header.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

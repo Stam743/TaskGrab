@@ -1,0 +1,20 @@
+﻿<Window x:Class="TaskGrab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskGrab"
+        mc:Ignorable="d"
+        Title="TaskGrab" Height="450" Width="800">
+    <Canvas Margin="10">
+        <Button Style="{StaticResource HeaderButton}">
+            <TextBlock Text="&#xf067;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+        </Button>
+        <Button Canvas.Right="0" Style="{StaticResource HeaderButton}">
+            <TextBlock Text="&#xf00b;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+        </Button>
+        <Button Canvas.Bottom="0" Style="{StaticResource HeaderButton}">
+            <TextBlock Text="&#xf007;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+        </Button>
+    </Canvas>
+</Window>
