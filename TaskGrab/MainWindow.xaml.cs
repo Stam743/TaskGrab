@@ -25,9 +25,24 @@ namespace TaskGrab
             InitializeComponent();
         }
 
-        private void BtnOpenNewTaskModal_Click(object sender, RoutedEventArgs e)
+        private void BtnOpenModal_Click(object sender, RoutedEventArgs e)
         {
-            NewTaskPopup.IsOpen = true;
+            var page = ((Button)sender).Tag;
+            Uri uri = new((string)page,UriKind.Relative);
+            PopupFrame.Source = uri;
+            ModalPopup.IsOpen = true;
         }
+
+        private void SetOverlayShow(object sender, EventArgs e)
+        {
+            Overlay.Visibility = Visibility.Visible;
+        }
+
+        private void SetOverlayHide(object sender, EventArgs e)
+        {
+            Overlay.Visibility = Visibility.Hidden;
+        }
+
+        
     }
 }

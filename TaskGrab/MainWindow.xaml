@@ -6,19 +6,31 @@
         xmlns:local="clr-namespace:TaskGrab"
         mc:Ignorable="d"
         Title="TaskGrab" Height="450" Width="800">
-    <Canvas Margin="10">
-        <Popup x:Name="NewTaskPopup" StaysOpen="False" Placement="Center">
-            <Frame Source="Pages/NewTaskPage.xaml" />
+    <Grid>
+        <Popup x:Name="ModalPopup" StaysOpen="False" Placement="Center"
+               Opened="SetOverlayShow"
+               Closed="SetOverlayHide"
+               x:FieldModifier="public">
+            <Frame x:Name="PopupFrame" Source="Pages/NewTaskPage.xaml"
+                   NavigationUIVisibility="Hidden" />
         </Popup>
-        <Button Style="{StaticResource HeaderButton}"
-                Click="BtnOpenNewTaskModal_Click">
-            <TextBlock Text="&#xf067;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
-        </Button>
-        <Button Canvas.Right="0" Style="{StaticResource HeaderButton}">
-            <TextBlock Text="&#xf00b;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
-        </Button>
-        <Button Canvas.Bottom="0" Style="{StaticResource HeaderButton}">
-            <TextBlock Text="&#xf007;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
-        </Button>
-    </Canvas>
+        <Canvas Canvas.Left="0" Canvas.Top="0" Margin="10">
+            <Button Style="{StaticResource HeaderButton}"
+                    Tag="Pages/NewTaskPage.xaml"
+                    Click="BtnOpenModal_Click">
+                <TextBlock Text="&#xf067;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+            </Button>
+            <Button Canvas.Right="0" Style="{StaticResource HeaderButton}"
+                    Tag="Pages/FiltersPage.xaml"
+                    Click="BtnOpenModal_Click">
+                <TextBlock Text="&#xf00b;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+            </Button>
+            <Button Canvas.Bottom="0" Style="{StaticResource HeaderButton}"
+                    Tag="Pages/MyTasks.xaml"
+                    Click="BtnOpenModal_Click">
+                <TextBlock Text="&#xf007;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+            </Button>
+        </Canvas>
+        <Rectangle Fill="#111" Opacity="0.7" x:Name="Overlay" Visibility="Hidden"></Rectangle>
+    </Grid>
 </Window>

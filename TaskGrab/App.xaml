@@ -11,6 +11,8 @@
                 </ResourceDictionary>
                 <ResourceDictionary 
                     Source="Styles/Header.xaml"/>
+                <ResourceDictionary 
+                    Source="Styles/Modals.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
