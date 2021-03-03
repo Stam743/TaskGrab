@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NewTaskWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Fonts\fontawesome-webfont.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="NewTaskWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>

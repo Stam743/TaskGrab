@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TaskGrab
+namespace TaskGrab.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NewTaskPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NewTaskPage : Page
     {
-        public MainWindow()
+        public NewTaskPage()
         {
             InitializeComponent();
-        }
-
-        private void BtnOpenNewTaskModal_Click(object sender, RoutedEventArgs e)
-        {
-            NewTaskPopup.IsOpen = true;
         }
     }
 }

@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="TaskGrab" Height="450" Width="800">
     <Canvas Margin="10">
-        <Button Style="{StaticResource HeaderButton}">
+        <Popup x:Name="NewTaskPopup" StaysOpen="False" Placement="Center">
+            <Frame Source="Pages/NewTaskPage.xaml" />
+        </Popup>
+        <Button Style="{StaticResource HeaderButton}"
+                Click="BtnOpenNewTaskModal_Click">
             <TextBlock Text="&#xf067;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
         </Button>
         <Button Canvas.Right="0" Style="{StaticResource HeaderButton}">
