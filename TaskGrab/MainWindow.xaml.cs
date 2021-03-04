@@ -56,8 +56,6 @@ namespace TaskGrab
             double width = MainGrid.ActualWidth;
             double height = MainGrid.ActualHeight;
 
-            MessageBox.Show("Width:" + width + " Height:" + height);
-
             var map = new StaticMapRequest();
             map.Center = new Location("358 Hawkstone Dr NW, Calgary AB T3G3T7");
             map.Size = new MapSize((int) width, (int) height);
