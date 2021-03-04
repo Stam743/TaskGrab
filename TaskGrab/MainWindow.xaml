@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskGrab"
         mc:Ignorable="d"
-        Title="TaskGrab" Height="450" Width="800">
-    <Grid>
+        ContentRendered="MakeMap"
+        Title="Task Grab" Height="450" Width="800">
+    <Grid Name="MainGrid">
         <Popup x:Name="ModalPopup" StaysOpen="False" Placement="Center"
                Opened="SetOverlayShow"
                Closed="SetOverlayHide"
@@ -14,6 +15,7 @@
             <Frame x:Name="PopupFrame" Source="Pages/NewTaskPage.xaml"
                    NavigationUIVisibility="Hidden" />
         </Popup>
+        <Image x:Name="Map" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
         <Canvas Canvas.Left="0" Canvas.Top="0" Margin="10">
             <Button Style="{StaticResource HeaderButton}"
                     Tag="Pages/NewTaskPage.xaml"

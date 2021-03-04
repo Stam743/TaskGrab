@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Google.Maps;
+using Google.Maps.Geocoding;
+using Google.Maps.StaticMaps;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,14 @@ namespace TaskGrab
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        string API_KEY = "AIzaSyDbQ_0Y3jYBzg1oxjbJzDfk4JwLgT2BHGY";
         public MainWindow()
         {
+            GoogleSigned.AssignAllServices(new GoogleSigned(API_KEY));
             InitializeComponent();
+
+            
         }
 
         private void BtnOpenModal_Click(object sender, RoutedEventArgs e)
@@ -43,6 +51,31 @@ namespace TaskGrab
             Overlay.Visibility = Visibility.Hidden;
         }
 
-        
+        private void MakeMap(object sender, EventArgs e)
+        {
+            double width = MainGrid.ActualWidth;
+            double height = MainGrid.ActualHeight;
+
+            MessageBox.Show("Width:" + width + " Height:" + height);
+
+            var map = new StaticMapRequest();
+            map.Center = new Location("358 Hawkstone Dr NW, Calgary AB T3G3T7");
+            map.Size = new MapSize((int) width, (int) height);
+            map.Zoom = 14;
+            StaticMapService service = new StaticMapService();
+
+            BitmapImage img = new BitmapImage();
+            try
+            {
+                img.BeginInit();
+                img.StreamSource = service.GetStream(map);
+                img.EndInit();
+                this.Map.Source = img;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A handled exception just occurred: " + ex.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }
