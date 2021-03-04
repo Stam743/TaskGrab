@@ -59,9 +59,23 @@ namespace TaskGrab
             var map = new StaticMapRequest();
             map.Center = new Location("358 Hawkstone Dr NW, Calgary AB T3G3T7");
             map.Size = new MapSize((int) width, (int) height);
-            map.Zoom = 14;
-            StaticMapService service = new StaticMapService();
+            map.Zoom = 13;
+            map.Scale = 2;
 
+
+            MapMarkers markers = new MapMarkers
+            {
+                MarkerSize = Google.Maps.MarkerSizes.Small,
+                Label = "5",
+                IconUrl = "http://shorturl.at/amyRY"
+
+            };
+            markers.Locations.Add(new Location("147 Citadel Meadows Grdns NW, Calgary AB"));
+
+            map.Markers.AddRange(map.Markers.Append(markers));
+
+            StaticMapService service = new StaticMapService();
+            
             BitmapImage img = new BitmapImage();
             try
             {
