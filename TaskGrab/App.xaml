@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:TaskGrab"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
