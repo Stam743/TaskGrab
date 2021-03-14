@@ -28,27 +28,17 @@ namespace TaskGrab
     {
 
         private bool menu_open = false;
-        public History history;
-        
         public MainWindow()
         {
             InitializeComponent();
-            history = new History(MainWindowView, "Pages/MainView/Index.xaml");
-            var binding = new Binding("History") { 
-                Source = history
-            };
         }
 
         private void BtnOpenModal_Click(object sender, RoutedEventArgs e)
         {
-            history.GoTo((string)((Button)sender).Tag);
+            
         }
 
 
-        public History GetHistory()
-        {
-            return history;
-        }
 
         private void MenuToggle(object sender, RoutedEventArgs e)
         {
@@ -66,11 +56,6 @@ namespace TaskGrab
                 this.MenuActions.Height = double.NaN;
                 menu_open = true;
             }
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            history.GoBack();
         }
     }
 }

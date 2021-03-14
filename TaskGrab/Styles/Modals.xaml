@@ -1,20 +1,21 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    x:Class="TaskGrab.Styles.Modals"
+                    x:Class="TaskGrab.Styles.Modals" 
                     xmlns:local="clr-namespace:TaskGrab">
     <ControlTemplate x:Key="ModalWindow" TargetType="Page">
         <Grid>
-            <Canvas>
-                <Button Click="{Binding Source={Binding }}"
-                    BorderThickness="0"
-                    Margin="10"
-                    Style="{StaticResource HeaderButton}">
-                    <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf104;" Foreground="#FFFFFF" FontSize="18"/>
-                </Button>
-            </Canvas>
             <Grid>
                 <ContentPresenter />
             </Grid>
+            <Canvas>
+                <Button 
+                        Click="BackBtnClick"
+                        Visibility="{Binding Path=IsBackButtonVisible}"
+                        Margin="10"
+                        Style="{StaticResource HeaderButton}">
+                    <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf104;" Foreground="#FFFFFF" FontSize="18"/>
+                </Button>
+            </Canvas>
         </Grid>
     </ControlTemplate>
 </ResourceDictionary>

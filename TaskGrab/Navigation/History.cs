@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace TaskGrab.Navigation
 {
-    public class History
-    {
+    public class History : INotifyPropertyChanged
+    { 
         Stack<string> history;
-        Frame frame;
-        public History(Frame frame, String initial)
+
+        public String Current;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public History(String initial)
         {
             history = new Stack<string>();
             history.Push(initial);
-            this.frame = frame;
-            this.frame.Source = new Uri(initial, UriKind.RelativeOrAbsolute);
+            this.Current = initial;
         }
 
     
@@ -33,8 +39,8 @@ namespace TaskGrab.Navigation
             bool success = true;
             try
             {
-                frame.Source = uri;
-                history.Push(uri.OriginalString);
+                if ( uri.OriginalString != history.Peek())
+                    history.Push(uri.OriginalString);  
             }
             catch (FileNotFoundException)
             {
