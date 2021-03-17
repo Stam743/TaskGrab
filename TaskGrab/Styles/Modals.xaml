@@ -8,13 +8,7 @@
                 <ContentPresenter />
             </Grid>
             <Canvas>
-                <Button 
-                        Click="BackBtnClick"
-                        Visibility="{Binding Path=IsBackButtonVisible}"
-                        Margin="10"
-                        Style="{StaticResource HeaderButton}">
-                    <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf104;" Foreground="#FFFFFF" FontSize="18"/>
-                </Button>
+               
             </Canvas>
         </Grid>
     </ControlTemplate>

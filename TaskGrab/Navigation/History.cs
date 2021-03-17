@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,17 +16,43 @@ namespace TaskGrab.Navigation
 {
     public class History : INotifyPropertyChanged
     { 
-        Stack<string> history;
+        Stack<Uri> history;
+        public Uri current;
+        private Frame frame;
 
-        public String Current;
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        private Visibility isBackVisible = Visibility.Hidden;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public History(String initial)
+        public Visibility IsBackVisible {
+            get { return this.isBackVisible; }
+            set
+            {
+                this.isBackVisible= value;
+                this.OnPropertyChanged();
+            }
+        }
+        private Visibility isSwitchVisible = Visibility.Visible;
+        public Visibility IsSwitchVisible
         {
-            history = new Stack<string>();
-            history.Push(initial);
-            this.Current = initial;
+            get { return this.isSwitchVisible; }
+            set
+            {
+                this.isSwitchVisible = value;
+                this.OnPropertyChanged();
+            }
+        }
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            // Raise the PropertyChanged event, passing the name of the property whose value has changed.
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public History(Frame frame, String initial)
+        {
+            history = new Stack<Uri>();
+            Uri init = new Uri(initial, UriKind.Relative);
+            current = init;
+            this.frame = frame;
+            this.frame.Source = init;
         }
 
     
@@ -34,13 +62,41 @@ namespace TaskGrab.Navigation
             return GoTo(uri);
         }
 
+        public void updateVisibility()
+        {
+            IsBackVisible = CanGoBack() ? Visibility.Visible : Visibility.Hidden;
+            IsSwitchVisible = Regex.Match(current.OriginalString,@".*MainView/.*").Success ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        public bool Replace(String path)
+        {
+            Uri uri = new(path, UriKind.Relative);
+            return Replace(uri);
+        }
+        public bool Replace(Uri uri)
+        {
+            bool success = true;
+            try
+            {
+                current = uri;
+                frame.Source = current;
+                updateVisibility();
+            }
+            catch (FileNotFoundException)
+            {
+                success = false;
+            }
+            return success;
+        }
         public bool GoTo(Uri uri)
         {
             bool success = true;
             try
             {
-                if ( uri.OriginalString != history.Peek())
-                    history.Push(uri.OriginalString);  
+                history.Push(current);
+                current = uri;
+                frame.Source = current;
+                updateVisibility();
             }
             catch (FileNotFoundException)
             {
@@ -50,14 +106,16 @@ namespace TaskGrab.Navigation
         }
 
         public bool CanGoBack() {
-            return history.Count > 1;
+            return history.Count > 0;
         }
 
         public void GoBack()
         {
-            if (CanGoBack()) { 
-                history.Pop();
-                GoTo(history.Peek()); 
+            if (CanGoBack()) {
+                Uri previous = history.Pop();
+                frame.Source = previous;
+                current = previous;
+                updateVisibility();
             }
         }
     }

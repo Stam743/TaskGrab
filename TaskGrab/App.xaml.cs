@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TaskGrab.Data;
 using TaskGrab.Navigation;
 
 namespace TaskGrab
@@ -14,5 +16,12 @@ namespace TaskGrab
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            using (CommunityLocationContext dbContext = new CommunityLocationContext())
+            {
+                dbContext.Database.Migrate();
+            }
+        }
     }
 }
