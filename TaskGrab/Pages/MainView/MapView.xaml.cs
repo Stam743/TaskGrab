@@ -23,6 +23,12 @@ using TaskGrab.Util;
 
 namespace TaskGrab.Pages.MainView
 {
+
+    public class DistanceAndAngle
+    {
+        public double Angle { get; set; }
+        public double Distance { get; set; }
+    }
     /// <summary>
     /// Interaction logic for MapView.xaml
     /// </summary>
@@ -87,11 +93,12 @@ namespace TaskGrab.Pages.MainView
                 double lat2 = communities.GetLocation(location).latitude;
                 double lon2 = communities.GetLocation(location).longitude;
 
-                double distance = distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) * 1000;
-                double angle = angleFromCoordinate(lat1, lon1, lat2, lon2);
+                //double distance = distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) * 1000;
+                //double angle = angleFromCoordinate(lat1, lon1, lat2, lon2);
+                DistanceAndAngle da = getDAFromPoints(lat1, lon1, lat2, lon2);
 
-                double x = (distance / metersPerPx * Math.Cos(angle));
-                double y = (distance / metersPerPx * Math.Sin(angle));
+                double x = (da.Distance / metersPerPx * Math.Cos(da.Angle));
+                double y = (da.Distance / metersPerPx * Math.Sin(da.Angle));
 
                 x = x + 240 - 25;
                 y = (-y) + 385 - 25;
@@ -162,6 +169,42 @@ namespace TaskGrab.Pages.MainView
                     Math.Sin(dLon / 2.0) * Math.Sin(dLon / 2.0) * Math.Cos(lat1) * Math.Cos(lat2);
             var c = 2.0 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1.0 - a));
             return earthRadiusKm * c;
+        }
+
+        DistanceAndAngle getDAFromPoints(double lat1, double lon1, double lat2, double lon2)
+        {
+
+            double dLon = degreesToRadians(lon2 - lon1);
+
+            double cosLat1 = Math.Cos(degreesToRadians(lat1));
+            double cosLat2 = Math.Cos(degreesToRadians(lat2));
+
+            double y = Math.Sin(dLon) * cosLat2;
+            double x = cosLat1 * Math.Sin(degreesToRadians(lat2)) - Math.Sin(degreesToRadians(lat1))
+                    * cosLat2 * Math.Cos(dLon);
+
+            double brng = Math.Atan2(y, x);
+
+            brng = ConvertRadiansToDegrees(brng);
+            brng = (brng + 360.0) % 360.0;
+            brng = 360.0 - brng; // count degrees counter-clockwise - remove to make clockwise
+            brng = degreesToRadians(brng + 90);
+
+            double earthRadiusKm = 6371.0;
+
+            double dLat = degreesToRadians(lat2 - lat1);
+
+            var a = Math.Sin(dLat / 2.0) * Math.Sin(dLat / 2.0) +
+                    Math.Sin(dLon / 2.0) * Math.Sin(dLon / 2.0) * cosLat1 * cosLat2;
+            var c = 2.0 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1.0 - a));
+            double distance = earthRadiusKm * c * 1000;
+
+            return new DistanceAndAngle()
+            {
+                Distance = distance,
+                Angle = brng   
+            };
+            
         }
     }
 }
