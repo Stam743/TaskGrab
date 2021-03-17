@@ -12,10 +12,17 @@
 
   <ItemGroup>
     <None Remove="Fonts\fontawesome-webfont.ttf" />
+    <None Remove="TaskMockData.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="NewTaskWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TaskMockData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

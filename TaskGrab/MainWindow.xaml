@@ -7,6 +7,7 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:Navigation="clr-namespace:TaskGrab.Navigation"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="Task Grab" Height="800" Width="480">
     <Grid Name="MainGrid">
         <Frame x:Name="MainWindowView" Source="Pages/MainView/MapView.xaml"

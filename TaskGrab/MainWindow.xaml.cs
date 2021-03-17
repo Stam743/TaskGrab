@@ -1,8 +1,11 @@
 ﻿using Google.Maps;
 using Google.Maps.Geocoding;
 using Google.Maps.StaticMaps;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -29,7 +32,10 @@ namespace TaskGrab
     public partial class MainWindow : Window 
     {
         string API_KEY = "AIzaSyDbQ_0Y3jYBzg1oxjbJzDfk4JwLgT2BHGY";
-        CommunityLocationContext _context = new CommunityLocationContext();
+
+        CommunityLocationContext community_context = new CommunityLocationContext();
+        TaskContext task_context = new TaskContext();
+
         private bool menu_open = false;
         public History history;
         public MainWindow()
@@ -42,8 +48,38 @@ namespace TaskGrab
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _context.Database.EnsureCreated();
+            community_context.Database.EnsureCreated();
+            task_context.Database.EnsureCreated();
+            ReadTasksJsonFile();
         }
+
+
+        public void ReadTasksJsonFile()
+        {
+
+            using StreamReader r = new StreamReader(System.AppDomain.CurrentDomain.BaseDirectory + @"/TaskMockData.json");
+
+            string json = r.ReadToEnd();
+            List<TaskGrab.Data.Task> array = (List<TaskGrab.Data.Task>)JsonConvert.DeserializeObject<List<TaskGrab.Data.Task>>(json);
+
+            foreach (TaskGrab.Data.Task task in array)
+            {
+                try
+                {
+                    if (task_context.Tasks.Count() > 0)
+                        _ = task_context.Tasks.Single(t => t.ID == task.ID);
+                    else
+                        task_context.Tasks.Add(task);
+                } catch
+                {
+                    task_context.Tasks.Add(task);
+                }
+            }
+
+            task_context.SaveChanges();
+
+        }
+
         private void BackBtnClick(object sender, RoutedEventArgs e)
         {
            history.GoBack();

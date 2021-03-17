@@ -29,20 +29,6 @@ namespace TaskGrab.Pages.MainView
     public partial class MapView : Page
     {
 
-        string[] map_marker_icons = new string[] {
-            "https://i.ibb.co/h9Z9zRJ/Icon1.png",
-            "https://i.ibb.co/Z1yp95C/Icon2.png",
-            "https://i.ibb.co/cg66zgM/Icon3.png",
-            "https://i.ibb.co/QHJxR3b/Icon4.png",
-            "https://i.ibb.co/3zyJjnC/Icon5.png",
-            "https://i.ibb.co/m8ygwzP/Icon6.png",
-            "https://i.ibb.co/ZJCKW3Z/Icon7.png",
-            "https://i.ibb.co/ySzWbmp/Icon8.png",
-            "https://i.ibb.co/M7RbK6Y/Icon9.png",
-            "https://i.ibb.co/ckzGWR9/Icon10.png",
-            "https://i.ibb.co/rbHrT6B/Icon10.png"
-        };
-
         string[] map_marker_locations = new string[] {
             "Ranchlands, Calgary Nw",
             "Citadel, Calgary NW",
@@ -50,68 +36,69 @@ namespace TaskGrab.Pages.MainView
             "Dalhousie, Calgary NW",
             "Silver Springs, Calgary NW",
             "Simons Valley, Calgary NW"
-
         };
 
         Communities communities;
 
-        //public string Icon1 = "https://i.ibb.co/h9Z9zRJ/Icon1.png";
-        //public string Icon2 = "https://i.ibb.co/Z1yp95C/Icon2.png";
-        //public string Icon3 = "https://i.ibb.co/cg66zgM/Icon3.png";
-        //public string Icon4 = "https://i.ibb.co/QHJxR3b/Icon4.png";
-        //public string Icon5 = "https://i.ibb.co/3zyJjnC/Icon5.png";
-        //public string Icon6 = "https://i.ibb.co/m8ygwzP/Icon6.png";
-        //public string Icon7 = "https://i.ibb.co/ZJCKW3Z/Icon7.png";
-        //public string Icon8 = "https://i.ibb.co/ySzWbmp/Icon8.png";
-        //public string Icon9 = "https://i.ibb.co/M7RbK6Y/Icon9.png";
-        //public string Icon10 = "https://i.ibb.co/ckzGWR9/Icon10.png";
-        //public string Icon10p = "https://i.ibb.co/rbHrT6B/Icon10.png";
 
         public MapView()
         {
             communities = new();
             InitializeComponent();
-            MakeMap();
+            MakeMap("Citadel, Calgary AB", 13);
         }
 
-        private void MakeMap()
+        private void MakeMap(string center, int zoom)
         {
             double width = MainGrid.ActualWidth;
             double height = MainGrid.ActualHeight;
 
-            
+            double lat1 = communities.GetLocation(center).latitude;
+            double lon1 = communities.GetLocation(center).longitude;
+
+            double metersPerPx = 156543.03392 * Math.Cos(lat1 * Math.PI / 180) / Math.Pow(2, zoom);
+
 
             var map = new StaticMapRequest();
-            map.Center = new Google.Maps.Location("Hawkwood, Calgary AB");
+            map.Center = new Google.Maps.Location(center);
             try
             {
                 map.Size = new MapSize((int)width, (int)height);
             }
             catch
             {
-                map.Size = new MapSize(480, 770);
+                width = 480;
+                height = 770;
+                map.Size = new MapSize((int) width, (int) height);
             }
-            map.Zoom = 13;
+            map.Zoom = zoom;
             map.Scale = 2;
 
             List<MapMarkers> markers = new();
             foreach (string location in map_marker_locations)
             {
-                Ellipse marker = new Ellipse()
+                Button marker = new Button()
                 {
-                    Width = 50,
-                    Height = 50,
-                    
+                    Style = FindResource("MapMarkerButton") as Style,
+                    Content = "22"
                 };
-                double center_point_x = communities.GetLocation("Hawkwood, Calgary AB").longitude;
-                double center_point_y = communities.GetLocation("Hawkwood, Calgary AB").latitude;
-
-                double scale = 144447.644200;
-                double marker_x = center_point_x - communities.GetLocation(location).longitude;
                 MarkerCanvas.Children.Add(marker);
-                double slope = (480) / (256);
-                double output = slope * (marker_x);
-                Debug.WriteLine(output + "  oooolll  " + output * scale) ;
+
+                double lat2 = communities.GetLocation(location).latitude;
+                double lon2 = communities.GetLocation(location).longitude;
+
+                double distance = distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) * 1000;
+                double angle = angleFromCoordinate(lat1, lon1, lat2, lon2);
+
+                double x = (distance / metersPerPx * Math.Cos(angle));
+                double y = (distance / metersPerPx * Math.Sin(angle));
+
+                x = x + 240 - 25;
+                y = (-y) + 385 - 25;
+
+                Canvas.SetLeft(marker, x);
+                Canvas.SetTop(marker, y);
+
             }
 
 
@@ -131,6 +118,50 @@ namespace TaskGrab.Pages.MainView
             {
                 MessageBox.Show("A handled exception just occurred: " + ex.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        double degreesToRadians(double degrees)
+        {
+            return (degrees * Math.PI) / 180.0;
+        }
+
+        private double angleFromCoordinate(double lat1, double long1, double lat2,double long2)
+        {
+
+            double dLon = degreesToRadians(long2 - long1);
+
+            double y = Math.Sin(dLon) * Math.Cos(degreesToRadians(lat2));
+            double x = Math.Cos(degreesToRadians(lat1)) * Math.Sin(degreesToRadians(lat2)) - Math.Sin(degreesToRadians(lat1))
+                    * Math.Cos(degreesToRadians(lat2)) * Math.Cos(dLon);
+
+            double brng = Math.Atan2(y, x);
+
+            brng = ConvertRadiansToDegrees(brng);
+            brng = (brng + 360.0) % 360.0;
+            brng = 360.0 - brng; // count degrees counter-clockwise - remove to make clockwise
+
+            return degreesToRadians(brng + 90);
+        }
+
+        double ConvertRadiansToDegrees(double radians)
+        {
+            double degrees = (180.0 / Math.PI) * radians;
+            return (degrees);
+        }
+        double distanceInKmBetweenEarthCoordinates(double lat1, double lon1, double lat2, double lon2)
+        {
+            double earthRadiusKm = 6371.0;
+
+            double dLat = degreesToRadians(lat2 - lat1);
+            double dLon = degreesToRadians(lon2 - lon1);
+
+            lat1 = degreesToRadians(lat1);
+            lat2 = degreesToRadians(lat2);
+
+            var a = Math.Sin(dLat / 2.0) * Math.Sin(dLat / 2.0) +
+                    Math.Sin(dLon / 2.0) * Math.Sin(dLon / 2.0) * Math.Cos(lat1) * Math.Cos(lat2);
+            var c = 2.0 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1.0 - a));
+            return earthRadiusKm * c;
         }
     }
 }
