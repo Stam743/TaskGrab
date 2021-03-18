@@ -38,12 +38,15 @@ namespace TaskGrab
 
         private bool menu_open = false;
         public History history;
+        public Window Window;
         public MainWindow()
         {
             InitializeComponent();
             history = new History(this.MainWindowView, "/Pages/MainView/MapView.xaml");
             this.DataContext = history;
             GoogleSigned.AssignAllServices(new GoogleSigned(API_KEY));
+            Window = this;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

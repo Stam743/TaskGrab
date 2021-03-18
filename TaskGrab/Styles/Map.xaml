@@ -15,8 +15,6 @@
                 <Setter Property="OverridesDefaultStyle" Value="True"/>
                 <Setter Property="Foreground" Value="#000" />
                 <Setter Property="FontFamily" Value="Arial Black"/>
-                <Setter Property="Width" Value="50" />
-                <Setter Property="Height" Value="50" />
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="Template" Value="{StaticResource MapMarkerButtonTemplate}" />
             </Style>

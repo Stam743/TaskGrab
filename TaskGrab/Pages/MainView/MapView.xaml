@@ -6,6 +6,9 @@
       xmlns:local="clr-namespace:TaskGrab.Pages.MainView"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="480"
+      MouseWheel="OnMouseWheel"
+      MouseLeftButtonDown="Page_MouseDown"
+      MouseLeftButtonUp="Page_MouseLeftButtonUp"
       Title="MapView">
 
     <Grid x:Name="MainGrid">

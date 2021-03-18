@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -35,81 +36,121 @@ namespace TaskGrab.Pages.MainView
     public partial class MapView : Page
     {
 
-        string[] map_marker_locations = new string[] {
-            "Ranchlands, Calgary Nw",
-            "Citadel, Calgary NW",
-            "Arbour Lake, Calgary NW",
-            "Dalhousie, Calgary NW",
-            "Silver Springs, Calgary NW",
-            "Simons Valley, Calgary NW"
-        };
-
         Communities communities;
+        int current_zoom = 13;
 
+        double width;
+        double height;
+
+        double center_lat;
+        double center_lon;
 
         public MapView()
         {
             communities = new();
             InitializeComponent();
-            MakeMap("Citadel, Calgary AB", 13);
+            SetCenterLocation("Citadel, Calgary AB");
+            MakeMap();
+
         }
 
-        private void MakeMap(string center, int zoom)
+        private void OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            double width = MainGrid.ActualWidth;
-            double height = MainGrid.ActualHeight;
+            if (e.Delta > 0)
+                current_zoom++;
 
-            double lat1 = communities.GetLocation(center).latitude;
-            double lon1 = communities.GetLocation(center).longitude;
+            else if (e.Delta < 0)
+                current_zoom--;
 
-            double metersPerPx = 156543.03392 * Math.Cos(lat1 * Math.PI / 180) / Math.Pow(2, zoom);
+            if (current_zoom > 20)
+                current_zoom = 20;
+            else if (current_zoom < 1)
+                current_zoom = 1;
+
+            MakeMap();
+        }
+        private void MakeMap()
+        {
+
+            Debug.WriteLine(center_lat + "," + center_lon);
+            DrawMap();
+
+            double metersPerPx = 156543.03392 * Math.Cos(center_lat * Math.PI / 180) / Math.Pow(2, current_zoom);
+
+            List<MapMarkers> markers = new();
+            TaskContext taskContext = new TaskContext();
+            Dictionary<string, int> community_count = new Dictionary<string, int>();
+
+            MarkerCanvas.Children.Clear();
+
+            foreach (Data.Task task in taskContext.Tasks)
+            {
+                if (community_count.ContainsKey(task.location))
+                    community_count[task.location] += 1;
+                else
+                    community_count.Add(task.location, 1);
+            }
 
 
+            int[] x_points = new int[community_count.Count];
+            double marker_size = current_zoom * 3.84;
+
+            foreach (KeyValuePair<string, int> kvp in community_count)
+            {
+
+                double c_lat = communities.GetLocation(kvp.Key).latitude;
+                double c_lon = communities.GetLocation(kvp.Key).longitude;
+
+                DistanceAndAngle da = getDAFromPoints(center_lat, center_lon, c_lat, c_lon);
+
+                double x = (da.Distance / metersPerPx * Math.Cos(da.Angle));
+                double y = (da.Distance / metersPerPx * Math.Sin(da.Angle));
+
+                x = x + (480.0 / 2.0);
+                y = (-y) + (770.0 / 2.0);
+
+                Button marker = new Button()
+                {
+                    Style = FindResource("MapMarkerButton") as Style,
+                    Width = marker_size,
+                    Height = marker_size,
+                    Content = kvp.Value
+                };
+                MarkerCanvas.Children.Add(marker);
+
+                Canvas.SetLeft(marker, x);
+                Canvas.SetTop(marker, y);
+            }
+
+
+           
+        }
+
+        private void SetCenterLocation(string center)
+        {
+            width = MainGrid.ActualWidth;
+            height = MainGrid.ActualHeight;
+
+            center_lat = communities.GetLocation(center).latitude;
+            center_lon = communities.GetLocation(center).longitude;
+        } 
+
+        private void DrawMap()
+        {
             var map = new StaticMapRequest();
-            map.Center = new Google.Maps.Location(center);
+            map.Center = new Google.Maps.Location(center_lat + "," + center_lon);
             try
             {
                 map.Size = new MapSize((int)width, (int)height);
             }
             catch
             {
-                width = 480;
+                width = 500;
                 height = 770;
-                map.Size = new MapSize((int) width, (int) height);
+                map.Size = new MapSize((int)width, (int)height);
             }
-            map.Zoom = zoom;
+            map.Zoom = current_zoom;
             map.Scale = 2;
-
-            List<MapMarkers> markers = new();
-            foreach (string location in map_marker_locations)
-            {
-                Button marker = new Button()
-                {
-                    Style = FindResource("MapMarkerButton") as Style,
-                    Content = "22"
-                };
-                MarkerCanvas.Children.Add(marker);
-
-                double lat2 = communities.GetLocation(location).latitude;
-                double lon2 = communities.GetLocation(location).longitude;
-
-                //double distance = distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) * 1000;
-                //double angle = angleFromCoordinate(lat1, lon1, lat2, lon2);
-                DistanceAndAngle da = getDAFromPoints(lat1, lon1, lat2, lon2);
-
-                double x = (da.Distance / metersPerPx * Math.Cos(da.Angle));
-                double y = (da.Distance / metersPerPx * Math.Sin(da.Angle));
-
-                x = x + 240 - 25;
-                y = (-y) + 385 - 25;
-
-                Canvas.SetLeft(marker, x);
-                Canvas.SetTop(marker, y);
-
-            }
-
-
-            map.Markers.AddRange(markers);
 
 
             StaticMapService service = new StaticMapService();
@@ -127,60 +168,31 @@ namespace TaskGrab.Pages.MainView
             }
         }
 
-        double degreesToRadians(double degrees)
+        private double degreesToRadians(double degrees)
         {
             return (degrees * Math.PI) / 180.0;
         }
 
-        private double angleFromCoordinate(double lat1, double long1, double lat2,double long2)
-        {
-
-            double dLon = degreesToRadians(long2 - long1);
-
-            double y = Math.Sin(dLon) * Math.Cos(degreesToRadians(lat2));
-            double x = Math.Cos(degreesToRadians(lat1)) * Math.Sin(degreesToRadians(lat2)) - Math.Sin(degreesToRadians(lat1))
-                    * Math.Cos(degreesToRadians(lat2)) * Math.Cos(dLon);
-
-            double brng = Math.Atan2(y, x);
-
-            brng = ConvertRadiansToDegrees(brng);
-            brng = (brng + 360.0) % 360.0;
-            brng = 360.0 - brng; // count degrees counter-clockwise - remove to make clockwise
-
-            return degreesToRadians(brng + 90);
-        }
-
-        double ConvertRadiansToDegrees(double radians)
+        private double ConvertRadiansToDegrees(double radians)
         {
             double degrees = (180.0 / Math.PI) * radians;
             return (degrees);
         }
-        double distanceInKmBetweenEarthCoordinates(double lat1, double lon1, double lat2, double lon2)
-        {
-            double earthRadiusKm = 6371.0;
 
-            double dLat = degreesToRadians(lat2 - lat1);
+        private DistanceAndAngle getDAFromPoints(double lat1, double lon1, double lat2, double lon2)
+        {
+
             double dLon = degreesToRadians(lon2 - lon1);
+            double dLat = degreesToRadians(lat2 - lat1);
 
             lat1 = degreesToRadians(lat1);
             lat2 = degreesToRadians(lat2);
 
-            var a = Math.Sin(dLat / 2.0) * Math.Sin(dLat / 2.0) +
-                    Math.Sin(dLon / 2.0) * Math.Sin(dLon / 2.0) * Math.Cos(lat1) * Math.Cos(lat2);
-            var c = 2.0 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1.0 - a));
-            return earthRadiusKm * c;
-        }
-
-        DistanceAndAngle getDAFromPoints(double lat1, double lon1, double lat2, double lon2)
-        {
-
-            double dLon = degreesToRadians(lon2 - lon1);
-
-            double cosLat1 = Math.Cos(degreesToRadians(lat1));
-            double cosLat2 = Math.Cos(degreesToRadians(lat2));
+            double cosLat1 = Math.Cos(lat1);
+            double cosLat2 = Math.Cos(lat2);
 
             double y = Math.Sin(dLon) * cosLat2;
-            double x = cosLat1 * Math.Sin(degreesToRadians(lat2)) - Math.Sin(degreesToRadians(lat1))
+            double x = cosLat1 * Math.Sin(lat2) - Math.Sin(lat1)
                     * cosLat2 * Math.Cos(dLon);
 
             double brng = Math.Atan2(y, x);
@@ -192,8 +204,6 @@ namespace TaskGrab.Pages.MainView
 
             double earthRadiusKm = 6371.0;
 
-            double dLat = degreesToRadians(lat2 - lat1);
-
             var a = Math.Sin(dLat / 2.0) * Math.Sin(dLat / 2.0) +
                     Math.Sin(dLon / 2.0) * Math.Sin(dLon / 2.0) * cosLat1 * cosLat2;
             var c = 2.0 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1.0 - a));
@@ -202,9 +212,55 @@ namespace TaskGrab.Pages.MainView
             return new DistanceAndAngle()
             {
                 Distance = distance,
-                Angle = brng   
+                Angle = brng
             };
-            
+
+        }
+
+
+        double x_start;
+        double x_end;
+        double y_start;
+        double y_end;
+        private void Page_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            Point cursor_point = Map.PointToScreen(Mouse.GetPosition(Map));
+
+
+            x_start = cursor_point.X - Map.ActualWidth / 2.0;
+            y_start = (cursor_point.Y - Map.ActualHeight / 2.0);
+
+        }
+
+        private void Page_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow window = (MainWindow)Application.Current.MainWindow;
+            Point cursor_point = Map.PointToScreen(Mouse.GetPosition(Map));
+
+
+            x_end = cursor_point.X - Map.ActualWidth / 2.0;
+            y_end = (cursor_point.Y - Map.ActualHeight / 2.0);
+
+            double move_factor = 0.00008;
+
+            if ( x_end > x_start) // Went Upwatds, so we move downwards
+            {
+                center_lon -= move_factor * Math.Abs(x_end - x_start);
+            } else if ( x_end < x_start) // Went down so we go up
+            {
+                center_lon += move_factor * Math.Abs(x_end - x_start);
+            }
+
+            if ( y_end > y_start)
+            {
+                center_lat += move_factor * Math.Abs(y_end - y_start);
+            }else if (y_end < y_start)
+            {
+                center_lat -= move_factor * Math.Abs(y_end - y_start);
+            }
+
+            MakeMap();
         }
     }
 }
