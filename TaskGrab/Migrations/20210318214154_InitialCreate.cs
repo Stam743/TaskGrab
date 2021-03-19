@@ -20,12 +20,33 @@ namespace TaskGrab.Migrations
                 {
                     table.PrimaryKey("PK_CommunityLocations", x => x.ID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Tasks",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    title = table.Column<string>(type: "TEXT", nullable: true),
+                    description = table.Column<string>(type: "TEXT", nullable: true),
+                    posted = table.Column<string>(type: "TEXT", nullable: true),
+                    poster = table.Column<string>(type: "TEXT", nullable: true),
+                    payment = table.Column<string>(type: "TEXT", nullable: true),
+                    location = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tasks", x => x.ID);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "CommunityLocations");
+
+            migrationBuilder.DropTable(
+                name: "Tasks");
         }
     }
 }

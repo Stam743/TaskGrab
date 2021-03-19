@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -23,22 +24,12 @@ namespace TaskGrab.Controls
     public partial class TaskControl : UserControl
     {
 
-        public static Brush ODD = (SolidColorBrush)(new BrushConverter().ConvertFrom("#5155d0"));
-        public static Brush EVEN = (SolidColorBrush)(new BrushConverter().ConvertFrom("#474cd3"));
-
         private int id = 0;
         [Description("The id of the task"), Category("Data")]
         public int Id
         {
             get => id;
             set => id = value;
-        }
-
-        [Description("The background of the task"), Category("Data")]
-        public Brush BackgroundColor
-        {
-            get => MainGrid.Background;
-            set => MainGrid.Background = value;
         }
 
         [Description("The title of the task"), Category("Data")]
@@ -117,6 +108,17 @@ namespace TaskGrab.Controls
         public TaskControl()
         {
             InitializeComponent();
+        }
+
+        public TaskControl(Data.Task task)
+        {
+            InitializeComponent();
+            this.Id = task.ID;
+            this.Time = string.Format(" {0:%m} minutes ago"
+            , (DateTime.Now - DateTime.Parse(task.posted)));
+            this.Title = task.title;
+            this.Description = task.description;
+            this.Payment = task.payment;
         }
     }
 }

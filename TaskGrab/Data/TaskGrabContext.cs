@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace TaskGrab.Data
 {
-    public class CommunityLocationContext : DbContext
+    public class TaskGrabContext : DbContext
     {
+        public DbSet<Task> Tasks { get; set; }
         public DbSet<CommunityLocation> CommunityLocations { get; set; }
+
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(
-                "Data Source=communities.db");
+                "Data Source=tasksGrab.db");
             optionsBuilder.UseLazyLoadingProxies();
             base.OnConfiguring(optionsBuilder);
         }

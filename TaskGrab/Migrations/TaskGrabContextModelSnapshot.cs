@@ -6,8 +6,8 @@ using TaskGrab.Data;
 
 namespace TaskGrab.Migrations
 {
-    [DbContext(typeof(CommunityLocationContext))]
-    partial class CommunityLocationContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TaskGrabContext))]
+    partial class TaskGrabContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,35 @@ namespace TaskGrab.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("CommunityLocations");
+                });
+
+            modelBuilder.Entity("TaskGrab.Data.Task", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("location")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("payment")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("posted")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("poster")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Tasks");
                 });
 #pragma warning restore 612, 618
         }

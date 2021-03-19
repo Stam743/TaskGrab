@@ -33,8 +33,7 @@ namespace TaskGrab
     {
         string API_KEY = "AIzaSyDbQ_0Y3jYBzg1oxjbJzDfk4JwLgT2BHGY";
 
-        CommunityLocationContext community_context = new CommunityLocationContext();
-        TaskContext task_context = new TaskContext();
+        TaskGrabContext task_grab_context = new TaskGrabContext();
 
         private bool menu_open = false;
         public History history;
@@ -51,8 +50,7 @@ namespace TaskGrab
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            community_context.Database.EnsureCreated();
-            task_context.Database.EnsureCreated();
+            task_grab_context.Database.EnsureCreated();
             ReadTasksJsonFile();
         }
 
@@ -69,17 +67,17 @@ namespace TaskGrab
             {
                 try
                 {
-                    if (task_context.Tasks.Count() > 0)
-                        _ = task_context.Tasks.Single(t => t.ID == task.ID);
+                    if (task_grab_context.Tasks.Count() > 0)
+                        _ = task_grab_context.Tasks.Single(t => t.ID == task.ID);
                     else
-                        task_context.Tasks.Add(task);
+                        task_grab_context.Tasks.Add(task);
                 } catch
                 {
-                    task_context.Tasks.Add(task);
+                    task_grab_context.Tasks.Add(task);
                 }
             }
 
-            task_context.SaveChanges();
+            task_grab_context.SaveChanges();
 
         }
 

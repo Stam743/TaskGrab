@@ -71,35 +71,40 @@ namespace TaskGrab.Pages.MainView
         }
         private void MakeMap()
         {
-
-            Debug.WriteLine(center_lat + "," + center_lon);
             DrawMap();
 
             double metersPerPx = 156543.03392 * Math.Cos(center_lat * Math.PI / 180) / Math.Pow(2, current_zoom);
 
             List<MapMarkers> markers = new();
-            TaskContext taskContext = new TaskContext();
+            TaskGrabContext task_grab_context = new TaskGrabContext();
             Dictionary<string, int> community_count = new Dictionary<string, int>();
 
             MarkerCanvas.Children.Clear();
 
-            foreach (Data.Task task in taskContext.Tasks)
+            foreach (Data.Task task in task_grab_context.Tasks)
             {
+                
                 if (community_count.ContainsKey(task.location))
                     community_count[task.location] += 1;
                 else
                     community_count.Add(task.location, 1);
             }
-
+            
 
             int[] x_points = new int[community_count.Count];
             double marker_size = current_zoom * 3.84;
-
+            
             foreach (KeyValuePair<string, int> kvp in community_count)
             {
+       
+                Util.Location community_location = communities.GetLocation(kvp.Key);
 
-                double c_lat = communities.GetLocation(kvp.Key).latitude;
-                double c_lon = communities.GetLocation(kvp.Key).longitude;
+                if (community_location == null)
+                    continue;
+
+                double c_lat = community_location.latitude;
+                double c_lon = community_location.longitude;
+
 
                 DistanceAndAngle da = getDAFromPoints(center_lat, center_lon, c_lat, c_lon);
 
@@ -109,16 +114,31 @@ namespace TaskGrab.Pages.MainView
                 x = x + (480.0 / 2.0);
                 y = (-y) + (770.0 / 2.0);
 
+
+                if (x > 480 || x < 0)
+                    continue;
+
+                if (y > 770 || y < 0)
+                    continue;
+
+
+
                 Button marker = new Button()
                 {
                     Style = FindResource("MapMarkerButton") as Style,
                     Width = marker_size,
                     Height = marker_size,
-                    Content = kvp.Value
+                    Content = kvp.Value,
+                    Tag = kvp.Key
                 };
+
+
+                marker.Click += onMarkerClick;
+
                 MarkerCanvas.Children.Add(marker);
 
                 Canvas.SetLeft(marker, x);
+
                 Canvas.SetTop(marker, y);
             }
 
@@ -126,6 +146,12 @@ namespace TaskGrab.Pages.MainView
            
         }
 
+
+        private void onMarkerClick(object sender, RoutedEventArgs e)
+        {
+            Button clicked = (Button)sender;
+            ((MainWindow)Application.Current.MainWindow).GetHistory().GoTo("/Pages/Task/Tasks.xaml?location=" + clicked.Tag);
+        }
         private void SetCenterLocation(string center)
         {
             width = MainGrid.ActualWidth;

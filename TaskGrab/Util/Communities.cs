@@ -10,17 +10,17 @@ using TaskGrab.Data;
 namespace TaskGrab.Util
 {
 
-    class Location
+    public class Location
     {
         public double latitude { get; set; }
         public double longitude { get; set; }
     }
     class Communities
     {
-        CommunityLocationContext _context;
+        TaskGrabContext _context;
         public Communities()
         {
-            _context =  new CommunityLocationContext();
+            _context =  new TaskGrabContext();
         }
         
         public Location GetLocation(string community)
@@ -32,7 +32,7 @@ namespace TaskGrab.Util
                     latitude = location.latitude,
                     longitude = location.longitude
                 };
-            } catch
+            } catch (InvalidOperationException e)
             {
                 var request = new GeocodingRequest();
                 request.Address = community;

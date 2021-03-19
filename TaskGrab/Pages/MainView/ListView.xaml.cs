@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TaskGrab.Controls;
+using TaskGrab.Data;
 
 namespace TaskGrab.Pages.MainView
 {
@@ -22,27 +24,19 @@ namespace TaskGrab.Pages.MainView
     /// </summary>
     public partial class ListView : Page
     {
-        List<TaskControl> tasks = new List<TaskControl>();
         double scrollBarHeight = 50;
+        TaskGrabContext _context = new();
         public ListView()
         {
-            InitializeComponent();
-            for (int i = 0; i < 100; i++)
-            {
-                tasks.Add(new TaskControl()
-                {
-                    Title = "This is task number " + i,
-                    Description = "This is a really long description that is sort of useless if you ask me lol now we need to add more to really make it a long ass description",
-                    BackgroundColor = TaskControl.ODD,
-                    Payment = i % 3 == 0 ? "Accepting Offers" : "$40",
-                    Time = (i + 3) + " minutes ago",
-                    Id = i
-                }) ;
-                tasks.Last().MessageClick += OnMessageClick;
-                tasks.Last().TaskClick += OnTaskClick;
-            }
-
             
+            InitializeComponent();
+            
+            List<TaskControl> tasks = new List<TaskControl>();
+            
+            foreach (Data.Task task in _context.Tasks.Take(20))
+            {
+                tasks.Add(new TaskControl(task));
+            }
             TasksHolder.ItemsSource = tasks;
 
         }

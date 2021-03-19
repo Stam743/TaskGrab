@@ -10,10 +10,10 @@
             Margin="10,5"
             Padding="0"
             Click="onTaskClick">
-        <Grid Height="100" Width="445" Background="{Binding BackgroundColor}"
+        <Grid Height="115" Width="445" Background="#5155d0"
               x:Name="MainGrid"
           HorizontalAlignment="Center">
-            <Grid Margin="13">
+            <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"/>
                     <ColumnDefinition />
@@ -23,14 +23,16 @@
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="15"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="45"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" 
                            x:Name="TaskTitleText"
                            Text="{Binding Title}" 
                            FontWeight="Bold"
                            FontSize="14"
+                           
                            TextWrapping="Wrap"
+                           VerticalAlignment="Center"   
                            Style="{StaticResource TaskText}"/>
                     <Grid Grid.Row="1" VerticalAlignment="Center">
                         <Grid.RowDefinitions>
@@ -48,8 +50,9 @@
 
                     <TextBlock Grid.Row="2"
                            FontSize="11"
-                           Padding="0,7,0,0"
+                           Padding="0,0,0,0"
                            x:Name="DescriptionText"
+                           VerticalAlignment="Center"
                            Text="{Binding Description}" 
                            TextWrapping="WrapWithOverflow"
                            Style="{StaticResource TaskText}"/>

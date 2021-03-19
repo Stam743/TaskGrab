@@ -18,7 +18,7 @@ namespace TaskGrab
     {
         public App()
         {
-            using (CommunityLocationContext dbContext = new CommunityLocationContext())
+            using (TaskGrabContext dbContext = new TaskGrabContext())
             {
                 dbContext.Database.Migrate();
             }
