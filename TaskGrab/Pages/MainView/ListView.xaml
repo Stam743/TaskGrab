@@ -1,0 +1,23 @@
+﻿<Page x:Class="TaskGrab.Pages.MainView.ListView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaskGrab.Pages.MainView"
+      mc:Ignorable="d" 
+      xmlns:control = "clr-namespace:TaskGrab.Controls"
+      d:DesignHeight="800" d:DesignWidth="480"
+      Title="ListView">
+    <Canvas Width="480" Background="#00015e">
+        <ScrollViewer Height="695"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Hidden"
+                      ScrollChanged="OnScroll">
+            <ItemsControl  x:Name="TasksHolder" />
+        </ScrollViewer>
+        <Line X1="460" X2="460" Y1="10" Y2="100" UseLayoutRounding="True" StrokeEndLineCap="Round" 
+              StrokeStartLineCap="Round"
+              x:Name="ScrollBarCustom"
+              StrokeThickness="6" Stroke="#f3c206"/>
+    </Canvas>
+</Page>

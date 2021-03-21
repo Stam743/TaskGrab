@@ -1,10 +1,14 @@
 ﻿using Google.Maps;
 using Google.Maps.Geocoding;
 using Google.Maps.StaticMaps;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,78 +19,114 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaskGrab.Data;
+using TaskGrab.Navigation;
 
 namespace TaskGrab
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    /// 
 
+    public partial class MainWindow : Window 
+    {
         string API_KEY = "AIzaSyDbQ_0Y3jYBzg1oxjbJzDfk4JwLgT2BHGY";
+
+        TaskGrabContext task_grab_context = new TaskGrabContext();
+
+        private bool menu_open = false;
+        public History history;
+        public Window Window;
         public MainWindow()
         {
-            GoogleSigned.AssignAllServices(new GoogleSigned(API_KEY));
             InitializeComponent();
+            history = new History(this.MainWindowView, "/Pages/MainView/MapView.xaml");
+            this.DataContext = history;
+            GoogleSigned.AssignAllServices(new GoogleSigned(API_KEY));
+            Window = this;
 
-            
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            task_grab_context.Database.EnsureCreated();
+            ReadTasksJsonFile();
+        }
+
+
+        public void ReadTasksJsonFile()
+        {
+
+            using StreamReader r = new StreamReader(System.AppDomain.CurrentDomain.BaseDirectory + @"/TaskMockData.json");
+
+            string json = r.ReadToEnd();
+            List<TaskGrab.Data.Task> array = (List<TaskGrab.Data.Task>)JsonConvert.DeserializeObject<List<TaskGrab.Data.Task>>(json);
+
+            foreach (TaskGrab.Data.Task task in array)
+            {
+                try
+                {
+                    if (task_grab_context.Tasks.Count() > 0)
+                        _ = task_grab_context.Tasks.Single(t => t.ID == task.ID);
+                    else
+                        task_grab_context.Tasks.Add(task);
+                } catch
+                {
+                    task_grab_context.Tasks.Add(task);
+                }
+            }
+
+            task_grab_context.SaveChanges();
+
+        }
+
+        private void BackBtnClick(object sender, RoutedEventArgs e)
+        {
+           history.GoBack();
+        }
         private void BtnOpenModal_Click(object sender, RoutedEventArgs e)
         {
-            var page = ((Button)sender).Tag;
-            Uri uri = new((string)page,UriKind.Relative);
-            PopupFrame.Source = uri;
-            ModalPopup.IsOpen = true;
+            history.GoTo((string)((Button)sender).Tag);
         }
 
-        private void SetOverlayShow(object sender, EventArgs e)
+        public History GetHistory()
         {
-            Overlay.Visibility = Visibility.Visible;
+            return history;
         }
 
-        private void SetOverlayHide(object sender, EventArgs e)
+
+        private void MenuToggle(object sender, RoutedEventArgs e)
         {
-            Overlay.Visibility = Visibility.Hidden;
-        }
-
-        private void MakeMap(object sender, EventArgs e)
-        {
-            double width = MainGrid.ActualWidth;
-            double height = MainGrid.ActualHeight;
-
-            var map = new StaticMapRequest();
-            map.Center = new Location("358 Hawkstone Dr NW, Calgary AB T3G3T7");
-            map.Size = new MapSize((int) width, (int) height);
-            map.Zoom = 13;
-            map.Scale = 2;
-
-
-            MapMarkers markers = new MapMarkers
+            Button menuButton = (Button)sender;
+            if (menu_open)
             {
-                MarkerSize = Google.Maps.MarkerSizes.Small,
-                Label = "5",
-                IconUrl = "http://shorturl.at/amyRY"
+                menuButton.LayoutTransform = new RotateTransform(0);
+                this.MenuActions.Height = 0;
+                menu_open = false;
 
-            };
-            markers.Locations.Add(new Location("147 Citadel Meadows Grdns NW, Calgary AB"));
-
-            map.Markers.AddRange(map.Markers.Append(markers));
-
-            StaticMapService service = new StaticMapService();
-            
-            BitmapImage img = new BitmapImage();
-            try
-            {
-                img.BeginInit();
-                img.StreamSource = service.GetStream(map);
-                img.EndInit();
-                this.Map.Source = img;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("A handled exception just occurred: " + ex.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
+                menuButton.LayoutTransform = new RotateTransform(90);
+                this.MenuActions.Height = double.NaN;
+                menu_open = true;
+            }
+        }
+
+        private void SwitchClicked(object sender, RoutedEventArgs e)
+        {
+            Button switchButton = (Button)sender;
+            bool switch_on_map = Regex.Match(history.current.OriginalString,@".*/MainView/MapView.xaml").Success;
+            if (switch_on_map)
+            {
+                switchButton.Template = (ControlTemplate)this.FindResource("SwitchButtonTemplateList");
+                history.Replace("Pages/MainView/ListView.xaml");
+            }
+            else
+            {
+                switchButton.Template = (ControlTemplate)this.FindResource("SwitchButtonTemplateMap");
+                history.Replace("Pages/MainView/MapView.xaml");
             }
         }
     }

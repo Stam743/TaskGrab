@@ -7,12 +7,62 @@
             </Style>
         </ResourceDictionary>
         <ResourceDictionary >
+            <Style x:Key="HeaderMenuEllipse" TargetType="Ellipse">
+                <Setter Property="Fill" Value="#ffffff" />
+                <Setter Property="Height" Value="10" />
+                <Setter Property="Width" Value="10" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary >
             <ControlTemplate x:Key="HeaderButtonTemplate" TargetType="{x:Type Button}">
                 <Grid>
                     <Ellipse Style="{ StaticResource HeaderButtonEllipse}"/>
                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
                                       Content="{TemplateBinding Content}" /> 
                 </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+        <ResourceDictionary >
+            <ControlTemplate x:Key="HeaderMenuTemplate" TargetType="{x:Type Button}">
+                <Grid>
+                    <Ellipse Style="{StaticResource HeaderButtonEllipse}"></Ellipse>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                         <Ellipse Grid.Column="0" Style="{ StaticResource HeaderMenuEllipse}"/>
+                        <Ellipse Grid.Column="1" Style="{ StaticResource HeaderMenuEllipse}"/>
+                        <Ellipse Grid.Column="2" Style="{ StaticResource HeaderMenuEllipse}"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                         Content="{TemplateBinding Content}" />
+                    </Grid> 
+                </Grid>   
+            </ControlTemplate>
+        </ResourceDictionary>
+        <ResourceDictionary >
+            <ControlTemplate x:Key="SwitchButtonTemplateMap" TargetType="{x:Type Button}">
+                <Canvas Width="70">
+                    <Rectangle Width="30" Canvas.Left="20" Height="40" Fill="#393bb1"></Rectangle>
+                    <Ellipse Canvas.Right="0" Width="40" Height="40" Fill="#393bb1"></Ellipse>
+                    <Ellipse Canvas.Left="0" Width="40" Height="40" Fill="#5053de"></Ellipse>
+                    <TextBlock Canvas.Left="10" Canvas.Top="10" Text="&#xf279;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+                    <TextBlock Canvas.Right="10" Canvas.Top="12" Text="&#xf00b;" FontFamily="{StaticResource FontAwesome}" FontSize="18"
+                               Foreground="#040544"/>
+                </Canvas>
+            </ControlTemplate>
+        </ResourceDictionary>
+        <ResourceDictionary >
+            <ControlTemplate x:Key="SwitchButtonTemplateList" TargetType="{x:Type Button}">
+                <Canvas Width="70">
+                    <Rectangle Width="30" Canvas.Left="20" Height="40" Fill="#393bb1"></Rectangle>
+                    <Ellipse Canvas.Left="0" Width="40" Height="40" Fill="#393bb1"></Ellipse>
+                    <Ellipse Canvas.Right="0" Width="40" Height="40" Fill="#5053de"></Ellipse>
+                    <TextBlock Canvas.Left="10" Canvas.Top="12" Text="&#xf279;" FontFamily="{StaticResource FontAwesome}" FontSize="18"
+                                Foreground="#040544"/>
+                    <TextBlock Canvas.Right="10" Canvas.Top="10" Text="&#xf00b;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+                </Canvas>
             </ControlTemplate>
         </ResourceDictionary>
         <ResourceDictionary>
@@ -23,6 +73,26 @@
                 <Setter Property="Height" Value="50" />
                 <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
                 <Setter Property="Template" Value="{StaticResource HeaderButtonTemplate}" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key="HeaderMenu" TargetType="{x:Type Button}">
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="Foreground" Value="#FFFFFF" />
+                <Setter Property="Width" Value="50" />
+                <Setter Property="Height" Value="50" />
+                <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+                <Setter Property="Template" Value="{StaticResource HeaderMenuTemplate}" />
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key="SwitchButton" TargetType="{x:Type Button}">
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="Foreground" Value="#FFFFFF" />
+                <Setter Property="Width" Value="50" />
+                <Setter Property="Height" Value="50" />
+                <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+                <Setter Property="Template" Value="{StaticResource SwitchButtonTemplateMap}" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

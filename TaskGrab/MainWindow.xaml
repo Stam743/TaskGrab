@@ -4,35 +4,59 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskGrab"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:Navigation="clr-namespace:TaskGrab.Navigation"
         mc:Ignorable="d"
-        ContentRendered="MakeMap"
-        Title="Task Grab" Height="450" Width="800">
+        Loaded="Window_Loaded"
+        Title="Task Grab" Height="800" Width="480">
     <Grid Name="MainGrid">
-        <Popup x:Name="ModalPopup" StaysOpen="False" Placement="Center"
-               Opened="SetOverlayShow"
-               Closed="SetOverlayHide"
-               x:FieldModifier="public">
-            <Frame x:Name="PopupFrame" Source="Pages/NewTaskPage.xaml"
-                   NavigationUIVisibility="Hidden" />
-        </Popup>
-        <Image x:Name="Map" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
-        <Canvas Canvas.Left="0" Canvas.Top="0" Margin="10">
-            <Button Style="{StaticResource HeaderButton}"
+        <Frame x:Name="MainWindowView" Source="Pages/MainView/MapView.xaml"
+                   NavigationUIVisibility="Hidden"
+                   Width="480" Margin="0,0,0,0"/>
+		<Canvas Canvas.Left="0" Canvas.Top="0" Margin="10">
+            <Button 
+                Click="BackBtnClick"
+                Visibility="{Binding Path=IsBackVisible}"
+                Style="{StaticResource HeaderButton}">
+                <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf104;" Foreground="#FFFFFF" FontSize="18"/>
+            </Button>
+            <Grid Height="0" Width="50" Canvas.Bottom="50" Canvas.Right="0" x:Name="MenuActions">
+				<Grid.RowDefinitions>
+					<RowDefinition MinHeight="60"/>
+					<RowDefinition MinHeight="60"/>
+					<RowDefinition MinHeight="60"/>
+                    <RowDefinition MinHeight="60"/>
+				</Grid.RowDefinitions>
+				<Button Grid.Row="0" Style="{StaticResource HeaderButton}"
                     Tag="Pages/NewTaskPage.xaml"
                     Click="BtnOpenModal_Click">
-                <TextBlock Text="&#xf067;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
-            </Button>
-            <Button Canvas.Right="0" Style="{StaticResource HeaderButton}"
+					<TextBlock Text="&#xf067;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+				</Button>
+				<Button Grid.Row="1" Style="{StaticResource HeaderButton}"
                     Tag="Pages/FiltersPage.xaml"
                     Click="BtnOpenModal_Click">
-                <TextBlock Text="&#xf00b;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
-            </Button>
-            <Button Canvas.Bottom="0" Style="{StaticResource HeaderButton}"
+					<TextBlock Text="&#xf0b0;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+				</Button>
+				<Button Grid.Row="2" Style="{StaticResource HeaderButton}"
                     Tag="Pages/MyTasks.xaml"
                     Click="BtnOpenModal_Click">
-                <TextBlock Text="&#xf007;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
-            </Button>
+					<TextBlock Text="&#xf007;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+				</Button>
+                <Button Grid.Row="3" Style="{StaticResource HeaderButton}"
+                    Tag="Pages/MyTasks.xaml"
+                    Click="BtnOpenModal_Click">
+                    <TextBlock Text="&#xf013;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
+                </Button>
+            </Grid>
+
+			<Button Canvas.Bottom="0" Canvas.Right="0" Style="{StaticResource HeaderMenu}"
+                    x:Name="MenuButton"
+                    Click="MenuToggle" />
+
+            <Button Canvas.Bottom="0" Canvas.Left="200" Style="{StaticResource SwitchButton}"
+                    Click="SwitchClicked"
+                    Visibility="{Binding Path=IsSwitchVisible}"/>
         </Canvas>
-        <Rectangle Fill="#111" Opacity="0.7" x:Name="Overlay" Visibility="Hidden"></Rectangle>
-    </Grid>
+		<Rectangle Fill="#111" Opacity="0.7" x:Name="Overlay" Visibility="Hidden"></Rectangle>
+	</Grid>
 </Window>

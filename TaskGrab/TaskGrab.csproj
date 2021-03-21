@@ -12,10 +12,17 @@
 
   <ItemGroup>
     <None Remove="Fonts\fontawesome-webfont.ttf" />
+    <None Remove="TaskMockData.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="NewTaskWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TaskMockData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +37,16 @@
 
   <ItemGroup>
     <PackageReference Include="gmaps-api-net" Version="0.32.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
