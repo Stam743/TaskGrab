@@ -18,14 +18,14 @@ using TaskGrab.Navigation;
 namespace TaskGrab.Pages
 {
     /// <summary>
-    /// Interaction logic for MyTasks.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class MyTasks : Page
+    public partial class Login : Page
     {
         private MainWindow main;
         private History history;
         private QueryString query_string;
-        public MyTasks()
+        public Login()
         {
             InitializeComponent();
             main = (MainWindow)Application.Current.MainWindow;

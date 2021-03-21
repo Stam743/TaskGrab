@@ -43,7 +43,7 @@
 					<TextBlock Text="&#xf007;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
 				</Button>
                 <Button Grid.Row="3" Style="{StaticResource HeaderButton}"
-                    Tag="Pages/MyTasks.xaml"
+                    Tag="Pages/Profile.xaml"
                     Click="BtnOpenModal_Click">
                     <TextBlock Text="&#xf013;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
                 </Button>

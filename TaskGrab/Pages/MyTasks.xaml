@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:TaskGrab.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="480"
-      Title="My Tasks"
-      Template="{StaticResource ModalWindow}">
+      Title="My Tasks">
 
     <Grid>
         <TextBlock>My Tasks</TextBlock>

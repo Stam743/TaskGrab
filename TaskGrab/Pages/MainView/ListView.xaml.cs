@@ -45,13 +45,14 @@ namespace TaskGrab.Pages.MainView
 
         private void OnMessageClick(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).GetHistory().GoTo("/Pages/MyTasks.xaml");
+            TaskControl task = (TaskControl)sender;
+            ((MainWindow)Application.Current.MainWindow).GetHistory().GoTo("Pages/TaskView/Grabber.xaml?id=" + task.Id + "&view=chat");
         }
 
         private void OnTaskClick(object sender, RoutedEventArgs e)
         {
             TaskControl task = (TaskControl)sender; 
-            ((MainWindow)Application.Current.MainWindow).GetHistory().GoTo("/Pages/Task/TaskInfo.xaml?id=" + task.Id);
+            ((MainWindow)Application.Current.MainWindow).GetHistory().GoTo("Pages/TaskView/Grabber.xaml?id=" + task.Id + "&view=info");
         }
 
         private void OnScroll(object sender, ScrollChangedEventArgs e)

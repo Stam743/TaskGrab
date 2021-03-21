@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.QueryStringDotNET;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaskGrab.Navigation;
 
 namespace TaskGrab.Pages
 {
@@ -20,9 +22,22 @@ namespace TaskGrab.Pages
     /// </summary>
     public partial class NewTaskPage : Page
     {
+        private MainWindow main;
+        private History history;
+        private QueryString query_string;
         public NewTaskPage()
         {
             InitializeComponent();
+            main = (MainWindow)Application.Current.MainWindow;
+            history = main.GetHistory();
+
+            string request_url = main.GetHistory().current.OriginalString;
+            int query_start = request_url.IndexOf('?');
+
+            if (query_start < 0)
+                return;
+
+            query_string = QueryString.Parse(request_url.Substring(query_start + 1));
         }
     }
 }

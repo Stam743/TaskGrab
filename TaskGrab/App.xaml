@@ -12,8 +12,6 @@
                 <ResourceDictionary 
                     Source="Styles/Header.xaml"/>
                 <ResourceDictionary 
-                    Source="Styles/Modals.xaml"/>
-                <ResourceDictionary 
                     Source="Styles/Tasks.xaml"/>
                 <ResourceDictionary 
                     Source="Styles/Map.xaml"/>

@@ -15,17 +15,17 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TaskGrab.Navigation;
 
-namespace TaskGrab.Pages
+namespace TaskGrab.Pages.TaskView
 {
     /// <summary>
-    /// Interaction logic for MyTasks.xaml
+    /// Interaction logic for Grabber.xaml
     /// </summary>
-    public partial class MyTasks : Page
+    public partial class Grabber : Page
     {
         private MainWindow main;
         private History history;
         private QueryString query_string;
-        public MyTasks()
+        public Grabber()
         {
             InitializeComponent();
             main = (MainWindow)Application.Current.MainWindow;

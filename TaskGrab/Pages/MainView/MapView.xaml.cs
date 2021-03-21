@@ -1,6 +1,7 @@
 ﻿using Google.Maps;
 using Google.Maps.Geocoding;
 using Google.Maps.StaticMaps;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -79,7 +80,8 @@ namespace TaskGrab.Pages.MainView
             task_grab_context = new TaskGrabContext();
             community_count = new Dictionary<string, int>();
             Debug.WriteLine("Counting tasks in communities...");
-            foreach (Data.Task task in task_grab_context.Tasks)
+            DbSet<Data.Task> tasks = task_grab_context.Tasks;
+            foreach (Data.Task task in tasks)
             {
 
                 if (community_count.ContainsKey(task.location))
@@ -156,7 +158,7 @@ namespace TaskGrab.Pages.MainView
         private void onMarkerClick(object sender, RoutedEventArgs e)
         {
             Button clicked = (Button)sender;
-            ((MainWindow)Application.Current.MainWindow).GetHistory().GoTo("/Pages/Task/Tasks.xaml?location=" + clicked.Tag);
+            ((MainWindow)Application.Current.MainWindow).GetHistory().GoTo("/Pages/CommunityTasks.xaml?location=" + clicked.Tag);
         }
         private void SetCenterLocation(string center)
         {

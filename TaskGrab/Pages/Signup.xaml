@@ -1,4 +1,4 @@
-﻿<Page x:Class="TaskGrab.Pages.NewTaskPage"
+﻿<Page x:Class="TaskGrab.Pages.Signup"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:TaskGrab.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="480"
-      Title="New Task">
+      Title="Signup">
 
     <Grid>
-        <TextBlock>New Task</TextBlock>
+        
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.QueryStringDotNET;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +19,14 @@ using TaskGrab.Navigation;
 namespace TaskGrab.Pages
 {
     /// <summary>
-    /// Interaction logic for MyTasks.xaml
+    /// Interaction logic for CommunityTasks.xaml
     /// </summary>
-    public partial class MyTasks : Page
+    public partial class CommunityTasks : Page
     {
         private MainWindow main;
         private History history;
         private QueryString query_string;
-        public MyTasks()
+        public CommunityTasks()
         {
             InitializeComponent();
             main = (MainWindow)Application.Current.MainWindow;
@@ -38,6 +39,7 @@ namespace TaskGrab.Pages
                 return;
 
             query_string = QueryString.Parse(request_url.Substring(query_start + 1));
+            
         }
     }
 }
