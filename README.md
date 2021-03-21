@@ -108,6 +108,10 @@ Consists of:
 
 List of tasks in specified community.
 
+## Implementing tour for every page
+
+A tour of the contents of each page must be generated. The tour should cover the general options available to the user at the current page
+
 # Utilities
 
 The project contains two utitilities thus far, `History` and `QueryString`
@@ -116,7 +120,7 @@ The project contains two utitilities thus far, `History` and `QueryString`
 
 The history utility allows easy navigation.
 
-`history.GoTo(string path)`
+### `history.GoTo(string path)`
 
  Go to the specified page. Path is relative to the project root, example: 
 
@@ -126,7 +130,7 @@ Parameters can be passed by way of url encoding, ex:
 
 `history.GoTo("Pages/TaskView/Grabber.xaml?id=2&view=chat")`
 
-`history.Replace(string path)`
+### `history.Replace(string path)`
 
 Works like `history.GoTo` except that the given path replaces the current path in the history.
 
@@ -172,3 +176,6 @@ To add content to database:
 - https://docs.microsoft.com/en-us/dotnet/?view=entity-framework-6.2.0
 - https://docs.microsoft.com/en-us/dotnet/api/system.data.entity.dbcontext?view=entity-framework-6.2.0
 - https://docs.microsoft.com/en-us/dotnet/api/system.data.entity.dbset?view=entity-framework-6.2.0
+
+
+I am available to answer questions and help where needed.
