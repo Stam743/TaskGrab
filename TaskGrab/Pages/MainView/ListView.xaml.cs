@@ -36,6 +36,8 @@ namespace TaskGrab.Pages.MainView
             foreach (Data.Task task in _context.Tasks.Take(20))
             {
                 tasks.Add(new TaskControl(task));
+                tasks.Last().MessageClick += OnMessageClick;
+                tasks.Last().TaskClick += OnTaskClick;
             }
             TasksHolder.ItemsSource = tasks;
 

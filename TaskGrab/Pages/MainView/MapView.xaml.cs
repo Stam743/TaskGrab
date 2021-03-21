@@ -139,14 +139,12 @@ namespace TaskGrab.Pages.MainView
                     Content = kvp.Value,
                     Tag = kvp.Key
                 };
-
+                
 
                 marker.Click += onMarkerClick;
 
                 MarkerCanvas.Children.Add(marker);
-
                 Canvas.SetLeft(marker, x);
-
                 Canvas.SetTop(marker, y);
             }
 
