@@ -63,6 +63,7 @@ namespace TaskGrab
             string json = r.ReadToEnd();
             List<TaskGrab.Data.Task> array = (List<TaskGrab.Data.Task>)JsonConvert.DeserializeObject<List<TaskGrab.Data.Task>>(json);
 
+            Debug.WriteLine("Populating Database");
             foreach (TaskGrab.Data.Task task in array)
             {
                 try
@@ -70,7 +71,9 @@ namespace TaskGrab
                     if (task_grab_context.Tasks.Count() > 0)
                         _ = task_grab_context.Tasks.Single(t => t.ID == task.ID);
                     else
+                    {
                         task_grab_context.Tasks.Add(task);
+                    }
                 } catch
                 {
                     task_grab_context.Tasks.Add(task);

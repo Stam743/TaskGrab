@@ -37,6 +37,8 @@ namespace TaskGrab.Pages.MainView
     {
 
         Communities communities;
+        Dictionary<string, int> community_count;
+        
         int current_zoom = 13;
 
         double width;
@@ -49,6 +51,7 @@ namespace TaskGrab.Pages.MainView
         {
             communities = new();
             InitializeComponent();
+            GenerateCommunitiesCount();
             SetCenterLocation("Citadel, Calgary AB");
             MakeMap();
 
@@ -69,6 +72,22 @@ namespace TaskGrab.Pages.MainView
 
             MakeMap();
         }
+
+        private void GenerateCommunitiesCount()
+        {
+            TaskGrabContext task_grab_context;
+            task_grab_context = new TaskGrabContext();
+            community_count = new Dictionary<string, int>();
+            Debug.WriteLine("Counting tasks in communities...");
+            foreach (Data.Task task in task_grab_context.Tasks)
+            {
+
+                if (community_count.ContainsKey(task.location))
+                    community_count[task.location] += 1;
+                else
+                    community_count.Add(task.location, 1);
+            }
+        }
         private void MakeMap()
         {
             DrawMap();
@@ -76,20 +95,9 @@ namespace TaskGrab.Pages.MainView
             double metersPerPx = 156543.03392 * Math.Cos(center_lat * Math.PI / 180) / Math.Pow(2, current_zoom);
 
             List<MapMarkers> markers = new();
-            TaskGrabContext task_grab_context = new TaskGrabContext();
-            Dictionary<string, int> community_count = new Dictionary<string, int>();
+            
 
             MarkerCanvas.Children.Clear();
-
-            foreach (Data.Task task in task_grab_context.Tasks)
-            {
-                
-                if (community_count.ContainsKey(task.location))
-                    community_count[task.location] += 1;
-                else
-                    community_count.Add(task.location, 1);
-            }
-            
 
             int[] x_points = new int[community_count.Count];
             double marker_size = current_zoom * 3.84;
