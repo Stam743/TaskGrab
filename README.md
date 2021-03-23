@@ -18,10 +18,10 @@ Note: There will be a number of exceptions thrown while the database is populate
 
 1. Main View
 2. Filters View
-3. New Task
-4. Login/Sign-up
-5. My Tasks
-6. Profile
+3. New Task ( Spencer )
+4. Login/Sign-up ( Spencer )
+5. My Tasks ( Spencer )
+6. Profile ( Spencer )
 7. TaskView - Owner
 8. TaskView - Grabber
 9. Tasks in communities
