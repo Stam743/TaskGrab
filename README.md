@@ -16,7 +16,7 @@ Note: There will be a number of exceptions thrown while the database is populate
 
 ## Implementing pages
 
-1. Main View
+1. Main View ( JP )
 2. Filters View
 3. New Task ( Spencer )
 4. Login/Sign-up ( Spencer )
