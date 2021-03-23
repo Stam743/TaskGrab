@@ -79,5 +79,10 @@ namespace TaskGrab.Pages
             NavigationService.GoBack();
 
         }
+
+        private void locationButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
