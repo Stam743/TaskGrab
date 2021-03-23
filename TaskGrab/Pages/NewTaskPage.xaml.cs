@@ -39,5 +39,45 @@ namespace TaskGrab.Pages
 
             query_string = QueryString.Parse(request_url.Substring(query_start + 1));
         }
+
+        private void setAmountButton_Click(object sender, RoutedEventArgs e)
+        {
+            setAmountButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            acceptOffersButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            volunteerButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            setAmountLabel.Visibility = Visibility.Visible;
+            setAmountTextBox.Visibility = Visibility.Visible;
+            acceptingOffersLabel.Visibility = Visibility.Hidden;
+            volunteerWorkLabel.Visibility = Visibility.Hidden;
+        }
+
+        private void acceptOffersButton_Click(object sender, RoutedEventArgs e)
+        {
+            acceptOffersButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            setAmountButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            volunteerButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            acceptingOffersLabel.Visibility = Visibility.Visible;
+            setAmountLabel.Visibility = Visibility.Hidden;
+            setAmountTextBox.Visibility = Visibility.Hidden;
+            volunteerWorkLabel.Visibility = Visibility.Hidden;
+
+        }
+
+        private void volunteerButton_Click(object sender, RoutedEventArgs e)
+        {
+            volunteerButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            volunteerWorkLabel.Visibility = Visibility.Visible;
+            acceptOffersButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            setAmountButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            acceptingOffersLabel.Visibility = Visibility.Hidden;
+            setAmountLabel.Visibility = Visibility.Hidden;
+            setAmountTextBox.Visibility = Visibility.Hidden;
+        }
+
+        private void postTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+
+        }
     }
 }
