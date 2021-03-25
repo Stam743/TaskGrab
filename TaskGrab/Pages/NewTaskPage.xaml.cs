@@ -76,7 +76,7 @@ namespace TaskGrab.Pages
 
         private void postTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.GoBack(); //need to fix this, only goes back to previous page, also need to learn how to store info to the db
 
         }
 

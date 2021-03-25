@@ -39,5 +39,22 @@ namespace TaskGrab.Pages
 
             query_string = QueryString.Parse(request_url.Substring(query_start + 1));
         }
+
+        private void postedButton_Click(object sender, RoutedEventArgs e)
+        {
+            postedButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            savedButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+        }
+
+        private void savedButton_Click(object sender, RoutedEventArgs e)
+        {
+            savedButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            postedButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+        }
+
+        private void signOutButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
