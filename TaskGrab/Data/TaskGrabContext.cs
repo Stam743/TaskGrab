@@ -11,6 +11,7 @@ namespace TaskGrab.Data
     {
         public DbSet<Task> Tasks { get; set; }
         public DbSet<CommunityLocation> CommunityLocations { get; set; }
+        public DbSet<UserInfo> UserInfo { get; set; }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)

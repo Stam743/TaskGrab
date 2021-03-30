@@ -8,7 +8,37 @@
       d:DesignHeight="800" d:DesignWidth="480"
       Title="Login">
 
-    <Grid>
-        
+    <Grid Background="#FF050C53">
+        <Button x:Name="loginTabButton" Content="Login" HorizontalAlignment="Left" Height="102" VerticalAlignment="Top" Width="240" Background="#FF9191F3" FontSize="36" FontFamily="Arial Black" Foreground="White" Click="loginTabButton_Click"/>
+        <Button x:Name="signUpTabButton" Content="Signup" HorizontalAlignment="Left" Height="100" Margin="240,2,0,0" VerticalAlignment="Top" Width="240" Background="#FF5454B4" FontSize="36" FontFamily="Arial Black" Foreground="White" Click="signUpTabButton_Click"/>
+
+        <Label x:Name="emailPhoneNumLabel" Content="E-Mail or Phone Number" HorizontalAlignment="Left" Height="36" Margin="45,133,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White"/>
+        <TextBox x:Name="emailPhoneNumTextBox" HorizontalAlignment="Left" Height="46" Margin="45,169,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20"/>
+
+        <Label x:Name="passwordLabel" Content="Password" HorizontalAlignment="Left" Height="35" Margin="45,242,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White"/>
+        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="43" Margin="45,277,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20"/>
+
+        <Button x:Name="forgotButton" Content="Forgot my Password" HorizontalAlignment="Left" Height="33" Margin="301,325,0,0" VerticalAlignment="Top" Width="143" Background="#FF050C53" Foreground="White" FontFamily="Arial Black"/>
+
+        <CheckBox x:Name="rememberMeCheckBox" Content="Remember Me" HorizontalAlignment="Center" VerticalAlignment="Top" Height="28" Width="194" FontFamily="Arial Black" Foreground="White" FontSize="22" Margin="0,372,0,0"/>
+
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" Height="67" Margin="0,417,0,0" VerticalAlignment="Top" Width="144" Background="#f3c206" Foreground="#FF050C53" FontSize="22" FontFamily="Arial Black"/>
+
+
+        <Label x:Name="registerEmailPhoneNumLabel" Content="E-Mail or Phone Number" HorizontalAlignment="Left" Height="36" Margin="45,133,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
+        <TextBlock x:Name="registerEmailPhoneNumTextBlock" HorizontalAlignment="Left" Height="46" Margin="45,169,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" Visibility="Hidden"/>
+
+        <Label x:Name="registerPasswordLabel" Content="Password" HorizontalAlignment="Left" Height="35" Margin="45,242,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
+        <TextBox x:Name="registerPasswordTextBox" HorizontalAlignment="Left" Height="43" Margin="45,277,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" Visibility="Hidden"/>
+
+        <Label x:Name="confirmPasswordLabel" Content="Confirm Password" HorizontalAlignment="Left" Height="35" Margin="45,351,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
+        <TextBox x:Name="confirmPasswordTextBox" HorizontalAlignment="Left" Height="44" Margin="45,386,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" Visibility="Hidden"/>
+
+        <Button x:Name="signUpButton" Content="Sign Up" HorizontalAlignment="Center" Height="67" Margin="0,484,0,0" VerticalAlignment="Top" Width="144" Background="#f3c206" Foreground="#FF050C53" FontSize="22" FontFamily="Arial Black" Visibility="Hidden"/>
+
+
+
+
+
     </Grid>
 </Page>

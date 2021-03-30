@@ -29,7 +29,7 @@ namespace TaskGrab.Pages
         private QueryString query_string;
 
         TaskGrabContext task_grab_context = new TaskGrabContext();
-        DbSet<Data.Task> tasks => task_grab_context.Tasks;
+        ///DbSet<Data.Task> tasks => task_grab_context.Tasks;
 
 
         public NewTaskPage()
@@ -87,12 +87,26 @@ namespace TaskGrab.Pages
 
             DateTime currentTime = DateTime.Now;
 
+            string paymentChoice = "";
+
+            if (volunteerWorkLabel.Visibility == Visibility.Visible)
+            {
+                paymentChoice = "Volunteer Work";
+            } else if(acceptingOffersLabel.Visibility == Visibility.Visible)
+            {
+                paymentChoice = "Accepting Offers";
+            } else
+            {
+                paymentChoice = setAmountTextBox.Text;
+            }
+
             TaskGrab.Data.Task newTask = new Data.Task()
             {
                 title = titleTextBox.Text,
                 description = descriptionTextBox.Text,
                 posted = currentTime.ToString("YYYY-MM-DD,hh:mm:ss"),
-                payment = setAmountTextBox.Text,
+                poster = "Jim Johnson",
+                payment = paymentChoice,
                 location = locationTextBox.Text
             };
             
