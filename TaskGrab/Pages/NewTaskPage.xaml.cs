@@ -1,4 +1,5 @@
-﻿using Microsoft.QueryStringDotNET;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.QueryStringDotNET;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaskGrab.Data;
 using TaskGrab.Navigation;
 
 namespace TaskGrab.Pages
@@ -25,6 +27,11 @@ namespace TaskGrab.Pages
         private MainWindow main;
         private History history;
         private QueryString query_string;
+
+        TaskGrabContext task_grab_context = new TaskGrabContext();
+        DbSet<Data.Task> tasks => task_grab_context.Tasks;
+
+
         public NewTaskPage()
         {
             InitializeComponent();
@@ -76,7 +83,21 @@ namespace TaskGrab.Pages
 
         private void postTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack(); //need to fix this, only goes back to previous page, also need to learn how to store info to the db
+            NavigationService.GoBack();
+
+            DateTime currentTime = DateTime.Now;
+
+            TaskGrab.Data.Task newTask = new Data.Task()
+            {
+                title = titleTextBox.Text,
+                description = descriptionTextBox.Text,
+                posted = currentTime.ToString("YYYY-MM-DD,hh:mm:ss"),
+                payment = setAmountTextBox.Text,
+                location = locationTextBox.Text
+            };
+            
+            task_grab_context.Tasks.Add(newTask);
+            task_grab_context.SaveChanges();
 
         }
 
