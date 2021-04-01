@@ -81,5 +81,10 @@ namespace TaskGrab.Pages
             rememberMeCheckBox.Visibility = Visibility.Hidden;
             loginButton.Visibility = Visibility.Hidden;
         }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            history.GoBack();
+        }
     }
 }

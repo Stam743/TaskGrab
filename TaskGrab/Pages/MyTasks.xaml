@@ -19,7 +19,7 @@
             <Label x:Name="savedLabelSymbol" Content="&#xf02e;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="30" Margin="288,72,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="1.123,0.693" Foreground="#f3c206" FontSize="22"/>
 
             <Button x:Name="signOutButton" Content="&#xf08b;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="55" Margin="408,-6,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="-1.013,-4.429" Background="#FF5D00FF" Foreground="#f3c206" FontSize="36" Click="signOutButton_Click"/>
-            <Button x:Name="profileButton" Content="&#xf007;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="55" Margin="347,-6,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="-1.013,-4.429" Background="#FF5D00FF" Foreground="#f3c206" FontSize="36"/>
+            <Button x:Name="profileButton" Content="&#xf007;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="55" Margin="347,-6,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="-1.013,-4.429" Background="#FF5D00FF" Foreground="#f3c206" FontSize="36" Click="profileButton_Click"/>
 
         </Grid>
     </ScrollViewer>

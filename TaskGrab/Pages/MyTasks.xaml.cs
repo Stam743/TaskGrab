@@ -54,7 +54,12 @@ namespace TaskGrab.Pages
 
         private void signOutButton_Click(object sender, RoutedEventArgs e)
         {
+            history.GoTo("Pages/Login.xaml");
+        }
 
+        private void profileButton_Click(object sender, RoutedEventArgs e)
+        {
+            history.GoTo("Pages/Profile.xaml");
         }
     }
 }

@@ -92,10 +92,12 @@ namespace TaskGrab.Pages
             if (volunteerWorkLabel.Visibility == Visibility.Visible)
             {
                 paymentChoice = "Volunteer Work";
-            } else if(acceptingOffersLabel.Visibility == Visibility.Visible)
+            }
+            else if (acceptingOffersLabel.Visibility == Visibility.Visible)
             {
                 paymentChoice = "Accepting Offers";
-            } else
+            }
+            else
             {
                 paymentChoice = setAmountTextBox.Text;
             }
@@ -109,10 +111,11 @@ namespace TaskGrab.Pages
                 payment = paymentChoice,
                 location = locationTextBox.Text
             };
-            
+
             task_grab_context.Tasks.Add(newTask);
             task_grab_context.SaveChanges();
 
+            history.GoTo("Pages/MainView/MapView.xaml");
         }
 
         private void locationButton_Click(object sender, RoutedEventArgs e)
