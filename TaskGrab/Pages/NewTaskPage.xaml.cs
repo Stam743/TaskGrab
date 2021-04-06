@@ -29,7 +29,7 @@ namespace TaskGrab.Pages
         private QueryString query_string;
 
         TaskGrabContext task_grab_context = new TaskGrabContext();
-        ///DbSet<Data.Task> tasks => task_grab_context.Tasks;
+        DbSet<Data.Task> tasks => task_grab_context.Tasks;
 
 
         public NewTaskPage()

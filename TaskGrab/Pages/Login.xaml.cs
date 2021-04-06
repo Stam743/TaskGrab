@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TaskGrab.Navigation;
+using TaskGrab.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace TaskGrab.Pages
 {
@@ -25,6 +28,10 @@ namespace TaskGrab.Pages
         private MainWindow main;
         private History history;
         private QueryString query_string;
+
+        TaskGrabContext user_info = new TaskGrabContext();
+        DbSet<Data.UserInfo> userInfo => user_info.UserInformation;
+
         public Login()
         {
             InitializeComponent();
@@ -53,7 +60,7 @@ namespace TaskGrab.Pages
             loginButton.Visibility = Visibility.Visible;
 
             registerEmailPhoneNumLabel.Visibility = Visibility.Hidden;
-            registerEmailPhoneNumTextBlock.Visibility = Visibility.Hidden;
+            registerEmailPhoneNumTextBox.Visibility = Visibility.Hidden;
             registerPasswordLabel.Visibility = Visibility.Hidden;
             registerPasswordTextBox.Visibility = Visibility.Hidden;
             confirmPasswordLabel.Visibility = Visibility.Hidden;
@@ -66,7 +73,7 @@ namespace TaskGrab.Pages
             signUpTabButton.Background = new SolidColorBrush(Colors.SlateBlue);
             loginTabButton.Background = new SolidColorBrush(Colors.BlueViolet);
             registerEmailPhoneNumLabel.Visibility = Visibility.Visible;
-            registerEmailPhoneNumTextBlock.Visibility = Visibility.Visible;
+            registerEmailPhoneNumTextBox.Visibility = Visibility.Visible;
             registerPasswordLabel.Visibility = Visibility.Visible;
             registerPasswordTextBox.Visibility = Visibility.Visible;
             confirmPasswordLabel.Visibility = Visibility.Visible;
@@ -84,7 +91,28 @@ namespace TaskGrab.Pages
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
+
             history.GoBack();
+        }
+
+        private void signUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            string password = "";
+            if(registerPasswordTextBox.Text == confirmPasswordTextBox.Text)
+            {
+                password = registerPasswordTextBox.Text;
+            }
+            TaskGrab.Data.UserInfo newUser = new Data.UserInfo()
+            {
+                Email_or_Phone_num = registerEmailPhoneNumTextBox.Text,
+                Password = password
+
+            };
+
+            user_info.UserInformation.Add(newUser);
+            user_info.SaveChanges();
+
+            history.GoTo("Pages/MainView/MapView.xaml");
         }
     }
 }
