@@ -91,6 +91,9 @@ namespace TaskGrab
         private void BtnOpenModal_Click(object sender, RoutedEventArgs e)
         {
             history.GoTo((string)((Button)sender).Tag);
+            MenuButton.LayoutTransform = new RotateTransform(0);
+            this.MenuActions.Height = 0;
+            menu_open = false;
         }
 
         public History GetHistory()

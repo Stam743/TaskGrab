@@ -120,7 +120,7 @@ namespace TaskGrab.Pages
 
         private void locationButton_Click(object sender, RoutedEventArgs e)
         {
-
+            locationTextBox.Text = "Foothills, Calgary AB";
         }
     }
 }
