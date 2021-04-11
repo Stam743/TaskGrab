@@ -18,14 +18,14 @@ using TaskGrab.Navigation;
 namespace TaskGrab.Pages
 {
     /// <summary>
-    /// Interaction logic for Signup.xaml
+    /// Interaction logic for GrabberChatView.xaml
     /// </summary>
-    public partial class Signup : Page
+    public partial class TaskInfo : Page
     {
         private MainWindow main;
         private History history;
         private QueryString query_string;
-        public Signup()
+        public TaskInfo()
         {
             InitializeComponent();
             main = (MainWindow)Application.Current.MainWindow;
@@ -38,6 +38,16 @@ namespace TaskGrab.Pages
                 return;
 
             query_string = QueryString.Parse(request_url.Substring(query_start + 1));
+        }
+
+        private void bookmarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            bookmarkButton.Content = "&#xf02e;";
+        }
+
+        private void taskInfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            history.GoTo("Pages/GrabberChatView.xaml");
         }
     }
 }

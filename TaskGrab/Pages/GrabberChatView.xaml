@@ -1,0 +1,24 @@
+﻿<Page x:Class="TaskGrab.Pages.GrabberChatView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaskGrab.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="480"
+      Title="GrabberChatView">
+
+    <Grid Background="#FF050C53">
+        <Label x:Name="taskTitleLabel" Content="Shovel my Driveway" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="87" VerticalAlignment="Top" Width="480" Foreground="#FFFDFDFD"  Background="#FF5454B4" FontFamily="Arial Black" FontSize="24"/>
+        <Button x:Name="bookmarkButton" Content="&#xf02e;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="70" Margin="378,0,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-1.013,-4.429" Background="#FF5454B4" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}"/>
+        <Button x:Name="taskInfoButton" Content="&#xf05a;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="70" Margin="313,0,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-1.013,-4.429" Background="#FF5454B4" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}" Click="taskInfoButton_Click"/>
+
+        <TextBox x:Name="messageTextBox" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="79" Margin="0,721,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="480" Background="#FF5454B4" FontFamily="Arial Black" FontSize="22" Foreground="White"/>
+        <Button x:Name="attatchementButton" Content="&#xf0c6;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="70" Margin="348,726,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-1.013,-4.429" Background="#FF5454B4" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}"/>
+        <Button x:Name="sendButton" Content="&#xf1d8;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="70" Margin="410,726,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-1.013,-4.429" Background="#FF5454B4" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}"/>
+
+        <TextBox x:Name="msgTextBox" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="0,92,0,0" Text="Hello I am interested in doing this task for you" TextWrapping="Wrap" VerticalAlignment="Top" Width="393" Foreground="#FF050C53" Background="#f3c206" FontSize="24" FontFamily="Arial Black" />
+        <TextBox x:Name="msgTextBox2" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="87,194,0,0" Text="Fantastic, what time will you be over?" TextWrapping="Wrap" VerticalAlignment="Top" Width="393" Foreground="White" Background="#FF5454B4" FontSize="24" FontFamily="Arial Black" />
+
+    </Grid>
+</Page>

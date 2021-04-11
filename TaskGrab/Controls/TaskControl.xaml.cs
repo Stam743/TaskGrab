@@ -15,6 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaskGrab.Navigation;
+using Microsoft.QueryStringDotNET;
+
 
 namespace TaskGrab.Controls
 {
@@ -23,6 +26,23 @@ namespace TaskGrab.Controls
     /// </summary>
     public partial class TaskControl : UserControl
     {
+        private MainWindow main;
+        private History history;
+        private QueryString query_string;
+        public TaskControl()
+        {
+            InitializeComponent();
+            main = (MainWindow)Application.Current.MainWindow;
+            history = main.GetHistory();
+
+            string request_url = main.GetHistory().current.OriginalString;
+            int query_start = request_url.IndexOf('?');
+
+            if (query_start < 0)
+                return;
+
+            query_string = QueryString.Parse(request_url.Substring(query_start + 1));
+        }
 
         private int id = 0;
         [Description("The id of the task"), Category("Data")]
@@ -91,6 +111,7 @@ namespace TaskGrab.Controls
                 this.MessageClick(this, e);
             }
             e.Handled = true;
+           /// history.GoTo("TaskGrab/Pages/GrabberChatView.xaml"); this isnt working?
         }
 
         public event RoutedEventHandler TaskClick;
@@ -101,13 +122,6 @@ namespace TaskGrab.Controls
             {
                 this.TaskClick(this, e);
             }
-        }
-
-
-
-        public TaskControl()
-        {
-            InitializeComponent();
         }
 
         public TaskControl(Data.Task task)
