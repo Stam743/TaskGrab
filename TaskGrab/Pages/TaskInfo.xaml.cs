@@ -42,12 +42,19 @@ namespace TaskGrab.Pages
 
         private void bookmarkButton_Click(object sender, RoutedEventArgs e)
         {
-            bookmarkButton.Content = "&#xf02e;";
+            bookmarkButton.Visibility = Visibility.Hidden;
+            bookmarkedButton.Visibility = Visibility.Visible;
         }
 
         private void taskInfoButton_Click(object sender, RoutedEventArgs e)
         {
             history.GoTo("Pages/GrabberChatView.xaml");
+        }
+
+        private void bookmarkedButton_Click(object sender, RoutedEventArgs e)
+        {
+            bookmarkedButton.Visibility = Visibility.Hidden;
+            bookmarkButton.Visibility = Visibility.Visible;
         }
     }
 }

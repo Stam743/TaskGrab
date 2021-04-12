@@ -111,7 +111,7 @@ namespace TaskGrab.Controls
                 this.MessageClick(this, e);
             }
             e.Handled = true;
-           /// history.GoTo("TaskGrab/Pages/GrabberChatView.xaml"); this isnt working?
+           
         }
 
         public event RoutedEventHandler TaskClick;

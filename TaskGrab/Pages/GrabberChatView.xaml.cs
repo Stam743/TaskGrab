@@ -43,5 +43,18 @@ private void taskInfoButton_Click(object sender, RoutedEventArgs e)
         {
             history.GoTo("Pages/TaskInfo.xaml");
         }
+
+        private void bookmarkedButton_Click(object sender, RoutedEventArgs e)
+        {
+            bookmarkedButton.Visibility = Visibility.Hidden;
+            bookmarkButton.Visibility = Visibility.Visible;
+        }
+
+        private void bookmarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            bookmarkButton.Visibility = Visibility.Hidden;
+            bookmarkedButton.Visibility = Visibility.Visible;
+            
+        }
     }
 }
