@@ -109,13 +109,14 @@ namespace TaskGrab
             {
                 menuButton.LayoutTransform = new RotateTransform(0);
                 this.MenuActions.Height = 0;
+                MenuButtonShadow.Direction = -45;
                 menu_open = false;
-
             }
             else
             {
                 menuButton.LayoutTransform = new RotateTransform(90);
                 this.MenuActions.Height = double.NaN;
+                MenuButtonShadow.Direction = 45;
                 menu_open = true;
             }
         }
@@ -133,6 +134,14 @@ namespace TaskGrab
             {
                 switchButton.Template = (ControlTemplate)this.FindResource("SwitchButtonTemplateMap");
                 history.Replace("Pages/MainView/MapView.xaml");
+            }
+
+            if (menu_open)
+            {
+                MenuButton.LayoutTransform = new RotateTransform(0);
+                MenuButtonShadow.Direction = -45;
+                this.MenuActions.Height = 0;
+                menu_open = false;
             }
         }
     }

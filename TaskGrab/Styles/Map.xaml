@@ -4,7 +4,9 @@
         <ResourceDictionary >
             <ControlTemplate x:Key="MapMarkerButtonTemplate" TargetType="{x:Type Button}">
                 <Grid>
-                    <Ellipse Fill="#fe5252"/>
+                    <Ellipse Fill="#fe5252" Opacity="0.4"/>
+                    <Ellipse Fill="#fe5252" Opacity="0.3" Width="30" Height="30"/>
+                    <Ellipse Fill="#fe5252" Opacity="0.3" Width="40" Height="40"/>
                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
                                       Content="{TemplateBinding Content}" />
                 </Grid>

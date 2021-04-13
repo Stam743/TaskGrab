@@ -97,7 +97,6 @@ namespace TaskGrab.Pages.MainView
             double metersPerPx = 156543.03392 * Math.Cos(center_lat * Math.PI / 180) / Math.Pow(2, current_zoom);
 
             List<MapMarkers> markers = new();
-            
 
             MarkerCanvas.Children.Clear();
 
@@ -111,7 +110,7 @@ namespace TaskGrab.Pages.MainView
 
                 if (community_location == null)
                     continue;
-
+               
                 double c_lat = community_location.latitude;
                 double c_lon = community_location.longitude;
 
@@ -124,14 +123,11 @@ namespace TaskGrab.Pages.MainView
                 x = x + (480.0 / 2.0);
                 y = (-y) + (770.0 / 2.0);
 
-
                 if (x > 480 || x < 0)
                     continue;
 
                 if (y > 770 || y < 0)
                     continue;
-
-
 
                 Button marker = new Button()
                 {
@@ -141,17 +137,13 @@ namespace TaskGrab.Pages.MainView
                     Content = kvp.Value,
                     Tag = kvp.Key
                 };
-                
-
+              
                 marker.Click += onMarkerClick;
 
                 MarkerCanvas.Children.Add(marker);
                 Canvas.SetLeft(marker, x);
                 Canvas.SetTop(marker, y);
             }
-
-
-           
         }
 
 

@@ -16,6 +16,7 @@
 		<Canvas Canvas.Left="0" Canvas.Top="0" Margin="10">
             <Button 
                 Click="BackBtnClick"
+                 Canvas.Bottom="0" Canvas.Right="0"
                 Visibility="{Binding Path=IsBackVisible}"
                 Style="{StaticResource HeaderButton}">
                 <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf104;" Foreground="#FFFFFF" FontSize="18"/>
@@ -49,9 +50,14 @@
                 </Button>
             </Grid>
 
-			<Button Canvas.Bottom="0" Canvas.Right="0" Style="{StaticResource HeaderMenu}"
+            <Button Canvas.Bottom="0" Canvas.Right="0" Style="{StaticResource HeaderMenu}"
                     x:Name="MenuButton"
-                    Click="MenuToggle" />
+                    Visibility="{Binding Path=IsSwitchVisible}"
+                    Click="MenuToggle" >
+                <Button.BitmapEffect>
+                    <DropShadowBitmapEffect x:Name="MenuButtonShadow" />
+                </Button.BitmapEffect>
+            </Button>
 
             <Button Canvas.Bottom="0" Canvas.Left="200" Style="{StaticResource SwitchButton}"
                     Click="SwitchClicked"
