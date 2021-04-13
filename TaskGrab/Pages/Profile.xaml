@@ -10,8 +10,8 @@
 
     <Grid Background="#FF050C53">
 
-        <TextBlock Foreground="#FFFDFDFD" Margin="0,0,0,691" Background="#FF5D00FF" FontSize="36" FontFamily="Arial Black" TextAlignment="Center">Profile</TextBlock>
-        <Button x:Name="signOutButton" Content="&#xf08b;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="70" Margin="378,0,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-1.013,-4.429" Background="#FF5D00FF" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}" Click="signOutButton_Click"/>
+        <TextBlock Foreground="#FFFDFDFD" Margin="0,0,0,691" Padding="0,25,0 0" Background="#FF5D00FF" FontSize="36" FontFamily="Arial Black" TextAlignment="Center">Profile</TextBlock>
+        <Button x:Name="logOutButton" Content="Logout" HorizontalAlignment="Center" Height="58" Margin="0,518,0,0" VerticalAlignment="Top" Width="280" RenderTransformOrigin="-1.013,-4.429" Background="#f3c206" Foreground="#FF050C53" FontSize="24" Style="{StaticResource MyButtonStyle}" Click="signOutButton_Click" FontFamily="Arial Black"/>
 
         <Label x:Name="nameLabel" Content="Name:" HorizontalAlignment="Left" Height="36" Margin="19,114,0,0" VerticalAlignment="Top" Width="221" FontSize="20" FontFamily="Arial Black" Foreground="#FFFDFDFD"/>
         <Label x:Name="displayNameLabel" Content="Sharif" HorizontalAlignment="Left" Height="38" Margin="32,155,0,0" VerticalAlignment="Top" Width="300" FontSize="20" FontFamily="Arial Black" Foreground="#FFFDFDFD" />
@@ -35,7 +35,7 @@
         <Label x:Name="newPasswordLabel" Content="Please enter New Password:" HorizontalAlignment="Left" Height="40" Margin="19,415,0,0" VerticalAlignment="Top" Width="336" FontSize="20" FontFamily="Arial Black" Foreground="#FFFDFDFD" Visibility="Hidden"/>
         <TextBox x:Name="newPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="40" Margin="19,455,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" FontSize="20" FontFamily="Arial Black" Visibility="Hidden"/>
 
-        <Label x:Name="newPasswordLabel2" Content="Please re-enter New Password:" HorizontalAlignment="Left" Height="40" Margin="19,515,0,0" VerticalAlignment="Top" Width="336" FontSize="20" FontFamily="Arial Black" Foreground="#FFFDFDFD" Visibility="Hidden"/>
+        <Label x:Name="newPasswordLabel2" Content="Please re-enter New Password:" HorizontalAlignment="Left" Height="40" Margin="19,515,0,0" VerticalAlignment="Top" Width="373" FontSize="20" FontFamily="Arial Black" Foreground="#FFFDFDFD" Visibility="Hidden"/>
         <TextBox x:Name="newPasswordTextBox2" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="40" Margin="19,555,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" FontSize="20" FontFamily="Arial Black" Visibility="Hidden"/>
 
         <Button x:Name="savePasswordButton" Content="&#xf0c7;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="60" Margin="19,600,0,0" VerticalAlignment="Top" Width="60" Background="#FF050C53" Foreground="#f3c206" FontSize="30" Style="{StaticResource MyButtonStyle}" RenderTransformOrigin="3.083,0.605" Click="savePasswordButton_Click" Visibility="Hidden" />
