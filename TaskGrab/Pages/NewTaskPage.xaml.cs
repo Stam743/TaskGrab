@@ -107,7 +107,7 @@ namespace TaskGrab.Pages
                 title = titleTextBox.Text,
                 description = descriptionTextBox.Text,
                 posted = currentTime.ToString("YYYY-MM-DD,hh:mm:ss"),
-                poster = "Jim Johnson",
+                poster = "Sharif",
                 payment = paymentChoice,
                 location = locationTextBox.Text
             };

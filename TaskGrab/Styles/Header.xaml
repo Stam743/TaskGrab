@@ -16,7 +16,11 @@
         <ResourceDictionary >
             <ControlTemplate x:Key="HeaderButtonTemplate" TargetType="{x:Type Button}">
                 <Grid>
-                    <Ellipse Style="{ StaticResource HeaderButtonEllipse}"/>
+                    <Ellipse Style="{ StaticResource HeaderButtonEllipse}">
+                        <Ellipse.BitmapEffect>
+                            <DropShadowBitmapEffect Color="#221155" Direction="-50"/>
+                        </Ellipse.BitmapEffect>
+                    </Ellipse>
                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
                                       Content="{TemplateBinding Content}" /> 
                 </Grid>
@@ -25,7 +29,7 @@
         <ResourceDictionary >
             <ControlTemplate x:Key="HeaderMenuTemplate" TargetType="{x:Type Button}">
                 <Grid>
-                    <Ellipse Style="{StaticResource HeaderButtonEllipse}"></Ellipse>
+                    <Ellipse Style="{StaticResource HeaderButtonEllipse}"/>
                     <Grid Margin="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -46,7 +50,11 @@
                 <Canvas Width="70">
                     <Rectangle Width="30" Canvas.Left="20" Height="40" Fill="#393bb1"></Rectangle>
                     <Ellipse Canvas.Right="0" Width="40" Height="40" Fill="#393bb1"></Ellipse>
-                    <Ellipse Canvas.Left="0" Width="40" Height="40" Fill="#5053de"></Ellipse>
+                    <Ellipse Canvas.Left="0" Width="40" Height="40" Fill="#5053de">
+                        <Ellipse.BitmapEffect>
+                            <DropShadowBitmapEffect Color="#221155" Direction="-50"/>
+                        </Ellipse.BitmapEffect>
+                    </Ellipse>
                     <TextBlock Canvas.Left="10" Canvas.Top="10" Text="&#xf279;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
                     <TextBlock Canvas.Right="10" Canvas.Top="12" Text="&#xf00b;" FontFamily="{StaticResource FontAwesome}" FontSize="18"
                                Foreground="#040544"/>
@@ -58,7 +66,11 @@
                 <Canvas Width="70">
                     <Rectangle Width="30" Canvas.Left="20" Height="40" Fill="#393bb1"></Rectangle>
                     <Ellipse Canvas.Left="0" Width="40" Height="40" Fill="#393bb1"></Ellipse>
-                    <Ellipse Canvas.Right="0" Width="40" Height="40" Fill="#5053de"></Ellipse>
+                    <Ellipse Canvas.Right="0" Width="40" Height="40" Fill="#5053de">
+                        <Ellipse.BitmapEffect>
+                            <DropShadowBitmapEffect Color="#221155" Direction="-50"/>
+                        </Ellipse.BitmapEffect>
+                    </Ellipse>
                     <TextBlock Canvas.Left="10" Canvas.Top="12" Text="&#xf279;" FontFamily="{StaticResource FontAwesome}" FontSize="18"
                                 Foreground="#040544"/>
                     <TextBlock Canvas.Right="10" Canvas.Top="10" Text="&#xf00b;" FontFamily="{StaticResource FontAwesome}" FontSize="20" />
