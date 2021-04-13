@@ -97,6 +97,7 @@ namespace TaskGrab.Navigation
                 current = uri;
                 frame.Source = current;
                 updateVisibility();
+                ((MainWindow)Application.Current.MainWindow).closeMenu();
             }
             catch (FileNotFoundException)
             {
