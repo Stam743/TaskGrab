@@ -1,14 +1,287 @@
-﻿<Page x:Class="TaskGrab.Pages.FiltersPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TaskGrab.Pages"
-      mc:Ignorable="d" 
-     d:DesignHeight="800" d:DesignWidth="480"
-      Title="Filters Page">
+﻿<Page 
+	   x:Class="TaskGrab.Pages.FiltersPage"
+	 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	 xmlns:local="clr-namespace:TaskGrab.Pages"
+	 mc:Ignorable="d"
+	d:DesignHeight="800" d:DesignWidth="480"
+	 Title="Filters Page">
 
-    <Grid>
-        <TextBlock>Filters</TextBlock>
-    </Grid>
+    <ScrollViewer FontFamily="Arial Black" FontSize="16">
+        <Canvas Name ="FilterCanvas" Background="#FF050C53">
+            <Button 
+                Width="480"
+                Height="800"
+                Background="Transparent" 
+                Click="ReturnToDefaultValues"
+                Style="{StaticResource MyButtonStyle}"
+            />
+
+            <TextBlock
+                Foreground="#FFFDFDFD"
+                Margin="0,0,0,702"
+                Background="#5555d0"
+                FontSize="36"
+                FontFamily="Arial Black"
+                TextAlignment="Center"
+                Width="480"
+                Height="130"
+                Text="Apply Filters"
+                Padding="5"
+             />
+
+            <Canvas
+                x:Name="SelectedFiltersCanvas"
+                Height="60"
+                Width="480"
+                Canvas.Top="51"
+            >
+                
+                <Canvas Canvas.Left="25">
+                    <Label
+                        Content="&#xf041;"
+                        FontFamily="{StaticResource FontAwesome}"
+                        Foreground="#f3c206"
+                        FontSize="40"
+                        Canvas.Top="3"
+                    />
+                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="35" FontSize="10" FontFamily="Sans-Serif"/>
+                    <TextBlock x:Name="FilterDistanceValue" Text="25" FontSize="14" Canvas.Left="35" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                </Canvas>
+                
+                <Canvas Canvas.Left="130">
+                    <Image Height="55" Canvas.Left="5" Stretch="Fill" Source="/Images/chooseCommunitiesIcon.png" />
+                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="60" FontSize="10" FontFamily="Sans-Serif"/>
+                    <TextBlock x:Name="FilterCommunityValue" Text="?" FontSize="14" Canvas.Left="60" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                </Canvas>
+
+
+                <Canvas Canvas.Left="260">
+                    <Label
+                        FontFamily="{StaticResource FontAwesome}"
+                        Content="&#xf02c;"
+                        Foreground="#f3c206"
+                        FontSize="40"
+                    />
+                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="50" FontSize="10" FontFamily="Sans-Serif"/>
+                    <TextBlock x:Name="FilterCategoryValue" Text="25" FontSize="14" Canvas.Left="50" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                </Canvas>
+
+                <Canvas Canvas.Left="385">
+                    <Label
+                        FontFamily="{StaticResource FontAwesome}"
+                        Content="&#xf155;"
+                        Foreground="#f3c206"
+                        FontSize="40"
+                    />
+                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="30" FontSize="10" FontFamily="Sans-Serif"/>
+                    <TextBlock x:Name="FilterPriceValue" Text="25" FontSize="14" Canvas.Left="30" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                </Canvas>
+            </Canvas>
+
+            <Canvas Canvas.Top="50">
+                <Button
+                    x:Name="locationButton"
+                    Content="Location"
+                    Canvas.Top="61"
+                    Height="55"
+                    Width="160"
+                    Background="#FF9191F3"
+                    Foreground="#FF050C53"
+                    FontSize="15"
+                    FontWeight="Normal"
+                    Style="{StaticResource MyButtonStyle}"
+                 />
+                <Label
+                    x:Name="LocationLabelSymbol"
+                    Content="&#xf041;"
+                    FontFamily="{StaticResource FontAwesome}"
+                    Canvas.Top="69"
+                    Canvas.Left="8"
+                    Foreground="#f3c206"
+                    FontSize="28"
+                />
+            </Canvas>
+
+            <Canvas Canvas.Top="50">
+                <Button
+                    x:Name="categoryButton"
+                    Content="Category"
+                    Height="55"
+                    Width="190"
+                    Canvas.Top="61"
+                    Canvas.Left="160"
+                    Background="#FF9191F3"
+                    Foreground="#FF050C53"
+                    FontSize="15"
+                    Style="{StaticResource MyButtonStyle}"
+                 />
+                <Label
+                    x:Name="categoryLabelSymbol"
+                    Content="&#xf02c;"
+                    FontFamily="{StaticResource FontAwesome}"
+                    HorizontalAlignment="Left"
+                    Canvas.Top="69"
+                    Canvas.Left="170"
+                    Foreground="#f3c206"
+                    FontSize="28"
+                 />
+            </Canvas>
+
+            <Canvas Canvas.Top="50">
+                <Button
+                    x:Name="priceButton"
+                    Content="Price"
+                    HorizontalAlignment="Left"
+                    Height="55"
+                    Width="160"
+                    Background="#FF9191F3"
+                    Foreground="#FF050C53"
+                    Canvas.Top="61"
+                    Canvas.Left="320"
+                    FontSize="15"
+                    Style="{StaticResource MyButtonStyle}"
+                 />
+                <Label
+                    x:Name="PriceLabelSymbol"
+                    Content="&#xf155;"
+                    FontFamily="{StaticResource FontAwesome}"
+                    HorizontalAlignment="Left"
+                    Canvas.Top="69"
+                    Canvas.Left="335"
+                    Foreground="#f3c206"
+                    FontSize="28"
+                 />
+            </Canvas>
+
+            <Canvas
+                x:Name="SetDistanceBox"
+                Background="#5555d0"
+                Height="280"
+                Width="360"
+                Canvas.Left="60"
+                Canvas.Top="180"
+            >
+                <Image Height="200" Canvas.Left="78" Stretch="Fill" Source="/Images/locationBoxPicture.png" Canvas.Top="10"/>
+
+                <Button 
+                    x:Name="SetDistanceButton"
+                    Background="Transparent"
+                    Foreground="Transparent"
+                    Width="360"
+                    Height="280"
+                    Style="{StaticResource MyButtonStyle}"
+                    Click="SetDistanceButton_Click"                  
+                />
+
+                <TextBlock
+                    x:Name="DistanceLabel"
+                    Text="Set Distance"
+                    FontSize="24"
+                    Foreground="White"
+                    Width="360"
+                    Canvas.Top="235"
+                    TextAlignment="Center"
+                />
+
+                <TextBox
+                    x:Name="DistanceTextBox"
+                    Background="#FF050C53"
+                    Foreground="White"
+                    Width="145"
+                    Height="50"
+                    Canvas.Top="220"
+                    Canvas.Left="40"
+                    Padding="14"
+                    Visibility="Hidden"
+                />
+                <TextBlock 
+                    x:Name="DistanceTypeTextBlock"
+                    Background="#f3c206"
+                    Width="155"
+                    Height="50"
+                    Canvas.Top="220"
+                    Canvas.Left="185" 
+                    Text="Select"
+                    FontSize="24"
+                    TextAlignment="Center"
+                    Padding="11"
+                    Visibility="Hidden" MouseLeftButtonUp="DistanceTypeTextBlock_MouseLeftButtonUp"
+                />
+                <TextBlock 
+                    x:Name="DistanceBlocksTextBlock"
+                    Background="#f3c206"
+                    Width="155"
+                    Height="50"
+                    Canvas.Top="220"
+                    Canvas.Left="185" 
+                    Text="Blocks"
+                    FontSize="24"
+                    TextAlignment="Center"
+                    Padding="11"
+                    Visibility="Hidden"
+                />
+                <TextBlock 
+                    x:Name="DistanceMilesTextBlock"
+                    Background="#f3c206"
+                    Width="155"
+                    Height="50"
+                    Canvas.Top="170"
+                    Canvas.Left="185" 
+                    Text="Miles"
+                    FontSize="24"
+                    TextAlignment="Center"
+                    Padding="11"
+                    Visibility="Hidden"
+                />
+                <TextBlock 
+                    x:Name="DistanceKmTextBlock"
+                    Background="#f3c206"
+                    Width="155"
+                    Height="50"
+                    Canvas.Top="270"
+                    Canvas.Left="185" 
+                    Text="Km"
+                    FontSize="24"
+                    TextAlignment="Center"
+                    Padding="11"
+                    Visibility="Hidden"
+                />
+                
+            </Canvas>
+
+            <Canvas
+                x:Name="ChooseCommunitiesBox"
+                Background="#5555d0"
+                Height="280"
+                Width="360"
+                Canvas.Left="60"
+                Canvas.Top="470"
+                Panel.ZIndex="-1"
+            >
+                <Button 
+                    x:Name="ChooseCommunityButton"
+                    Background="Transparent"
+                    Foreground="Transparent"
+                    Width="360"
+                    Height="280"
+                    Style="{StaticResource MyButtonStyle}"
+                />
+
+                <Image Height="200" Canvas.Left="50" Stretch="Fill" Source="/Images/chooseCommunitiesPicture.png" Canvas.Top="10" />
+
+                <TextBlock
+                    Text="Choose Community"
+                    FontSize="24"
+                    Foreground="White"
+                    Width="360"
+                    Canvas.Top="235"
+                    TextAlignment="Center"
+                />
+            </Canvas>
+
+        </Canvas>
+    </ScrollViewer>
 </Page>

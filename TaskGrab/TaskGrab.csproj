@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <None Remove="Fonts\fontawesome-webfont.ttf" />
+    <None Remove="Images\chooseCommunitiesIcon.png" />
+    <None Remove="Images\chooseCommunitiesPicture.png" />
+    <None Remove="Images\locationBoxPicture.png" />
     <None Remove="TaskMockData.json" />
   </ItemGroup>
 
@@ -29,10 +32,15 @@
     <Resource Include="Fonts\fontawesome-webfont.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\chooseCommunitiesIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\chooseCommunitiesPicture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\locationBoxPicture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

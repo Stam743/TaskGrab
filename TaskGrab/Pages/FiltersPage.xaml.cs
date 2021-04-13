@@ -25,6 +25,8 @@ namespace TaskGrab.Pages
         private MainWindow main;
         private History history;
         private QueryString query_string;
+        private String distanceType = "NONE";
+        private String distanceValue = "NONE";
         public FiltersPage()
         {
             InitializeComponent();
@@ -38,6 +40,34 @@ namespace TaskGrab.Pages
                 return;
 
             query_string = QueryString.Parse(request_url.Substring(query_start + 1));
+        }
+
+        private void SetDistanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            DistanceTypeTextBlock.Visibility = Visibility.Visible;
+            DistanceTextBox.Visibility = Visibility.Visible;
+            DistanceLabel.Visibility = Visibility.Hidden;
+        }
+
+        private void ReturnToDefaultValues(object sender, RoutedEventArgs e)
+        {
+            // everything else gets hidden
+            DistanceTypeTextBlock.Visibility = Visibility.Hidden;
+            DistanceBlocksTextBlock.Visibility = Visibility.Hidden;
+            DistanceKmTextBlock.Visibility = Visibility.Hidden;
+            DistanceMilesTextBlock.Visibility = Visibility.Hidden;
+            DistanceTextBox.Visibility = Visibility.Hidden;
+
+            // Default visible items
+            DistanceLabel.Visibility = Visibility.Visible;
+        }
+
+        private void DistanceTypeTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            DistanceTypeTextBlock.Visibility = Visibility.Hidden;
+            DistanceBlocksTextBlock.Visibility = Visibility.Visible;
+            DistanceKmTextBlock.Visibility = Visibility.Visible;
+            DistanceMilesTextBlock.Visibility = Visibility.Visible;
         }
     }
 }
