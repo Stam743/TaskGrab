@@ -31,6 +31,8 @@ namespace TaskGrab.Navigation
                 this.OnPropertyChanged();
             }
         }
+
+
         private Visibility isSwitchVisible = Visibility.Visible;
         public Visibility IsSwitchVisible
         {
@@ -38,6 +40,17 @@ namespace TaskGrab.Navigation
             set
             {
                 this.isSwitchVisible = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        private string backBtnIcon = "\uf015;";
+        public string BackBtnIcon
+        {
+            get { return this.backBtnIcon; }
+            set
+            {
+                this.backBtnIcon = value;
                 this.OnPropertyChanged();
             }
         }
@@ -66,6 +79,8 @@ namespace TaskGrab.Navigation
         {
             IsBackVisible = CanGoBack() ? Visibility.Visible : Visibility.Hidden;
             IsSwitchVisible = Regex.Match(current.OriginalString,@".*MainView/.*").Success ? Visibility.Visible : Visibility.Hidden;
+            if (history.Count > 0)
+                BackBtnIcon = Regex.Match(history.Peek().OriginalString, @".*MainView/.*").Success ? "\uf015" : "\uf104";
         }
 
         public bool Replace(String path)
@@ -93,6 +108,13 @@ namespace TaskGrab.Navigation
             bool success = true;
             try
             {
+                if ( history.Count() > 0 && uri.OriginalString == history.Peek().OriginalString )
+                {
+                    GoBack();
+                    updateVisibility();
+                    return true;
+                }
+
                 history.Push(current);
                 current = uri;
                 frame.Source = current;

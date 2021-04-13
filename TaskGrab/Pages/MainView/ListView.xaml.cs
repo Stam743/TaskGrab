@@ -63,7 +63,7 @@ namespace TaskGrab.Pages.MainView
             {
                 ScrollBarCustom.Visibility = Visibility.Visible;
                 double offset = currentViewer.VerticalOffset / currentViewer.ScrollableHeight;
-                double y1 = offset * (currentViewer.ActualHeight - scrollBarHeight);
+                double y1 = offset * (currentViewer.ActualHeight - scrollBarHeight) + 70;
                 double y2 = y1 + scrollBarHeight;
 
                 ScrollBarCustom.Y1 = y1;

@@ -14,11 +14,13 @@
                    NavigationUIVisibility="Hidden"
                    Width="480" Margin="0,0,0,0"/>
 		<Canvas Canvas.Left="0" Canvas.Top="0" Margin="10">
+           
             <Button 
                 Click="BackBtnClick"
                 Visibility="{Binding Path=IsBackVisible}"
-                Style="{StaticResource HeaderButton}">
-                <TextBlock FontFamily="{StaticResource FontAwesome}" Text="&#xf015;" Foreground="#FFFFFF" FontSize="18"/>
+                Margin="-10"
+                Style="{StaticResource HeaderBackButton}">
+                <TextBlock FontFamily="{StaticResource FontAwesome}" Text="{Binding Path=BackBtnIcon}" Foreground="#FFFFFF" FontSize="18"/>
             </Button>
             <Grid Height="0" Width="50" Canvas.Bottom="50" Canvas.Right="0" x:Name="MenuActions">
 				<Grid.RowDefinitions>
