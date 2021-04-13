@@ -33,6 +33,20 @@ namespace TaskGrab.Pages
         public MyTasks()
         {
             InitializeComponent();
+            List<TaskControl> tasks = new List<TaskControl>();
+
+            foreach (Data.Task task in posted.Tasks.Take(20))
+            {
+                if (task.poster == account)
+                {
+                    tasks.Add(new TaskControl(task));
+                    tasks.Last().MessageClick += OnMessageClick;
+                    tasks.Last().TaskClick += OnTaskClick;
+                }
+
+            }
+            TasksHolder.ItemsSource = tasks;
+
             main = (MainWindow)Application.Current.MainWindow;
             history = main.GetHistory();
 
