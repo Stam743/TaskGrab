@@ -92,7 +92,7 @@ namespace TaskGrab.Pages
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            history.GoBack();
+            history.GoTo("Pages/MainView/MapView.xaml");
         }
 
         private void signUpButton_Click(object sender, RoutedEventArgs e)

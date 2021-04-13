@@ -45,6 +45,8 @@ namespace TaskGrab.Pages
                 return;
 
             query_string = QueryString.Parse(request_url.Substring(query_start + 1));
+
+            
         }
 
         private void setAmountButton_Click(object sender, RoutedEventArgs e)

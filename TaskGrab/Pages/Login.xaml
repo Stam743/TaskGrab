@@ -18,7 +18,7 @@
         <Label x:Name="passwordLabel" Content="Password" HorizontalAlignment="Left" Height="35" Margin="45,242,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White"/>
         <TextBox x:Name="passwordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="43" Margin="45,277,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20"/>
 
-        <Button x:Name="forgotButton" Content="Forgot my Password" HorizontalAlignment="Left" Height="33" Margin="301,325,0,0" VerticalAlignment="Top" Width="143" Background="#FF050C53" Foreground="White" FontFamily="Arial Black"/>
+        <Button x:Name="forgotButton" Content="Forgot my Password" HorizontalAlignment="Left" Height="33" Margin="301,325,0,0" VerticalAlignment="Top" Width="143" Background="#FF050C53" Style= "{StaticResource MyButtonStyle}" Foreground="#FF15CEF7" FontFamily="Arial Black"/>
 
         <CheckBox x:Name="rememberMeCheckBox" Content="Remember Me" HorizontalAlignment="Center" VerticalAlignment="Top" Height="28" Width="194" FontFamily="Arial Black" Foreground="White" FontSize="22" Margin="0,372,0,0"/>
 
