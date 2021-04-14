@@ -33,6 +33,7 @@
             <Label x:Name="volunteerWorkLabel" Content="You Have Selected Volunteer Work" HorizontalAlignment="Center" Height="46" Margin="0,650,0,0" VerticalAlignment="Top" Width="440" Foreground="White" FontSize="22" Visibility="Hidden"/>
 
             <Button x:Name="postTaskButton" Content="POST TASK" HorizontalAlignment="Left" Height="41" Margin="150,739,0,0" VerticalAlignment="Top" Width="160" Background="#f3c206" Foreground="#FF050C53" Style="{StaticResource MyButtonStyle}" Click="postTaskButton_Click" RenderTransformOrigin="0.476,1.608"/>
+            <Label x:Name="errorLabel" Content="Please fill out with a proper location!" HorizontalAlignment="Left" Height="31" Margin="10,469,0,0" VerticalAlignment="Top" Width="336" Foreground="Red" Visibility="Hidden"/>
 
 
 

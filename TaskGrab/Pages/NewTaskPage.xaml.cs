@@ -85,8 +85,6 @@ namespace TaskGrab.Pages
 
         private void postTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
-
             DateTime currentTime = DateTime.Now;
 
             string paymentChoice = "";
@@ -104,20 +102,31 @@ namespace TaskGrab.Pages
                 paymentChoice = setAmountTextBox.Text;
             }
 
-            TaskGrab.Data.Task newTask = new Data.Task()
+
+            if(locationTextBox.Text != "")
             {
-                title = titleTextBox.Text,
-                description = descriptionTextBox.Text,
-                posted = currentTime.ToString("YYYY-MM-DD,hh:mm:ss"),
-                poster = "Sharif",
-                payment = paymentChoice,
-                location = locationTextBox.Text
-            };
+                TaskGrab.Data.Task newTask = new Data.Task()
+                {
+                    title = titleTextBox.Text,
+                    description = descriptionTextBox.Text,
+                    posted = currentTime.ToString("YYYY-MM-DD,hh:mm:ss"),
+                    poster = "Sharif",
+                    payment = paymentChoice,
+                    location = locationTextBox.Text
+                };
 
-            task_grab_context.Tasks.Add(newTask);
-            task_grab_context.SaveChanges();
+                task_grab_context.Tasks.Add(newTask);
+                task_grab_context.SaveChanges();
+                errorLabel.Visibility = Visibility.Hidden;
 
-            history.GoTo("Pages/MainView/MapView.xaml");
+                history.GoTo("Pages/MainView/MapView.xaml");
+            }
+            else
+            {
+                errorLabel.Visibility = Visibility.Visible;
+            }
+
+            
         }
 
         private void locationButton_Click(object sender, RoutedEventArgs e)
