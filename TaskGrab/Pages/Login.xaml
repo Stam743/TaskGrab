@@ -9,8 +9,8 @@
       Title="Login">
 
     <Grid Background="#FF050C53">
-        <Button x:Name="loginTabButton" Content="Login" HorizontalAlignment="Left" Height="102" Margin="0,2,0,0" VerticalAlignment="Top" Width="240" Background="#FF9191F3" FontSize="36" FontFamily="Arial Black" Foreground="White" Style="{StaticResource MyButtonStyle}" Click="loginTabButton_Click" />
-        <Button x:Name="signUpTabButton" Content="Signup" HorizontalAlignment="Left" Height="102" Margin="240,2,0,0" VerticalAlignment="Top" Width="240" Background="#FF5454B4" FontSize="36" FontFamily="Arial Black" Foreground="White" Style="{StaticResource MyButtonStyle}" Click="signUpTabButton_Click"/>
+        <Button x:Name="loginTabButton" Content="Login" HorizontalAlignment="Left" Height="102" Margin="0,2,0,0" VerticalAlignment="Top" Width="240" Background="#FF9191F3" FontSize="36" FontFamily="Arial Black" Foreground="Yellow" Style="{StaticResource MyButtonStyle}" Click="loginTabButton_Click" />
+        <Button x:Name="signUpTabButton" Content="Signup" HorizontalAlignment="Left" Height="102" Margin="240,2,0,0" VerticalAlignment="Top" Width="240" Background="#FF9191F3" FontSize="36" FontFamily="Arial Black" Foreground="White" Style="{StaticResource MyButtonStyle}" Click="signUpTabButton_Click"/>
 
         <Label x:Name="emailPhoneNumLabel" Content="E-Mail or Phone Number" HorizontalAlignment="Left" Height="36" Margin="45,133,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White"/>
         <TextBox x:Name="emailPhoneNumTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="46" Margin="45,169,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20"/>

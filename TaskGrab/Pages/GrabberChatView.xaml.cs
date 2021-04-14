@@ -56,5 +56,12 @@ private void taskInfoButton_Click(object sender, RoutedEventArgs e)
             bookmarkedButton.Visibility = Visibility.Visible;
             
         }
+
+        private void sendButton_Click(object sender, RoutedEventArgs e)
+        {
+            msgTextBox3.Text = messageTextBox.Text;
+            msgTextBox3.Visibility = Visibility.Visible;
+            messageTextBox.Text = "";
+        }
     }
 }

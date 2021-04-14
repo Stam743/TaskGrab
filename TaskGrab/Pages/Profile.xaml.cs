@@ -108,6 +108,7 @@ namespace TaskGrab.Pages
             newPasswordLabel2.Visibility = Visibility.Hidden;
             newPasswordTextBox2.Visibility = Visibility.Hidden;
             savePasswordButton.Visibility = Visibility.Hidden;
+            logOutButton.Visibility = Visibility.Visible;
         }
     }
 }
