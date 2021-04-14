@@ -8,8 +8,8 @@
       d:DesignHeight="800" d:DesignWidth="480"
       Title="New Task">
     <ScrollViewer FontFamily="Arial Black" FontSize="16">
-        <Grid Background="#FF050C53">
-            <TextBlock Foreground="#FFFDFDFD" Margin="0,0,0,730" Padding="0,15,0,0" Background="#FF5D00FF" FontSize="36" FontFamily="Arial Black" TextAlignment="Center">New Task</TextBlock>
+        <Grid Background="#00015e">
+            <TextBlock Foreground="#FFFDFDFD" Margin="0,0,0,730" Padding="0,15,0,0" Background="#00015e" FontSize="36" FontFamily="Arial Black" TextAlignment="Center">New Task</TextBlock>
             <Label x:Name="titleLabel" Content="Title" HorizontalAlignment="Left" Height="35" Margin="10,93,0,0" VerticalAlignment="Top" Width="144" Foreground="White" FontFamily="Arial Black" FontSize="22"/>
             <TextBox x:Name="titleTextBox" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="52" Margin="0,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="444" Background="#FF9191F3" FontSize="20" FontFamily="Arial Black" Foreground="White"/>
 

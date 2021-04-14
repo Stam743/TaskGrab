@@ -8,7 +8,7 @@
       d:DesignHeight="800" d:DesignWidth="480"
       Title="GrabberChatView">
 
-    <Grid Background="#FF050C53">
+    <Grid Background="#00015e">
         <Label x:Name="taskTitleLabel" Content="        Shovel my Driveway" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="70" VerticalAlignment="Top" Width="480" Foreground="#FFFDFDFD"  Background="#FF5454B4" FontFamily="Arial Black" FontSize="24"/>
         <Button x:Name="bookmarkButton" Content="&#xf097;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="70" Margin="378,0,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-1.013,-4.429" Background="#FF5454B4" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}" Click="bookmarkButton_Click"  Visibility="Hidden"/>
         <Button x:Name="bookmarkedButton" Content="&#xf02e;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="70" Margin="398,0,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-1.013,-4.429" Background="#FF5454B4" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}" Click="bookmarkedButton_Click"/>
