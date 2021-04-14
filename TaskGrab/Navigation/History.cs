@@ -77,7 +77,15 @@ namespace TaskGrab.Navigation
 
         public void updateVisibility()
         {
-            IsBackVisible = CanGoBack() ? Visibility.Visible : Visibility.Hidden;
+            if ( Regex.Match(current.OriginalString,@".*Login.*").Success )
+            {
+                history.Clear();
+                history.Push(new Uri("/Pages/MainView/MapView.xaml", UriKind.Relative));
+            } else
+            {
+
+            }
+            IsBackVisible = CanGoBack()  ? Visibility.Visible : Visibility.Hidden;
             IsSwitchVisible = Regex.Match(current.OriginalString,@".*MainView/.*").Success ? Visibility.Visible : Visibility.Hidden;
             if (history.Count > 0)
                 BackBtnIcon = Regex.Match(history.Peek().OriginalString, @".*MainView/.*").Success ? "\uf015" : "\uf104";
@@ -112,6 +120,16 @@ namespace TaskGrab.Navigation
                 {
                     GoBack();
                     updateVisibility();
+                    return true;
+                }
+
+                if (Regex.Match(uri.OriginalString, @".*MainView/.*").Success)
+                {
+                    history.Clear();
+                    current = uri;
+                    frame.Source = current;
+                    updateVisibility();
+                    ((MainWindow)Application.Current.MainWindow).closeMenu();
                     return true;
                 }
 
