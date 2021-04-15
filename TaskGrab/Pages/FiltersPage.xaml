@@ -90,7 +90,7 @@
                     Height="55"
                     Width="160"
                     Background="#FF9191F3"
-                    Foreground="#FF050C53"
+                    Foreground="#f3c206"
                     FontSize="15"
                     FontWeight="Normal"
                     Style="{StaticResource MyButtonStyle}"
@@ -163,7 +163,7 @@
                 Height="280"
                 Width="360"
                 Canvas.Left="60"
-                Canvas.Top="180"
+                Canvas.Top="185"
             >
                 <Image Height="200" Canvas.Left="78" Stretch="Fill" Source="/Images/locationBoxPicture.png" Canvas.Top="10"/>
 
@@ -262,7 +262,7 @@
                 Height="280"
                 Width="360"
                 Canvas.Left="60"
-                Canvas.Top="470"
+                Canvas.Top="475"
                 Panel.ZIndex="-1"
             >
                 <Button 

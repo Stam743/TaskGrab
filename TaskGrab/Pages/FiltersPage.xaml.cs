@@ -27,6 +27,7 @@ namespace TaskGrab.Pages
         private QueryString query_string;
         private String distanceType = "NONE";
         private String distanceValue = "NONE";
+        private String currentTab = "Location";
         public FiltersPage()
         {
             InitializeComponent();
@@ -66,7 +67,7 @@ namespace TaskGrab.Pages
 
         private void returnDefaultVals()
         {
-             // everything else gets hidden
+            // everything else gets hidden
 
             // set distance stuff
             DistanceTypeTextBlock.Visibility = Visibility.Hidden;
@@ -75,13 +76,15 @@ namespace TaskGrab.Pages
             DistanceMilesTextBlock.Visibility = Visibility.Hidden;
             DistanceTextBox.Visibility = Visibility.Hidden;
 
+
+            // Default visible items
+            DistanceLabel.Visibility = Visibility.Visible;
+        
             // choose community stuff
             ChooseCommunityButton.Visibility = Visibility.Visible;
             ChooseCommunityImage.Visibility = Visibility.Visible;
             ChooseCommunityLabel.Visibility = Visibility.Visible;
-
-            // Default visible items
-            DistanceLabel.Visibility = Visibility.Visible;
+        
         }
 
         private void DistanceTypeTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
