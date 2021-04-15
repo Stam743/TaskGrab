@@ -1,6 +1,14 @@
-# Setting up database:
+# TaskGrab - By Group 17
 
-To set up the database download the repo on your local machine, and open it using Visual Studio.
+Spencer Tam, Ishan Vyas, Naweed Anwari, and Juan Pablo Lozano
+
+# Running the published executable
+
+Unzip the published.zip onto your local machine. Excecute ~TaskGrab.exe~
+
+# Running the source code
+
+Open the TaskGrab project using VIsual Studio 2019. In order to run the source we need to set up the database. 
 Once in Visual Studio open the **Package Manager Console** (Tools **>** NuGet Package Manager **>** Package Manager Console)
 
 Execute the following commands within the package manager console:
@@ -9,173 +17,37 @@ PM> <b>Script-Migration</b>
 PM> <b>Update-Database</b>
 </pre>
 
-The databse will be populated when you run the program for the first time, this will take some time. 
-Note: There will be a number of exceptions thrown while the database is populated, fear not! this is normal.
 
-# Work to do
+# A note on first startup
+
+When you run the application for the same time it will show the map with no markers on it, this is because the application pupulates the database with a list of auto generated tasks, as well as getting latitude and longitude locations for each of the locations of the tasks.
+
+**This takes some time** Around 2-4 minutes. After the database is poupulated the application should boot up quicker on next executions.
+
+
+# What to do!!!
+
+- Check out the map view, scroll to zoom in/out, and click and drag to move around.
+- Check out what happens when you click on one of the red clusters
+- Check out the list view shown by clicking the switch at the bottom of the screen
+- Check out What happens when you click on a task! And what happens if yopu click on the yellow message icon of a task.
+- Check out what happens when you click the bookmark button when looking at a task info
+- Try clicking the menu button and the bottom left of the home screen.
+- Not sure how to get back to the home screen? Click the home icon at the top right or the back button in the same location.
+- Try clicking the plus button from the menu
+- Try posting a task with no information on the text boxes
+- How about clicking the location icon on the Location textbox
+- Try selecting Accepting offers, or Volunteer work
+- Post a task!
+- You gotta login tho, or sign up. Fill out your info and submit the form
+- Check out your profile page! The profile icon button on the menu
+- You can see your posted task! you can click the saved tab to view your saved tasks
+- You can click on the profile icon within the my tasks page to view and edit your profile
+- Try clicking the pencil icon to edit your profile
+- Click on the logout icon to logout! 
+- Check out the filters section, the funnel icon button from the menu
+- Try setting a distance! You can choose the units for distance
+- Try clicking the 'x' on the icon at the header of the apply filters page, it clears the filter!
+- Wanna access your profile settings qwuick? Click the settings button on the menu. 
 
-## Implementing pages
 
-1. Main View ( JP )
-2. Filters View
-3. New Task ( Spencer )
-4. Login/Sign-up ( Spencer )
-5. My Tasks ( Spencer )
-6. Profile ( Spencer )
-7. TaskView - Owner
-8. TaskView - Grabber
-9. Tasks in communities
-
-### 1. Main View
-
-Location: `Pages/MainView/`
-
-The main view consists of the map view and list view, this have already been implemented.
-
-### 2. Filters View
-
-Location: `Pages/FiltersPage.xaml`
-
-Consists of:
--  Communities/distance
--  Categories
--  Price Range
-
-Applied filters should be reflected in the displayed tasks
-
-### 3. New Task
-
-Location: `Pages/NewTaskPage.xaml`
-
-Consists of a form where the user can fill out the required information and proceed with posting of the task.
-
-### 4. Login/Signup
-
-Location: `Pages/Login.xaml` & `Pages/Signup.xaml`
-
-Consists of login and signup forms. 
-
-### 5. My Tasks
-
-Location: `Pages/MyTasks.xaml` 
-
-Consists of:
-- My Posted tasks
-- My Saved Tasks
-
-### 6. Profile
-
-Location: `Pages/Profile.xaml`
-
-Consists of: 
-- User info
-- Logout button
-
-### 7. TaskView - Owner
-
-Location: `Pages/TaskView/Owner.xaml`
-
-Parameters: 
-- `id -> the id of the task`
-- `view -> what view to render (chat or info)`
-
-Consists of:
-- List of people who've meessage the task owner regarding the task
-- Chat view 
-- Information view
-- Edit view
-
-### 8. TaskView - Grabber
-
-Location: `Pages/TaskView/Grabber.xaml`
-
-Parameters: 
-- `id -> the id of the task`
-- `view -> what view to render (chat or info)`
-
-Consits of:
-
-- Info view
-- Chat view
-
-### 9. Tasks in communities:
-
-Location: `Pages/CommunityTasks.xaml`
-
-Parameters: `location -> the community requested`
-
-Consists of:
-
-List of tasks in specified community.
-
-## Implementing tour for every page
-
-A tour of the contents of each page must be generated. The tour should cover the general options available to the user at the current page
-
-# Utilities
-
-The project contains two utitilities thus far, `History` and `QueryString`
-
-## History
-
-The history utility allows easy navigation.
-
-### `history.GoTo(string path)`
-
- Go to the specified page. Path is relative to the project root, example: 
-
-`history.GoTo("Pages/TaskView/Grabber.xaml")`
-
-Parameters can be passed by way of url encoding, ex:
-
-`history.GoTo("Pages/TaskView/Grabber.xaml?id=2&view=chat")`
-
-### `history.Replace(string path)`
-
-Works like `history.GoTo` except that the given path replaces the current path in the history.
-
-## QueryString
-
-Allows parsing of url parameters
-
-Getting specific parameter:
-
-```
-string id;
-bool success = query_string.TryGetValue("id", out id);
-```
-
-# Skeletons
-
-Each page has already been created and populated with helper fields:
-
-- `MainWindow main` > Access the main window 
-- `History history` > Access the history object
-- `QueryString query_string` > Access the query parameters passed to the page
-
-# Access Task Data
-
-To acces the tasks database use the following:
-
-```
-TaskGrabContext task_grab_context = new TaskGrabContext();
-DbSet<Data.Task> tasks = task_grab_context.Tasks;
-```
-
-Task data is defined in `Data/Task.cs`
-
-To add content to database:
-
-```
- task_grab_context.Tasks.Add(task);
- task_grab_context.SaveChanges();
-```
-
-# Helpful Links
-
-- https://docs.microsoft.com/en-us/dotnet/?view=entity-framework-6.2.0
-- https://docs.microsoft.com/en-us/dotnet/api/system.data.entity.dbcontext?view=entity-framework-6.2.0
-- https://docs.microsoft.com/en-us/dotnet/api/system.data.entity.dbset?view=entity-framework-6.2.0
-
-
-I am available to answer questions and help where needed.
