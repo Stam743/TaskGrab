@@ -74,7 +74,7 @@ namespace TaskGrab.Controls
             {
                 try
                 {
-                    DescriptionText.Text = value.Substring(0,80)+"...";
+                    DescriptionText.Text = value.Replace('\n',' ').Substring(0,80)+"...";
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -92,7 +92,7 @@ namespace TaskGrab.Controls
                 PaymentText.Text = value;
                 if (! Regex.Match(value, @"\$\d+").Success)
                 {
-                    PaymentText.FontSize = 10;
+                    PaymentText.FontSize = 11;
                     PaymentText.Padding = new Thickness(8);
                 } else
                 {

@@ -42,6 +42,7 @@ namespace TaskGrab.Pages
 
         private void editNameButton_Click(object sender, RoutedEventArgs e)
         {
+            nameTextBox.Text = (string)displayNameLabel.Content;
             displayNameLabel.Visibility = Visibility.Hidden;
             nameTextBox.Visibility = Visibility.Visible;
             editNameButton.Visibility = Visibility.Hidden;
@@ -61,6 +62,7 @@ namespace TaskGrab.Pages
 
         private void editEmailButton_Click(object sender, RoutedEventArgs e)
         {
+            emailTextBox.Text = (string)displayEmailLabel.Content;
             displayEmailLabel.Visibility = Visibility.Hidden;
             emailTextBox.Visibility = Visibility.Visible;
             editEmailButton.Visibility = Visibility.Hidden;
@@ -92,6 +94,7 @@ namespace TaskGrab.Pages
             newPasswordLabel2.Visibility = Visibility.Visible;
             newPasswordTextBox2.Visibility = Visibility.Visible;
             savePasswordButton.Visibility = Visibility.Visible;
+            logOutButton.Visibility = Visibility.Hidden;
         }
 
         private void savePasswordButton_Click(object sender, RoutedEventArgs e)
@@ -105,6 +108,7 @@ namespace TaskGrab.Pages
             newPasswordLabel2.Visibility = Visibility.Hidden;
             newPasswordTextBox2.Visibility = Visibility.Hidden;
             savePasswordButton.Visibility = Visibility.Hidden;
+            logOutButton.Visibility = Visibility.Visible;
         }
     }
 }

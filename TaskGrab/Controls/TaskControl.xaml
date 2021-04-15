@@ -10,9 +10,12 @@
             Margin="10,5"
             Padding="0"
             Click="onTaskClick">
+        <Button.BitmapEffect>
+            <DropShadowBitmapEffect Color="#030266"/>
+        </Button.BitmapEffect>
         <Grid Height="115" Width="445" Background="#5155d0"
               x:Name="MainGrid"
-          HorizontalAlignment="Center">
+               HorizontalAlignment="Center">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"/>
@@ -30,9 +33,8 @@
                            Text="{Binding Title}" 
                            FontWeight="Bold"
                            FontSize="14"
-                           
                            TextWrapping="Wrap"
-                           VerticalAlignment="Center"   
+                           VerticalAlignment="Center"
                            Style="{StaticResource TaskText}"/>
                     <Grid Grid.Row="1" VerticalAlignment="Center">
                         <Grid.RowDefinitions>

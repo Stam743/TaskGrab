@@ -12,7 +12,14 @@
       Title="MapView">
 
     <Grid x:Name="MainGrid">
+        
         <Image x:Name="Map" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
         <Canvas x:Name="MarkerCanvas" Height="800" Width="480"/>
+        <Canvas>
+            <Image Source="/Images/logo.png"
+                   Canvas.Left="175"
+                   Canvas.Top="10"
+                   Width="130"/>
+        </Canvas>
     </Grid>
 </Page>

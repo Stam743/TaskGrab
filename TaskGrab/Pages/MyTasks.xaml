@@ -9,18 +9,46 @@
       Title="My Tasks">
 
     <ScrollViewer FontFamily="Arial Black" FontSize="16">
-        <Grid Name ="MyTaskGrid" Background="#FF050C53">
-            <TextBlock Foreground="#FFFDFDFD" Margin="0,0,0,702" Background="#FF5D00FF" FontSize="36" FontFamily="Arial Black" TextAlignment="Center">My Tasks</TextBlock>
-            <Button x:Name="postedButton" Content="Posted" HorizontalAlignment="Left" Height="55" Margin="0,61,0,0" VerticalAlignment="Top" Width="232" Background="#FF9191F3" Foreground="Yellow" FontSize="22" FontWeight="Normal" Style="{StaticResource MyButtonStyle}" Click="postedButton_Click"/>
-            <Label x:Name="postedLabelSymbol" Content="&#xf067;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="30" Margin="50,72,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="-0.309,-2.658" Foreground="#f3c206" FontSize="22"/>
+        <Grid Name ="MyTaskGrid" Background="#00015e">
+            <TextBlock Foreground="#FFFDFDFD" Margin="0,0,0,684" Background="#00015e" Padding="0,10,0,0" FontSize="36" FontFamily="Arial Black" TextAlignment="Center">My Tasks</TextBlock>
+            <Button x:Name="postedButton" 
+                    Content="Posted"
+                    HorizontalAlignment="Left"
+                    Height="55" Margin="0,72,0,0"
+                    VerticalAlignment="Top" Width="232" 
+                    Background="#5155d0"
+                    Foreground="#f3c206" 
+                    FontSize="22" 
+                    FontWeight="Normal"
+                    Style="{StaticResource MyButtonStyle}"
+                    Click="postedButton_Click"/>
+            <Label x:Name="postedLabelSymbol"
+                   Content="&#xf067;
+                   " FontFamily="{StaticResource FontAwesome}" 
+                   HorizontalAlignment="Left"
+                   Height="30"
+                   Margin="52,83,0,0"
+                   VerticalAlignment="Top
+                   " Width="28"
+                   RenderTransformOrigin="-0.309,-2.658" Foreground="#f3c206" FontSize="22"/>
 
 
-            <Button x:Name="savedButton" Content="Saved" HorizontalAlignment="Left" Height="55" Margin="232,61,0,0" VerticalAlignment="Top" Width="230" Background="#FF9191F3" Foreground="#FF050C53" FontSize="22" Style="{StaticResource MyButtonStyle}" Click="savedButton_Click"/>
-            <Label x:Name="savedLabelSymbol" Content="&#xf02e;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="30" Margin="288,72,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="1.123,0.693" Foreground="#f3c206" FontSize="22"/>
+            <Button x:Name="savedButton"
+                    Content="Saved"
+                    HorizontalAlignment="Left"
+                    Height="55"
+                    Margin="232,72,0,0"
+                    VerticalAlignment="Top"
+                    Width="230"
+                    Background="#5155d0" 
+                    Foreground="#fff"
+                    FontSize="22"
+                    Style="{StaticResource MyButtonStyle}" Click="savedButton_Click"/>
+            <Label x:Name="savedLabelSymbol" Content="&#xf02e;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="30" Margin="284,84,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="1.123,0.693" Foreground="#f3c206" FontSize="22"/>
 
-            <Button x:Name="signOutButton" Content="&#xf08b;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="55" Margin="393,-6,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="-1.013,-4.429" Background="#FF5D00FF" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}" Click="signOutButton_Click"/>
-            <Button x:Name="profileButton" Content="&#xf007;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="55" Margin="332,-6,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="-1.013,-4.429" Background="#FF5D00FF" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}" Click="profileButton_Click"/>
-            <Canvas Margin="0,116,0,0">
+            <Button x:Name="signOutButton" Content="&#xf08b;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="60" Margin="393,1,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="-1.013,-4.429" Background="#00015e" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}" Click="signOutButton_Click"/>
+            <Button x:Name="profileButton" Content="&#xf007;" FontFamily="{StaticResource FontAwesome}" HorizontalAlignment="Left" Height="60" Margin="332,1,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="-1.013,-4.429" Background="#00015e" Foreground="#f3c206" FontSize="36" Style="{StaticResource MyButtonStyle}" Click="profileButton_Click"/>
+            <Canvas Margin="0,151,0,0">
                 <ItemsControl  x:Name="TasksHolder" />
             </Canvas>
 

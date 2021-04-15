@@ -49,8 +49,8 @@ namespace TaskGrab.Pages
 
         private void loginTabButton_Click(object sender, RoutedEventArgs e)
         {
-            loginTabButton.Background = new SolidColorBrush(Colors.SlateBlue);
-            signUpTabButton.Background = new SolidColorBrush(Colors.BlueViolet);
+            loginTabButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            signUpTabButton.Foreground = new SolidColorBrush(Colors.White);
             emailPhoneNumLabel.Visibility = Visibility.Visible;
             emailPhoneNumTextBox.Visibility = Visibility.Visible;
             passwordLabel.Visibility = Visibility.Visible;
@@ -70,8 +70,8 @@ namespace TaskGrab.Pages
 
         private void signUpTabButton_Click(object sender, RoutedEventArgs e)
         {
-            signUpTabButton.Background = new SolidColorBrush(Colors.SlateBlue);
-            loginTabButton.Background = new SolidColorBrush(Colors.BlueViolet);
+            signUpTabButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            loginTabButton.Foreground = new SolidColorBrush(Colors.White);
             registerEmailPhoneNumLabel.Visibility = Visibility.Visible;
             registerEmailPhoneNumTextBox.Visibility = Visibility.Visible;
             registerPasswordLabel.Visibility = Visibility.Visible;
@@ -92,27 +92,12 @@ namespace TaskGrab.Pages
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            history.GoBack();
+            history.GoTo("Pages/MainView/MapView.xaml");
         }
 
         private void signUpButton_Click(object sender, RoutedEventArgs e)
         {
-            string password = "";
-            if(registerPasswordTextBox.Text == confirmPasswordTextBox.Text)
-            {
-                password = registerPasswordTextBox.Text;
-            }
-            TaskGrab.Data.UserInfo newUser = new Data.UserInfo()
-            {
-                Email_or_Phone_num = registerEmailPhoneNumTextBox.Text,
-                Password = password
-
-            };
-
-            user_info.UserInformation.Add(newUser);
-            user_info.SaveChanges();
-
-            history.GoTo("Pages/MainView/MapView.xaml");
+               history.GoTo("Pages/MainView/MapView.xaml");
         }
     }
 }

@@ -8,33 +8,34 @@
       d:DesignHeight="800" d:DesignWidth="480"
       Title="Login">
 
-    <Grid Background="#FF050C53">
-        <Button x:Name="loginTabButton" Content="Login" HorizontalAlignment="Left" Height="102" Margin="0,2,0,0" VerticalAlignment="Top" Width="240" Background="#FF9191F3" FontSize="36" FontFamily="Arial Black" Foreground="White" Style="{StaticResource MyButtonStyle}" Click="loginTabButton_Click" />
-        <Button x:Name="signUpTabButton" Content="Signup" HorizontalAlignment="Left" Height="102" Margin="240,2,0,0" VerticalAlignment="Top" Width="240" Background="#FF5454B4" FontSize="36" FontFamily="Arial Black" Foreground="White" Style="{StaticResource MyButtonStyle}" Click="signUpTabButton_Click"/>
+    <Grid Background="#00015e">
+        <Button x:Name="loginTabButton" Content="Login" HorizontalAlignment="Left" Height="102" Margin="0,72,0,0" VerticalAlignment="Top" Width="240" Background="#5155d0" FontSize="36" FontFamily="Arial Black" Foreground="#f3c206" Style="{StaticResource MyButtonStyle}" Click="loginTabButton_Click" />
+        <Button x:Name="signUpTabButton" Content="Signup" HorizontalAlignment="Left" Height="102" Margin="240,72,0,0" VerticalAlignment="Top" Width="240" Background="#5155d0" FontSize="36" FontFamily="Arial Black" Foreground="White" Style="{StaticResource MyButtonStyle}" Click="signUpTabButton_Click"/>
 
-        <Label x:Name="emailPhoneNumLabel" Content="E-Mail or Phone Number" HorizontalAlignment="Left" Height="36" Margin="45,133,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White"/>
-        <TextBox x:Name="emailPhoneNumTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="46" Margin="45,169,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20"/>
+        <Label x:Name="emailPhoneNumLabel" Content="E-Mail or Phone Number" HorizontalAlignment="Left" Height="36" Margin="45,204,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" />
+        <TextBox x:Name="emailPhoneNumTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="46" Margin="45,240,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#020422" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" />
 
-        <Label x:Name="passwordLabel" Content="Password" HorizontalAlignment="Left" Height="35" Margin="45,242,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White"/>
-        <TextBox x:Name="passwordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="43" Margin="45,277,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20"/>
+        <Label x:Name="passwordLabel" Content="Password" HorizontalAlignment="Left" Height="36" Margin="45,312,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" />
+        <TextBox x:Name="passwordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="42" Margin="45,340,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#020422" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" />
 
-        <Button x:Name="forgotButton" Content="Forgot my Password" HorizontalAlignment="Left" Height="33" Margin="301,325,0,0" VerticalAlignment="Top" Width="143" Background="#FF050C53" Foreground="White" FontFamily="Arial Black"/>
+        <Button x:Name="forgotButton" Content="Forgot my Password" HorizontalAlignment="Left" Height="32" Margin="301,396,0,0" VerticalAlignment="Top" Width="143" Background="#FF050C53" Style= "{StaticResource MyButtonStyle}" Foreground="#FF15CEF7" FontFamily="Arial Black" />
 
-        <CheckBox x:Name="rememberMeCheckBox" Content="Remember Me" HorizontalAlignment="Center" VerticalAlignment="Top" Height="28" Width="194" FontFamily="Arial Black" Foreground="White" FontSize="22" Margin="0,372,0,0"/>
+        <CheckBox x:Name="rememberMeCheckBox" Content="Remember Me" HorizontalAlignment="Center" VerticalAlignment="Top" Height="28" Width="194" FontFamily="Arial Black" Foreground="White" FontSize="22" Margin="0,442,0,0" />
 
-        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" Height="67" Margin="0,417,0,0" VerticalAlignment="Top" Width="144" Background="#f3c206" Foreground="#FF050C53" FontSize="22" FontFamily="Arial Black" Style="{StaticResource MyButtonStyle}" Click="loginButton_Click"/>
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" Height="66" Margin="0,488,0,0" VerticalAlignment="Top" Width="144" Background="#f3c206" Foreground="#FF050C53" FontSize="22" FontFamily="Arial Black" Style="{StaticResource MyButtonStyle}" Click="loginButton_Click" />
 
 
-        <Label x:Name="registerEmailPhoneNumLabel" Content="E-Mail or Phone Number" HorizontalAlignment="Left" Height="36" Margin="45,133,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
-        <TextBox x:Name="registerEmailPhoneNumTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="46" Margin="45,169,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" Visibility="Hidden"/>
+        <Label x:Name="registerEmailPhoneNumLabel" Content="E-Mail or Phone Number" HorizontalAlignment="Left" Height="36" Margin="45,197,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
+        <TextBox x:Name="registerEmailPhoneNumTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="46" Margin="45,233,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#020422" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden"/>
 
-        <Label x:Name="registerPasswordLabel" Content="Password" HorizontalAlignment="Left" Height="35" Margin="45,242,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
-        <TextBox x:Name="registerPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="43" Margin="45,277,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" Visibility="Hidden"/>
+        <Label x:Name="registerPasswordLabel" Content="Password" HorizontalAlignment="Left" Height="35" Margin="45,306,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
+        <TextBox x:Name="registerPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="43" Margin="45,341,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#020422" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden"/>
 
-        <Label x:Name="confirmPasswordLabel" Content="Confirm Password" HorizontalAlignment="Left" Height="35" Margin="45,351,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
-        <TextBox x:Name="confirmPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="44" Margin="45,386,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" Visibility="Hidden"/>
+        <Label x:Name="confirmPasswordLabel" Content="Confirm Password" HorizontalAlignment="Left" Height="35" Margin="45,415,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
+        <TextBox x:Name="confirmPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="44" Margin="45,450,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#020422" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden" />
 
-        <Button x:Name="signUpButton" Content="Sign Up" HorizontalAlignment="Center" Height="67" Margin="0,484,0,0" VerticalAlignment="Top" Width="144" Background="#f3c206" Foreground="#FF050C53" FontSize="22" FontFamily="Arial Black" Visibility="Hidden" Click="signUpButton_Click"/>
+        <Button x:Name="signUpButton" Content="Sign Up" HorizontalAlignment="Center" Height="67" Margin="0,548,0,0" VerticalAlignment="Top" Width="144" Background="#f3c206" Foreground="#FF050C53" FontSize="22" FontFamily="Arial Black" Click="signUpButton_Click" Visibility="Hidden"/>
+        <Label x:Name="logoutLabel" Content="Task Grab" HorizontalAlignment="Center" Height="69" Padding="140,15,0,0" VerticalAlignment="Top" Width="480" Foreground="White" FontSize="36" FontFamily="Arial Black" Margin="0,-2,0,0"/>
 
 
 

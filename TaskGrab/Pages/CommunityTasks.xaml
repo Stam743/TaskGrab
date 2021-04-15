@@ -4,11 +4,45 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TaskGrab.Pages"
+      xmlns:Navigation="clr-namespace:TaskGrab.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="480"
       Title="CommunityTasks">
 
-    <Grid>
-        
-    </Grid>
+    <Canvas Width="480" Background="#00015e">
+        <Grid Width="480" Height="70">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Community: " 
+                       Grid.Column="1"
+                       FontSize="21"
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Center" 
+                       Foreground="#FFF" FontFamily="Arial Black"/>
+            <TextBlock Text="{Binding Path=Location}" 
+                       Grid.Column="2"
+                       FontSize="21"
+                       
+                       TextAlignment="Left"
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Center" 
+                       Foreground="#f3c206" FontFamily="Arial Black"/>
+        </Grid>
+
+
+        <ScrollViewer Height="610"
+                      Canvas.Top="70"
+                      VerticalScrollBarVisibility="Hidden"
+                      HorizontalScrollBarVisibility="Hidden"
+                      ScrollChanged="OnScroll">
+            <ItemsControl  x:Name="TasksHolder" />
+        </ScrollViewer>
+        <Line X1="460" X2="460" Y1="80" Y2="100" UseLayoutRounding="True" StrokeEndLineCap="Round" 
+              StrokeStartLineCap="Round"
+              x:Name="ScrollBarCustom"
+              StrokeThickness="6" Stroke="#f3c206"/>
+    </Canvas>
 </Page>

@@ -45,13 +45,16 @@ namespace TaskGrab.Pages
                 return;
 
             query_string = QueryString.Parse(request_url.Substring(query_start + 1));
+
+            
         }
+
 
         private void setAmountButton_Click(object sender, RoutedEventArgs e)
         {
-            setAmountButton.Foreground = new SolidColorBrush(Colors.Yellow);
-            acceptOffersButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
-            volunteerButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            setAmountButton.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#f3c206"));
+            acceptOffersButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
+            volunteerButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
             setAmountLabel.Visibility = Visibility.Visible;
             setAmountTextBox.Visibility = Visibility.Visible;
             acceptingOffersLabel.Visibility = Visibility.Hidden;
@@ -60,9 +63,9 @@ namespace TaskGrab.Pages
 
         private void acceptOffersButton_Click(object sender, RoutedEventArgs e)
         {
-            acceptOffersButton.Foreground = new SolidColorBrush(Colors.Yellow);
-            setAmountButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
-            volunteerButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            acceptOffersButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            setAmountButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
+            volunteerButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
             acceptingOffersLabel.Visibility = Visibility.Visible;
             setAmountLabel.Visibility = Visibility.Hidden;
             setAmountTextBox.Visibility = Visibility.Hidden;
@@ -72,10 +75,10 @@ namespace TaskGrab.Pages
 
         private void volunteerButton_Click(object sender, RoutedEventArgs e)
         {
-            volunteerButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            volunteerButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
             volunteerWorkLabel.Visibility = Visibility.Visible;
-            acceptOffersButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
-            setAmountButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            acceptOffersButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
+            setAmountButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
             acceptingOffersLabel.Visibility = Visibility.Hidden;
             setAmountLabel.Visibility = Visibility.Hidden;
             setAmountTextBox.Visibility = Visibility.Hidden;
@@ -83,8 +86,6 @@ namespace TaskGrab.Pages
 
         private void postTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
-
             DateTime currentTime = DateTime.Now;
 
             string paymentChoice = "";
@@ -102,20 +103,31 @@ namespace TaskGrab.Pages
                 paymentChoice = setAmountTextBox.Text;
             }
 
-            TaskGrab.Data.Task newTask = new Data.Task()
+
+            if(locationTextBox.Text != "" && titleTextBox.Text != "" && descriptionTextBox.Text != "")
             {
-                title = titleTextBox.Text,
-                description = descriptionTextBox.Text,
-                posted = currentTime.ToString("YYYY-MM-DD,hh:mm:ss"),
-                poster = "Sharif",
-                payment = paymentChoice,
-                location = locationTextBox.Text
-            };
+                TaskGrab.Data.Task newTask = new Data.Task()
+                {
+                    title = titleTextBox.Text,
+                    description = descriptionTextBox.Text,
+                    posted = currentTime.ToString("yyyy-MM-dd,hh:mm:ss"),
+                    poster = "Sharif",
+                    payment = paymentChoice,
+                    location = locationTextBox.Text
+                };
 
-            task_grab_context.Tasks.Add(newTask);
-            task_grab_context.SaveChanges();
+                task_grab_context.Tasks.Add(newTask);
+                task_grab_context.SaveChanges();
+                errorLabel.Visibility = Visibility.Hidden;
 
-            history.GoTo("Pages/MainView/MapView.xaml");
+                history.GoTo("Pages/Login.xaml");
+            }
+            else
+            {
+                errorLabel.Visibility = Visibility.Visible;
+            }
+
+            
         }
 
         private void locationButton_Click(object sender, RoutedEventArgs e)

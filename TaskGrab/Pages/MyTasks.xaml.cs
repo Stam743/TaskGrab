@@ -35,7 +35,7 @@ namespace TaskGrab.Pages
             InitializeComponent();
             List<TaskControl> tasks = new List<TaskControl>();
 
-            foreach (Data.Task task in posted.Tasks.Take(20))
+            foreach (Data.Task task in posted.Tasks)
             {
                 if (task.poster == account)
                 {
@@ -72,12 +72,12 @@ namespace TaskGrab.Pages
 
         private void postedButton_Click(object sender, RoutedEventArgs e)
         {
-            postedButton.Foreground = new SolidColorBrush(Colors.Yellow);
-            savedButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            postedButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            savedButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#fff"));
             account = "Sharif";
             List<TaskControl> tasks = new List<TaskControl>();
 
-            foreach (Data.Task task in posted.Tasks.Take(20))
+            foreach (Data.Task task in posted.Tasks)
             {
                 if (task.poster == account)
                 {
@@ -92,12 +92,12 @@ namespace TaskGrab.Pages
 
         private void savedButton_Click(object sender, RoutedEventArgs e)
         {
-            savedButton.Foreground = new SolidColorBrush(Colors.Yellow);
-            postedButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            savedButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            postedButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#fff"));
             account = "Dotty";
             List<TaskControl> tasks = new List<TaskControl>();
 
-            foreach (Data.Task task in posted.Tasks.Take(20))
+            foreach (Data.Task task in posted.Tasks)
             {
                 if (task.poster == account)
                 {

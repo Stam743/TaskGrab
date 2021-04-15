@@ -9,13 +9,23 @@
       d:DesignHeight="800" d:DesignWidth="480"
       Title="ListView">
     <Canvas Width="480" Background="#00015e">
-        <ScrollViewer Height="695"
+        <Grid Width="480" Height="70">
+            <TextBlock Text="All Tasks" 
+                       FontSize="26"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       Foreground="#FFF" FontFamily="Arial Black"/>
+        </Grid>
+        
+        
+        <ScrollViewer Height="610"
+                      Canvas.Top="70"
                       VerticalScrollBarVisibility="Hidden"
                       HorizontalScrollBarVisibility="Hidden"
                       ScrollChanged="OnScroll">
             <ItemsControl  x:Name="TasksHolder" />
         </ScrollViewer>
-        <Line X1="460" X2="460" Y1="10" Y2="100" UseLayoutRounding="True" StrokeEndLineCap="Round" 
+        <Line X1="460" X2="460" Y1="80" Y2="100" UseLayoutRounding="True" StrokeEndLineCap="Round" 
               StrokeStartLineCap="Round"
               x:Name="ScrollBarCustom"
               StrokeThickness="6" Stroke="#f3c206"/>
