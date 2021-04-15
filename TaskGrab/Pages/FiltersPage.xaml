@@ -22,24 +22,25 @@
             <TextBlock
                 Foreground="#FFFDFDFD"
                 Margin="0,0,0,702"
-                Background="#5555d0"
+                Background="#FF050C53"
                 FontSize="36"
                 FontFamily="Arial Black"
                 TextAlignment="Center"
                 Width="480"
-                Height="130"
+                Height="70"
                 Text="Apply Filters"
                 Padding="5"
              />
 
             <Canvas
                 x:Name="SelectedFiltersCanvas"
-                Height="60"
+                Height="55"
                 Width="480"
-                Canvas.Top="51"
+                Canvas.Top="70"
+                Background="#5555d0"
             >
                 
-                <Canvas Canvas.Left="25">
+                <Canvas Canvas.Left="35">
                     <Label
                         Content="&#xf041;"
                         FontFamily="{StaticResource FontAwesome}"
@@ -48,13 +49,13 @@
                         Canvas.Top="3"
                     />
                     <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="35" FontSize="10" FontFamily="Sans-Serif" Click="ClearDistanceResult"/>
-                    <TextBlock x:Name="FilterDistanceValue" Text="?" FontSize="14" Canvas.Left="35" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                    <TextBlock x:Name="FilterDistanceValue" Text="?" FontSize="14" Canvas.Left="35" Canvas.Top="35" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
                 
                 <Canvas Canvas.Left="130">
-                    <Image Height="55" Canvas.Left="5" Stretch="Fill" Source="/Images/chooseCommunitiesIcon.png" />
+                    <Image Height="50" Canvas.Left="5" Stretch="Fill" Source="/Images/chooseCommunitiesIcon.png" />
                     <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="60" FontSize="10" FontFamily="Sans-Serif" Click="ClearCommunityResult"/>
-                    <TextBlock x:Name="FilterCommunityValue" Text="?" FontSize="14" Canvas.Left="60" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                    <TextBlock x:Name="FilterCommunityValue" Text="?" FontSize="14" Canvas.Left="60" Canvas.Top="35" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
 
 
@@ -66,7 +67,7 @@
                         FontSize="40"
                     />
                     <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="50" FontSize="10" FontFamily="Sans-Serif" Click="ClearCategoryResult"/>
-                    <TextBlock x:Name="FilterCategoryValue" Text="?" FontSize="14" Canvas.Left="50" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                    <TextBlock x:Name="FilterCategoryValue" Text="?" FontSize="14" Canvas.Left="50" Canvas.Top="35" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
 
                 <Canvas Canvas.Left="385">
@@ -77,11 +78,11 @@
                         FontSize="40"
                     />
                     <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="30" FontSize="10" FontFamily="Sans-Serif" Click="ClearPriceResult"/>
-                    <TextBlock x:Name="FilterPriceValue" Text="?" FontSize="14" Canvas.Left="30" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                    <TextBlock x:Name="FilterPriceValue" Text="?" FontSize="14" Canvas.Left="30" Canvas.Top="35" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
             </Canvas>
 
-            <Canvas Canvas.Top="50">
+            <Canvas Canvas.Top="60">
                 <Button
                     x:Name="locationButton"
                     Content="Location"
@@ -105,7 +106,7 @@
                 />
             </Canvas>
 
-            <Canvas Canvas.Top="50">
+            <Canvas Canvas.Top="60">
                 <Button
                     x:Name="categoryButton"
                     Content="Category"
@@ -130,7 +131,7 @@
                  />
             </Canvas>
 
-            <Canvas Canvas.Top="50">
+            <Canvas Canvas.Top="60">
                 <Button
                     x:Name="priceButton"
                     Content="Price"

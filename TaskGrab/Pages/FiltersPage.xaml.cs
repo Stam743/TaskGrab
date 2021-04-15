@@ -76,9 +76,9 @@ namespace TaskGrab.Pages
             DistanceTextBox.Visibility = Visibility.Hidden;
 
             // choose community stuff
-            ChooseCommunityButton.Visibility = Visibility.Hidden;
-            ChooseCommunityImage.Visibility = Visibility.Hidden;
-            ChooseCommunityLabel.Visibility = Visibility.Hidden;
+            ChooseCommunityButton.Visibility = Visibility.Visible;
+            ChooseCommunityImage.Visibility = Visibility.Visible;
+            ChooseCommunityLabel.Visibility = Visibility.Visible;
 
             // Default visible items
             DistanceLabel.Visibility = Visibility.Visible;
