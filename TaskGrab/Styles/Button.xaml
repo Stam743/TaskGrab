@@ -7,8 +7,7 @@
                 <ControlTemplate TargetType="Button">
                     <Border Name="border" 
                         BorderThickness="0"
-                        Padding="4,2" 
-                        BorderBrush="DarkGray"  
+                        Padding="4,2"  
                         Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
