@@ -35,7 +35,7 @@
         <TextBox x:Name="confirmPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="44" Margin="45,450,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" Visibility="Hidden" />
 
         <Button x:Name="signUpButton" Content="Sign Up" HorizontalAlignment="Center" Height="67" Margin="0,548,0,0" VerticalAlignment="Top" Width="144" Background="#f3c206" Foreground="#FF050C53" FontSize="22" FontFamily="Arial Black" Click="signUpButton_Click" Visibility="Hidden"/>
-        <Label x:Name="logoutLabel" Content="Logout/Signup" HorizontalAlignment="Center" Height="69" Padding="100,15,0,0" VerticalAlignment="Top" Width="480" Foreground="White" FontSize="36" FontFamily="Arial Black" Margin="0,-2,0,0"/>
+        <Label x:Name="logoutLabel" Content="Task Grab" HorizontalAlignment="Center" Height="69" Padding="140,15,0,0" VerticalAlignment="Top" Width="480" Foreground="White" FontSize="36" FontFamily="Arial Black" Margin="0,-2,0,0"/>
 
 
 
