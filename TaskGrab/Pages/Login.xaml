@@ -26,13 +26,13 @@
 
 
         <Label x:Name="registerEmailPhoneNumLabel" Content="E-Mail or Phone Number" HorizontalAlignment="Left" Height="36" Margin="45,197,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
-        <TextBox x:Name="registerEmailPhoneNumTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="46" Margin="45,233,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden"/>
+        <TextBox x:Name="registerEmailPhoneNumTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="46" Margin="45,233,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#020422" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden"/>
 
         <Label x:Name="registerPasswordLabel" Content="Password" HorizontalAlignment="Left" Height="35" Margin="45,306,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
-        <TextBox x:Name="registerPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="43" Margin="45,341,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden"/>
+        <TextBox x:Name="registerPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="43" Margin="45,341,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#020422" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden"/>
 
         <Label x:Name="confirmPasswordLabel" Content="Confirm Password" HorizontalAlignment="Left" Height="35" Margin="45,415,0,0" VerticalAlignment="Top" Width="302" FontSize="22" FontFamily="Arial Black" Foreground="White" Visibility="Hidden"/>
-        <TextBox x:Name="confirmPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="44" Margin="45,450,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#FF9191F3" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden" />
+        <TextBox x:Name="confirmPasswordTextBox" VerticalContentAlignment = "Center" HorizontalAlignment="Left" Height="44" Margin="45,450,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Background="#020422" FontFamily="Arial Black" Foreground="White" FontSize="20" BorderBrush="#334489" Visibility="Hidden" />
 
         <Button x:Name="signUpButton" Content="Sign Up" HorizontalAlignment="Center" Height="67" Margin="0,548,0,0" VerticalAlignment="Top" Width="144" Background="#f3c206" Foreground="#FF050C53" FontSize="22" FontFamily="Arial Black" Click="signUpButton_Click" Visibility="Hidden"/>
         <Label x:Name="logoutLabel" Content="Task Grab" HorizontalAlignment="Center" Height="69" Padding="140,15,0,0" VerticalAlignment="Top" Width="480" Foreground="White" FontSize="36" FontFamily="Arial Black" Margin="0,-2,0,0"/>

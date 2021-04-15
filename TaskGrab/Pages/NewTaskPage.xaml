@@ -26,7 +26,7 @@
             <Button x:Name="volunteerButton" Content="VOLUNTEER &#xa;     WORK" HorizontalAlignment="Left" Height="94" Margin="310,531,0,0" VerticalAlignment="Top" Width="130" Background="#020422" Foreground="#defefe" Style="{StaticResource MyButtonStyle}" Click="volunteerButton_Click"/>
 
             <Label x:Name="setAmountLabel" Content="Enter your Amount" HorizontalAlignment="Left" Height="39" Margin="10,640,0,0" VerticalAlignment="Top" Width="440" Foreground="White" FontSize="22"  Visibility="Visible"/>
-            <TextBox x:Name="setAmountTextBox" Padding="10" BorderBrush="#334489" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="35" Margin="12,679,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442" Background="#020422" Foreground="White" FontSize="20" Visibility="Visible"/>
+            <TextBox x:Name="setAmountTextBox" Padding="10" BorderBrush="#334489" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="40" Margin="12,679,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="442" Background="#020422" Foreground="White" FontSize="20" Visibility="Visible"/>
 
             <Label x:Name="acceptingOffersLabel" Content="You Have Selected Accepting Offers" HorizontalAlignment="Left" Height="46" Margin="10,650,0,0" VerticalAlignment="Top" Width="453" Foreground="White" FontSize="22" Visibility="Hidden"/>
 
