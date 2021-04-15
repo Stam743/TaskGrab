@@ -97,22 +97,7 @@ namespace TaskGrab.Pages
 
         private void signUpButton_Click(object sender, RoutedEventArgs e)
         {
-            string password = "";
-            if(registerPasswordTextBox.Text == confirmPasswordTextBox.Text)
-            {
-                password = registerPasswordTextBox.Text;
-            }
-            TaskGrab.Data.UserInfo newUser = new Data.UserInfo()
-            {
-                Email_or_Phone_num = registerEmailPhoneNumTextBox.Text,
-                Password = password
-
-            };
-
-            user_info.UserInformation.Add(newUser);
-            user_info.SaveChanges();
-
-            history.GoTo("Pages/MainView/MapView.xaml");
+              history.GoTo("Pages/MainView/MapView.xaml");
         }
     }
 }
