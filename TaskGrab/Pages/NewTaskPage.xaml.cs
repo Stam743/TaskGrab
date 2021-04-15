@@ -49,11 +49,12 @@ namespace TaskGrab.Pages
             
         }
 
+
         private void setAmountButton_Click(object sender, RoutedEventArgs e)
         {
-            setAmountButton.Foreground = new SolidColorBrush(Colors.Yellow);
-            acceptOffersButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
-            volunteerButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            setAmountButton.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#f3c206"));
+            acceptOffersButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
+            volunteerButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
             setAmountLabel.Visibility = Visibility.Visible;
             setAmountTextBox.Visibility = Visibility.Visible;
             acceptingOffersLabel.Visibility = Visibility.Hidden;
@@ -62,9 +63,9 @@ namespace TaskGrab.Pages
 
         private void acceptOffersButton_Click(object sender, RoutedEventArgs e)
         {
-            acceptOffersButton.Foreground = new SolidColorBrush(Colors.Yellow);
-            setAmountButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
-            volunteerButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            acceptOffersButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            setAmountButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
+            volunteerButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
             acceptingOffersLabel.Visibility = Visibility.Visible;
             setAmountLabel.Visibility = Visibility.Hidden;
             setAmountTextBox.Visibility = Visibility.Hidden;
@@ -74,10 +75,10 @@ namespace TaskGrab.Pages
 
         private void volunteerButton_Click(object sender, RoutedEventArgs e)
         {
-            volunteerButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            volunteerButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
             volunteerWorkLabel.Visibility = Visibility.Visible;
-            acceptOffersButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
-            setAmountButton.Foreground = new SolidColorBrush(Colors.DarkBlue);
+            acceptOffersButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
+            setAmountButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#defefe"));
             acceptingOffersLabel.Visibility = Visibility.Hidden;
             setAmountLabel.Visibility = Visibility.Hidden;
             setAmountTextBox.Visibility = Visibility.Hidden;
