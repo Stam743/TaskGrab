@@ -110,7 +110,7 @@ namespace TaskGrab.Pages
                 {
                     title = titleTextBox.Text,
                     description = descriptionTextBox.Text,
-                    posted = currentTime.ToString("YYYY-MM-DD,hh:mm:ss"),
+                    posted = currentTime.ToString("yyyy-MM-dd,hh:mm:ss"),
                     poster = "Sharif",
                     payment = paymentChoice,
                     location = locationTextBox.Text
@@ -120,7 +120,7 @@ namespace TaskGrab.Pages
                 task_grab_context.SaveChanges();
                 errorLabel.Visibility = Visibility.Hidden;
 
-                history.GoTo("Pages/MainView/MapView.xaml");
+                history.GoTo("Pages/Login.xaml");
             }
             else
             {

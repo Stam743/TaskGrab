@@ -20,7 +20,7 @@
 
         <TextBox x:Name="msgTextBox" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="0,92,0,0" Text="Hello I am interested in doing this task for you" TextWrapping="Wrap" VerticalAlignment="Top" Width="393" Foreground="#FF050C53" Background="#f3c206" FontSize="24" FontFamily="Arial Black" />
         <TextBox x:Name="msgTextBox2" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="78,190,0,0" Text="Fantastic, what time will you be over?" TextWrapping="Wrap" VerticalAlignment="Top" Width="392" Foreground="White" Background="#FF5454B4" FontSize="24" FontFamily="Arial Black" />
-        <TextBox x:Name="msgTextBox3" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="0,293,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="393" Foreground="#FF050C53" Background="#f3c206" FontSize="24" FontFamily="Arial Black" Visibility="Hidden" />
+        <TextBox x:Name="msgTextBox3" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="71" Margin="77,287,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="393" Background="#FF5454B4" FontSize="24" Foreground="White" FontFamily="Arial Black" Visibility="Hidden" />
 
 
     </Grid>

@@ -97,7 +97,7 @@ namespace TaskGrab.Pages
 
         private void signUpButton_Click(object sender, RoutedEventArgs e)
         {
-              history.GoTo("Pages/MainView/MapView.xaml");
+               history.GoTo("Pages/MainView/MapView.xaml");
         }
     }
 }

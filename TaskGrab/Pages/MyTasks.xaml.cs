@@ -35,7 +35,7 @@ namespace TaskGrab.Pages
             InitializeComponent();
             List<TaskControl> tasks = new List<TaskControl>();
 
-            foreach (Data.Task task in posted.Tasks.Take(20))
+            foreach (Data.Task task in posted.Tasks)
             {
                 if (task.poster == account)
                 {
@@ -77,7 +77,7 @@ namespace TaskGrab.Pages
             account = "Sharif";
             List<TaskControl> tasks = new List<TaskControl>();
 
-            foreach (Data.Task task in posted.Tasks.Take(20))
+            foreach (Data.Task task in posted.Tasks)
             {
                 if (task.poster == account)
                 {
@@ -97,7 +97,7 @@ namespace TaskGrab.Pages
             account = "Dotty";
             List<TaskControl> tasks = new List<TaskControl>();
 
-            foreach (Data.Task task in posted.Tasks.Take(20))
+            foreach (Data.Task task in posted.Tasks)
             {
                 if (task.poster == account)
                 {
