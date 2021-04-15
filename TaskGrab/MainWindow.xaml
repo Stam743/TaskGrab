@@ -19,8 +19,9 @@
                 Click="BackBtnClick"
                 Visibility="{Binding Path=IsBackVisible}"
                 Margin="-10"
+                Foreground="#f3c206"
                 Style="{StaticResource HeaderBackButton}">
-                <TextBlock FontFamily="{StaticResource FontAwesome}" Text="{Binding Path=BackBtnIcon}" Foreground="#FFFFFF" FontSize="18"/>
+                <TextBlock FontFamily="{StaticResource FontAwesome}" Text="{Binding Path=BackBtnIcon}" FontSize="28"/>
             </Button>
             <Grid Height="0" Width="50" Canvas.Bottom="50" Canvas.Right="0" x:Name="MenuActions">
 				<Grid.RowDefinitions>

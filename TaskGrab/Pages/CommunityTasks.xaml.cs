@@ -19,6 +19,7 @@ using TaskGrab.Controls;
 using TaskGrab.Data;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace TaskGrab.Pages
 {
@@ -30,12 +31,12 @@ namespace TaskGrab.Pages
         private MainWindow main;
         private History history;
         private QueryString query_string;
-        private string location = "";
+        private string location = "Community";
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public string Location
         {
-            set { this.location = value; }
+            set { this.location = Regex.Replace(value,@"\s*,\s*Calgary AB",""); }
             get { return this.location; }
         }
         double scrollBarHeight = 50;
@@ -48,27 +49,35 @@ namespace TaskGrab.Pages
 
             string request_url = main.GetHistory().current.OriginalString;
             int query_start = request_url.IndexOf('?');
-
+            this.DataContext = this;
             if (query_start < 0)
                 return;
 
             query_string = QueryString.Parse(request_url.Substring(query_start + 1));
 
-            List<TaskControl> tasks = new List<TaskControl>();
-
-            foreach (Data.Task task in _context.Tasks.Take(20))
-            {
-                tasks.Add(new TaskControl(task));
-                tasks.Last().MessageClick += OnMessageClick;
-                tasks.Last().TaskClick += OnTaskClick;
-            }
-            TasksHolder.ItemsSource = tasks;
+            
             string loc = "";
             bool success = query_string.TryGetValue("location", out loc);
             if (success)
             {
                 Location = loc;
             }
+            else
+                return;
+
+            List<TaskControl> tasks = new List<TaskControl>();
+           
+            foreach (Data.Task task in _context.Tasks)
+            {
+                if (task.location != loc)
+                    continue;
+
+                tasks.Add(new TaskControl(task));
+                tasks.Last().MessageClick += OnMessageClick;
+                tasks.Last().TaskClick += OnTaskClick;
+            }
+
+            TasksHolder.ItemsSource = tasks;
         }
 
         public void OnPropertyChanged([CallerMemberName]string propertyName = null)
