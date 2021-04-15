@@ -49,7 +49,7 @@ namespace TaskGrab.Pages
 
         private void loginTabButton_Click(object sender, RoutedEventArgs e)
         {
-            loginTabButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            loginTabButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
             signUpTabButton.Foreground = new SolidColorBrush(Colors.White);
             emailPhoneNumLabel.Visibility = Visibility.Visible;
             emailPhoneNumTextBox.Visibility = Visibility.Visible;
@@ -70,7 +70,7 @@ namespace TaskGrab.Pages
 
         private void signUpTabButton_Click(object sender, RoutedEventArgs e)
         {
-            signUpTabButton.Foreground = new SolidColorBrush(Colors.Yellow);
+            signUpTabButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
             loginTabButton.Foreground = new SolidColorBrush(Colors.White);
             registerEmailPhoneNumLabel.Visibility = Visibility.Visible;
             registerEmailPhoneNumTextBox.Visibility = Visibility.Visible;
