@@ -103,7 +103,7 @@ namespace TaskGrab.Pages
             }
 
 
-            if(locationTextBox.Text != "")
+            if(locationTextBox.Text != "" && titleTextBox.Text != "" && descriptionTextBox.Text != "")
             {
                 TaskGrab.Data.Task newTask = new Data.Task()
                 {
