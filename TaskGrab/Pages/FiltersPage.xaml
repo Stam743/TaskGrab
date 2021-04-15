@@ -47,13 +47,13 @@
                         FontSize="40"
                         Canvas.Top="3"
                     />
-                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="35" FontSize="10" FontFamily="Sans-Serif"/>
-                    <TextBlock x:Name="FilterDistanceValue" Text="25" FontSize="14" Canvas.Left="35" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="35" FontSize="10" FontFamily="Sans-Serif" Click="ClearDistanceResult"/>
+                    <TextBlock x:Name="FilterDistanceValue" Text="?" FontSize="14" Canvas.Left="35" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
                 
                 <Canvas Canvas.Left="130">
                     <Image Height="55" Canvas.Left="5" Stretch="Fill" Source="/Images/chooseCommunitiesIcon.png" />
-                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="60" FontSize="10" FontFamily="Sans-Serif"/>
+                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="60" FontSize="10" FontFamily="Sans-Serif" Click="ClearCommunityResult"/>
                     <TextBlock x:Name="FilterCommunityValue" Text="?" FontSize="14" Canvas.Left="60" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
 
@@ -65,8 +65,8 @@
                         Foreground="#f3c206"
                         FontSize="40"
                     />
-                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="50" FontSize="10" FontFamily="Sans-Serif"/>
-                    <TextBlock x:Name="FilterCategoryValue" Text="25" FontSize="14" Canvas.Left="50" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="50" FontSize="10" FontFamily="Sans-Serif" Click="ClearCategoryResult"/>
+                    <TextBlock x:Name="FilterCategoryValue" Text="?" FontSize="14" Canvas.Left="50" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
 
                 <Canvas Canvas.Left="385">
@@ -76,8 +76,8 @@
                         Foreground="#f3c206"
                         FontSize="40"
                     />
-                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="30" FontSize="10" FontFamily="Sans-Serif"/>
-                    <TextBlock x:Name="FilterPriceValue" Text="25" FontSize="14" Canvas.Left="30" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
+                    <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="30" FontSize="10" FontFamily="Sans-Serif" Click="ClearPriceResult"/>
+                    <TextBlock x:Name="FilterPriceValue" Text="?" FontSize="14" Canvas.Left="30" Canvas.Top="40" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
             </Canvas>
 
@@ -222,6 +222,7 @@
                     TextAlignment="Center"
                     Padding="11"
                     Visibility="Hidden"
+					MouseLeftButtonUp="DistanceBlocksTextBlock_MouseLeftButtonUp"
                 />
                 <TextBlock 
                     x:Name="DistanceMilesTextBlock"
@@ -235,6 +236,7 @@
                     TextAlignment="Center"
                     Padding="11"
                     Visibility="Hidden"
+					MouseLeftButtonUp="DistanceMilesTextBlock_MouseLeftButtonUp"
                 />
                 <TextBlock 
                     x:Name="DistanceKmTextBlock"
@@ -248,6 +250,7 @@
                     TextAlignment="Center"
                     Padding="11"
                     Visibility="Hidden"
+					MouseLeftButtonUp="DistanceKmTextBlock_MouseLeftButtonUp"
                 />
                 
             </Canvas>
@@ -268,11 +271,13 @@
                     Width="360"
                     Height="280"
                     Style="{StaticResource MyButtonStyle}"
+                    Click="ShowCommunityFilter"
                 />
 
-                <Image Height="200" Canvas.Left="50" Stretch="Fill" Source="/Images/chooseCommunitiesPicture.png" Canvas.Top="10" />
+                <Image x:Name="ChooseCommunityImage" Height="200" Canvas.Left="50" Stretch="Fill" Source="/Images/chooseCommunitiesPicture.png" Canvas.Top="10" />
 
                 <TextBlock
+                    x:Name="ChooseCommunityLabel"
                     Text="Choose Community"
                     FontSize="24"
                     Foreground="White"
@@ -280,6 +285,8 @@
                     Canvas.Top="235"
                     TextAlignment="Center"
                 />
+                
+                
             </Canvas>
 
         </Canvas>

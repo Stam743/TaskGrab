@@ -51,12 +51,34 @@ namespace TaskGrab.Pages
 
         private void ReturnToDefaultValues(object sender, RoutedEventArgs e)
         {
-            // everything else gets hidden
+            returnDefaultVals();
+        }
+
+        private void ShowCommunityFilter(object sender, RoutedEventArgs e)
+        {
+            ChooseCommunityButton.Visibility = Visibility.Hidden;
+            ChooseCommunityImage.Visibility = Visibility.Hidden;
+            ChooseCommunityLabel.Visibility = Visibility.Hidden;
+
+            ChooseCommunitiesBox.Height = 810;
+            Panel.SetZIndex(ChooseCommunitiesBox, 1);
+        }
+
+        private void returnDefaultVals()
+        {
+             // everything else gets hidden
+
+            // set distance stuff
             DistanceTypeTextBlock.Visibility = Visibility.Hidden;
             DistanceBlocksTextBlock.Visibility = Visibility.Hidden;
             DistanceKmTextBlock.Visibility = Visibility.Hidden;
             DistanceMilesTextBlock.Visibility = Visibility.Hidden;
             DistanceTextBox.Visibility = Visibility.Hidden;
+
+            // choose community stuff
+            ChooseCommunityButton.Visibility = Visibility.Hidden;
+            ChooseCommunityImage.Visibility = Visibility.Hidden;
+            ChooseCommunityLabel.Visibility = Visibility.Hidden;
 
             // Default visible items
             DistanceLabel.Visibility = Visibility.Visible;
@@ -69,5 +91,72 @@ namespace TaskGrab.Pages
             DistanceKmTextBlock.Visibility = Visibility.Visible;
             DistanceMilesTextBlock.Visibility = Visibility.Visible;
         }
+
+        private void DistanceBlocksTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            distanceValue = DistanceTextBox.Text;
+            distanceType = "Blocks";
+            FilterDistanceValue.Text = distanceValue + " " + distanceType;
+
+            DistanceLabel.Text = FilterDistanceValue.Text = distanceValue + " " + distanceType;
+            returnDefaultVals();
+        }
+
+        private void DistanceMilesTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            distanceValue = DistanceTextBox.Text;
+            distanceType = "Miles";
+            FilterDistanceValue.Text = distanceValue + " " + distanceType;
+
+            DistanceLabel.Text = FilterDistanceValue.Text = distanceValue + " " + distanceType;
+            returnDefaultVals();
+        }
+
+        private void DistanceKmTextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            distanceValue = DistanceTextBox.Text;
+            distanceType = "KM";
+            FilterDistanceValue.Text = distanceValue + " " + distanceType;
+
+            DistanceLabel.Text = FilterDistanceValue.Text = distanceValue + " " + distanceType;
+            returnDefaultVals();
+
+        }
+
+        private void ClearDistanceResult(object sender, RoutedEventArgs e)
+        {
+            distanceValue = "NONE";
+            distanceType = "NONE";
+
+            DistanceLabel.Text = "Set Distance";
+            FilterDistanceValue.Text = "?";
+        }
+
+        private void ClearPriceResult(object sender, RoutedEventArgs e)
+        {
+            distanceValue = "NONE";
+            distanceType = "NONE";
+
+            DistanceLabel.Text = "Set Distance";
+            FilterDistanceValue.Text = "?";
+        }
+
+        private void ClearCommunityResult(object sender, RoutedEventArgs e)
+        {
+            distanceValue = "NONE";
+            distanceType = "NONE";
+
+            DistanceLabel.Text = "Set Distance";
+            FilterDistanceValue.Text = "?";
+        }
+        private void ClearCategoryResult(object sender, RoutedEventArgs e)
+        {
+            distanceValue = "NONE";
+            distanceType = "NONE";
+
+            DistanceLabel.Text = "Set Distance";
+            FilterDistanceValue.Text = "?";
+        }
+
     }
 }
