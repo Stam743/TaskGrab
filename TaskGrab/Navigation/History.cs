@@ -83,12 +83,12 @@ namespace TaskGrab.Navigation
                 history.Push(new Uri("/Pages/MainView/MapView.xaml", UriKind.Relative));
             } else
             {
-
+                
             }
             IsBackVisible = CanGoBack()  ? Visibility.Visible : Visibility.Hidden;
             IsSwitchVisible = Regex.Match(current.OriginalString,@".*MainView/.*").Success ? Visibility.Visible : Visibility.Hidden;
             if (history.Count > 0)
-                BackBtnIcon = Regex.Match(history.Peek().OriginalString, @".*MainView/.*").Success ? "\uf015" : "\uf104";
+                BackBtnIcon = Regex.Match(current.OriginalString, @".*FiltersPage.*").Success ? "\uf00c" : Regex.Match(history.Peek().OriginalString, @".*MainView/.*").Success ? "\uf015" : "\uf104";
         }
 
         public bool Replace(String path)

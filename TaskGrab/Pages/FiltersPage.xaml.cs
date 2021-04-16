@@ -27,7 +27,8 @@ namespace TaskGrab.Pages
         private QueryString query_string;
         private String distanceType = "NONE";
         private String distanceValue = "NONE";
-        private String currentTab = "Location";
+        private int numCommunities = 0;
+        private int numCategories = 0;
         public FiltersPage()
         {
             InitializeComponent();
@@ -48,6 +49,7 @@ namespace TaskGrab.Pages
             DistanceTypeTextBlock.Visibility = Visibility.Visible;
             DistanceTextBox.Visibility = Visibility.Visible;
             DistanceLabel.Visibility = Visibility.Hidden;
+            Panel.SetZIndex(ChooseCommunitiesBox, -1);
         }
 
         private void ReturnToDefaultValues(object sender, RoutedEventArgs e)
@@ -55,14 +57,77 @@ namespace TaskGrab.Pages
             returnDefaultVals();
         }
 
+        private void ShowLocationTab(object sender, RoutedEventArgs e)
+        {
+            returnDefaultVals();
+            locationButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            categoryButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+            priceButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+        }
+
+        private void ShowPriceTab(object sender, RoutedEventArgs e)
+        {
+            returnDefaultVals();
+            PricePanel.Visibility = Visibility.Visible;
+            priceButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            categoryButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+            locationButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+        }
+
         private void ShowCommunityFilter(object sender, RoutedEventArgs e)
         {
-            ChooseCommunityButton.Visibility = Visibility.Hidden;
-            ChooseCommunityImage.Visibility = Visibility.Hidden;
-            ChooseCommunityLabel.Visibility = Visibility.Hidden;
+            returnDefaultVals();
+            ChooseCommunityPanel.Visibility = Visibility.Visible;
+        }
 
-            ChooseCommunitiesBox.Height = 810;
-            Panel.SetZIndex(ChooseCommunitiesBox, 1);
+        private void HideCommunityFilter(object sender, RoutedEventArgs e)
+        {
+            ChooseCommunityPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void ShowCategoryFilter(object sender, RoutedEventArgs e)
+        {
+            returnDefaultVals();
+            CategoryPanel.Visibility = Visibility.Visible;
+            categoryButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f3c206"));
+            locationButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+            priceButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+        }
+
+        private void HideCategoryFilter(object sender, RoutedEventArgs e)
+        {
+            CategoryPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void ShowLowerBoundHidden(object sender, RoutedEventArgs e)
+        {
+            PriceFromButtonHiddenContent.Visibility = Visibility.Visible;
+            LowerBoundShow.Visibility = Visibility.Hidden;
+        }
+
+        private void SetPriceValue(object sender, MouseButtonEventArgs e)
+        {
+            FilterPriceValue.Text = "Set";
+        }
+
+        private void PriceFromButtonUnhide(object sender, MouseButtonEventArgs e)
+        {
+            PriceFromButtonHiddenContent.Visibility = Visibility.Hidden;
+            LowerBoundShow.Visibility = Visibility.Visible;
+            FilterPriceValue.Text = "?";
+        }
+
+        private void PriceToButtonUnhide(object sender, MouseButtonEventArgs e)
+        {
+            PriceToButtonHiddenContent.Visibility = Visibility.Hidden;
+            UpperBoundShow.Visibility = Visibility.Visible;
+            FilterPriceValue.Text = "?";
+        }
+
+        private void ShowUpperBoundHidden(object sender, RoutedEventArgs e)
+        {
+            PriceToButtonHiddenContent.Visibility = Visibility.Visible;
+            UpperBoundShow.Visibility = Visibility.Hidden;
         }
 
         private void returnDefaultVals()
@@ -76,11 +141,15 @@ namespace TaskGrab.Pages
             DistanceMilesTextBlock.Visibility = Visibility.Hidden;
             DistanceTextBox.Visibility = Visibility.Hidden;
 
+            ChooseCommunityPanel.Visibility = Visibility.Hidden;
+            CategoryPanel.Visibility = Visibility.Hidden;
+            PricePanel.Visibility = Visibility.Hidden;
 
             // Default visible items
             DistanceLabel.Visibility = Visibility.Visible;
-        
+
             // choose community stuff
+            Panel.SetZIndex(ChooseCommunitiesBox, 1);
             ChooseCommunityButton.Visibility = Visibility.Visible;
             ChooseCommunityImage.Visibility = Visibility.Visible;
             ChooseCommunityLabel.Visibility = Visibility.Visible;
@@ -146,20 +215,41 @@ namespace TaskGrab.Pages
 
         private void ClearCommunityResult(object sender, RoutedEventArgs e)
         {
-            distanceValue = "NONE";
-            distanceType = "NONE";
+            numCommunities = 0;
+            FilterCommunityValue.Text = "?";
 
-            DistanceLabel.Text = "Set Distance";
-            FilterDistanceValue.Text = "?";
+            returnDefaultVals();
         }
         private void ClearCategoryResult(object sender, RoutedEventArgs e)
         {
-            distanceValue = "NONE";
-            distanceType = "NONE";
+            numCategories = 0;
+            FilterCategoryValue.Text = "?";
 
-            DistanceLabel.Text = "Set Distance";
-            FilterDistanceValue.Text = "?";
+            returnDefaultVals();
+        }
+        
+        private void IncrementCommunityCount(object sender, RoutedEventArgs e)
+        {
+            numCommunities += 1;
+            FilterCommunityValue.Text = numCommunities.ToString();
         }
 
+        private void DecrementCommunityCount(object sender, RoutedEventArgs e)
+        {
+            numCommunities -= 1;
+            FilterCommunityValue.Text = numCommunities.ToString();
+        }
+
+        private void IncrementCategoryCount(object sender, RoutedEventArgs e)
+        {
+            numCategories += 1;
+            FilterCategoryValue.Text = numCategories.ToString();
+        }
+
+        private void DecrementCategoryCount(object sender, RoutedEventArgs e)
+        {
+            numCategories -= 1;
+            FilterCategoryValue.Text = numCategories.ToString();
+        }
     }
 }

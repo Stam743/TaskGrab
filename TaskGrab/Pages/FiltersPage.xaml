@@ -10,7 +10,7 @@
 	 Title="Filters Page">
 
     <ScrollViewer FontFamily="Arial Black" FontSize="16">
-        <Canvas Name ="FilterCanvas" Background="#FF050C53">
+        <Canvas Name ="FilterCanvas" Background="#FF050C53" IsHitTestVisible="True">
             <Button 
                 Width="480"
                 Height="800"
@@ -20,6 +20,7 @@
             />
 
             <TextBlock
+                Canvas.Top="10"
                 Foreground="#FFFDFDFD"
                 Margin="0,0,0,702"
                 Background="#FF050C53"
@@ -39,8 +40,8 @@
                 Canvas.Top="70"
                 Background="#5555d0"
             >
-                
-                <Canvas Canvas.Left="35">
+
+                <Canvas Canvas.Left="30">
                     <Label
                         Content="&#xf041;"
                         FontFamily="{StaticResource FontAwesome}"
@@ -51,7 +52,7 @@
                     <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="35" FontSize="10" FontFamily="Sans-Serif" Click="ClearDistanceResult"/>
                     <TextBlock x:Name="FilterDistanceValue" Text="?" FontSize="14" Canvas.Left="35" Canvas.Top="35" Foreground="White" FontFamily="Sans-Serif"/>
                 </Canvas>
-                
+
                 <Canvas Canvas.Left="130">
                     <Image Height="50" Canvas.Left="5" Stretch="Fill" Source="/Images/chooseCommunitiesIcon.png" />
                     <Button Style="{StaticResource MyButtonStyle}" Content="X" Foreground="White" Canvas.Left="60" FontSize="10" FontFamily="Sans-Serif" Click="ClearCommunityResult"/>
@@ -94,6 +95,7 @@
                     FontSize="15"
                     FontWeight="Normal"
                     Style="{StaticResource MyButtonStyle}"
+                    Click="ShowLocationTab"
                  />
                 <Label
                     x:Name="LocationLabelSymbol"
@@ -102,8 +104,102 @@
                     Canvas.Top="69"
                     Canvas.Left="8"
                     Foreground="#f3c206"
-                    FontSize="28"
+                    FontSize="26"
                 />
+            </Canvas>
+
+            <Canvas
+                x:Name="CategoryPanel"
+                Height="630"
+                Width="480"
+                Panel.ZIndex="2"
+                Canvas.Top="170"   
+                Visibility="Hidden"
+                Background="#5555d0"
+            >
+                <TextBox x:Name="FilterCategoriesTextBox" Canvas.Left="10" Canvas.Top="10" Width="400" Height="40" Foreground="White" Background="#FF050C53" Padding="10"/>
+                <TextBlock Text="Filter Categories" Foreground="White" Canvas.Top="55" Canvas.Left="35" FontSize="28"/>
+
+                <Canvas Canvas.Top="90" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Animal Care" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="120" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Lawn Care" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="150" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Snow removal" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="180" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Photography" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="210" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Transportation" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="240" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Child care" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="270" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Event planning" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="300" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Painting" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="330" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Cleaning" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="360" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Music" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="390" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Windows" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="420" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Mac" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="450" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Cooking" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="480" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Dancing" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="510" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Driving" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
+                <Canvas Canvas.Top="540" Canvas.Left="30">
+                    <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCategoryCount" Unchecked="DecrementCategoryCount"/>
+                    <TextBlock Text="Errands" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                </Canvas>
+
             </Canvas>
 
             <Canvas Canvas.Top="60">
@@ -118,6 +214,7 @@
                     Foreground="#FF050C53"
                     FontSize="15"
                     Style="{StaticResource MyButtonStyle}"
+                    Click="ShowCategoryFilter"
                  />
                 <Label
                     x:Name="categoryLabelSymbol"
@@ -129,6 +226,92 @@
                     Foreground="#f3c206"
                     FontSize="28"
                  />
+            </Canvas>
+
+            <Canvas
+                x:Name="PricePanel"
+                Height="630"
+                Width="480"
+                Panel.ZIndex="10"
+                Canvas.Top="170"   
+                Visibility="Hidden"
+                Background="#5555d0"
+            >
+                <TextBlock Text="Price Filter" Foreground="White" FontSize="28" Canvas.Left="140" Canvas.Top="40"/>
+
+                <Canvas Canvas.Top="130" Canvas.Left="80">
+                    <Button 
+                        x:Name="LowerBoundShow"
+                        Height="70"
+                        Width="300"
+                        Click="ShowLowerBoundHidden"
+                        Panel.ZIndex="20"
+                        Background="Transparent"
+                        Style="{StaticResource MyButtonStyle}"
+                    />
+                    <TextBlock Height="70" Text="Set lower bound" Width="300" Background="#f3c206" Foreground="Black" FontSize="27" Padding="24" />
+
+                    <Canvas x:Name="PriceFromButtonHiddenContent" Visibility="Hidden">
+                        <TextBlock Height="70" Width="50" Background="#f3c206"/>
+                        <Label
+                            FontFamily="{StaticResource FontAwesome}"
+                            Content="&#xf155;"
+                            Foreground="#5555d0"
+                            FontSize="40"
+                            Canvas.Top="10"
+                            Canvas.Left="7"
+                        />
+                        <TextBox Canvas.Left="50" Height="70" Width="250" Background="#FF050C53" Foreground="White" FontSize="34" Padding="10"/>
+                        <TextBlock Text="From:" Foreground="White" FontSize="28" Canvas.Top="-32"/>
+                        <TextBlock Text="X" Foreground="#f3c206" FontSize="28" Canvas.Top="-32" Canvas.Left="270" MouseLeftButtonUp="PriceFromButtonUnhide"/>
+                        <Label
+                            FontFamily="{StaticResource FontAwesome}"
+                            Content="&#xf00c;"
+                            Foreground="#f3c206"
+                            FontSize="28"
+                            Canvas.Top="-35" 
+                            Canvas.Left="230"
+                            MouseLeftButtonUp="SetPriceValue"
+                        />
+                    </Canvas>
+                </Canvas>
+
+                <Canvas Canvas.Top="270" Canvas.Left="80">
+                    <Button 
+                        x:Name="UpperBoundShow"
+                        Height="70"
+                        Width="300"
+                        Click="ShowUpperBoundHidden"
+                        Panel.ZIndex="20"
+                        Background="Transparent"
+                        Style="{StaticResource MyButtonStyle}"
+                    />
+                    <TextBlock Height="70" Text="Set upper bound" Width="300" Background="#f3c206" Foreground="Black" FontSize="27" Padding="24" />
+
+                    <Canvas x:Name="PriceToButtonHiddenContent" Visibility="Hidden">
+                        <TextBlock Height="70" Width="50" Background="#f3c206"/>
+                        <Label
+                            FontFamily="{StaticResource FontAwesome}"
+                            Content="&#xf155;"
+                            Foreground="#5555d0"
+                            FontSize="40"
+                            Canvas.Top="10"
+                            Canvas.Left="7"
+                        />
+                        <TextBox Canvas.Left="50" Height="70" Width="250" Background="#FF050C53" Foreground="White" FontSize="34" Padding="10"/>
+                        <TextBlock Text="To" Foreground="White" FontSize="28" Canvas.Top="-32"/>
+                        <TextBlock Text="X" Foreground="#f3c206" FontSize="28" Canvas.Top="-32" Canvas.Left="270" MouseLeftButtonUp="PriceToButtonUnhide"/>
+                        <Label
+                            FontFamily="{StaticResource FontAwesome}"
+                            Content="&#xf00c;"
+                            Foreground="#f3c206"
+                            FontSize="28"
+                            Canvas.Top="-35" 
+                            Canvas.Left="230"
+                            MouseLeftButtonUp="SetPriceValue"
+                        />
+                    </Canvas>
+                </Canvas>
             </Canvas>
 
             <Canvas Canvas.Top="60">
@@ -144,6 +327,7 @@
                     Canvas.Left="320"
                     FontSize="15"
                     Style="{StaticResource MyButtonStyle}"
+                    Click="ShowPriceTab"
                  />
                 <Label
                     x:Name="PriceLabelSymbol"
@@ -158,6 +342,7 @@
             </Canvas>
 
             <Canvas
+                
                 x:Name="SetDistanceBox"
                 Background="#5555d0"
                 Height="280"
@@ -253,7 +438,7 @@
                     Visibility="Hidden"
 					MouseLeftButtonUp="DistanceKmTextBlock_MouseLeftButtonUp"
                 />
-                
+
             </Canvas>
 
             <Canvas
@@ -263,7 +448,7 @@
                 Width="360"
                 Canvas.Left="60"
                 Canvas.Top="475"
-                Panel.ZIndex="-1"
+                
             >
                 <Button 
                     x:Name="ChooseCommunityButton"
@@ -275,7 +460,7 @@
                     Click="ShowCommunityFilter"
                 />
 
-                <Image x:Name="ChooseCommunityImage" Height="200" Canvas.Left="50" Stretch="Fill" Source="/Images/chooseCommunitiesPicture.png" Canvas.Top="10" />
+                <Image x:Name="ChooseCommunityImage" Height="200" Canvas.Left="50" Stretch="Fill" Source="/Images/chooseCommunitiesPicture.png" Canvas.Top="10" MouseLeftButtonUp="ShowCommunityFilter"/>
 
                 <TextBlock
                     x:Name="ChooseCommunityLabel"
@@ -286,10 +471,111 @@
                     Canvas.Top="235"
                     TextAlignment="Center"
                 />
-                
-                
+
+
             </Canvas>
 
+            <ScrollViewer
+                x:Name="ChooseCommunityPanel"
+                Height="630"
+                Width="480"
+                Panel.ZIndex="2"
+                Canvas.Top="170"   
+                Visibility="Hidden"
+            >
+                <Canvas
+                
+                Height="630"
+                Width="480"
+                Panel.ZIndex="2"
+                Background="#5555d0"
+                >
+                    <TextBox x:Name="FilterCommunitiesTextBox" Canvas.Left="10" Canvas.Top="10" Width="400" Height="40" Foreground="White" Background="#FF050C53" Padding="10"/>
+                    <TextBlock x:Name="CommunityClosePanel" Foreground="White" Canvas.Right="30" Canvas.Top="19" Width="20" Height="20" Text="X" MouseLeftButtonUp="HideCommunityFilter"/>
+                    <TextBlock Text="Filter Communities" Foreground="White" Canvas.Top="55" Canvas.Left="35" FontSize="26"/>
+
+                    <Canvas Canvas.Top="90" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Abbeydale" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+                    
+                    <Canvas Canvas.Top="120" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Acadia" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="150" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Albert Park" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="180" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Altadore" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="210" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Bonnybrook" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="240" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Banff Trail" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="270" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Bowness" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="300" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Brentwood" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="330" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Bridlewood" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="360" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Citadel" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="390" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Country Hills" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="420" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Country Hills" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="450" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Coventry Hiils" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="480" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Coral Springs" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="510" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Cranston" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                    <Canvas Canvas.Top="540" Canvas.Left="30">
+                        <CheckBox Height="16" Width="16" BorderBrush="#f3c206" Canvas.Left="10" Canvas.Top="6" Checked="IncrementCommunityCount" Unchecked="DecrementCommunityCount"/>
+                        <TextBlock Text="Crescent Heights" Foreground="White" FontSize="24" Canvas.Left="50"/>
+                    </Canvas>
+
+                </Canvas>
+            </ScrollViewer>
         </Canvas>
     </ScrollViewer>
 </Page>
